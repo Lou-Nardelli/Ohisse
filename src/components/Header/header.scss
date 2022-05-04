@@ -1,7 +1,14 @@
-.logo {
-    display: inline;
+.header {
+    background-color:#f2f4f3ff;
+
+    &-bar {
+      display: flex;
+      justify-content: space-between;
+      padding: 1em 0;
+    }
 }
 
-.header {
-    background-color:red;
+.MuiPaper-root.MuiPaper-elevation.MuiPaper-elevation16.MuiDrawer-paper.MuiDrawer-paperAnchorRight.css-1160xiw-MuiPaper-root-MuiDrawer-paper {
+  // background-color: red;
+  width: 80%;
 }
