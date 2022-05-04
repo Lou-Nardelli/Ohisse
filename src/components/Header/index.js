@@ -1,8 +1,7 @@
 // == Import : npm
 import { NavLink } from 'react-router-dom';
 import AppBar from '@mui/material/AppBar';
-import MenuIcon from '@mui/icons-material/Menu';
-import MenuIcon from "@material-ui/icons/Menu";
+import MenuIcon from '@material-ui/icons/Menu';
 
 import {
   Toolbar,
