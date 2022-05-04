@@ -1,0 +1,24 @@
+@use 'src/styles/vars';
+
+.footer {
+  margin-top: 3rem;
+  background-color: vars.$color-grey;
+  &__socials {
+    padding: 1rem 0;
+    img {
+      max-height: 30px;
+    }
+  }
+
+  &__about {
+    color: vars.$color-blue;
+  }
+
+  &__links {
+
+  }
+
+  &__copyright {
+
+  }
+}
