@@ -2,7 +2,9 @@
 import { Link } from 'react-router-dom';
 
 // == Import : local
-import logoSimple from 'src/assets/img/logo-simple-bicolor.png';
+import logoFb from 'src/assets/img/socials/facebook-brands.svg';
+import logoTw from 'src/assets/img/socials/twitter-brands.svg';
+import logoIg from 'src/assets/img/socials/instagram-brands.svg';
 import './footer.scss';
 
 // == Composant
@@ -10,10 +12,12 @@ function Footer() {
   return (
     <div className="footer">
       <div className="footer__socials">
-        <img src={logoSimple} alt="logo simple ohisse" />
+        <Link to=""><img src={logoFb} alt="logo facebook" /></Link>
+        <Link to=""><img src={logoTw} alt="logo twitter" /></Link>
+        <Link to=""><img src={logoIg} alt="logo instagram" /></Link>
       </div>
       <div className="footer__about">
-        A propos de O'Hisse
+        A propos de O'Hisse :
       </div>
       <div className="footer__links">
         <Link className="footer-link" to="">L'équipe</Link>
