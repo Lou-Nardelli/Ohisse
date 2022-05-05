@@ -1,5 +1,7 @@
+@use 'src/styles/vars';
+
 .header {
-    background-color:#f2f4f3ff;
+    background-color: vars.$color-grey;
     max-width: 100% !important;
 
     &-bar {

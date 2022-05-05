@@ -24,6 +24,7 @@ import './header.scss';
 
 // == Composant
 function Header() {
+  // Link's array
   const navLinks = [
     { name: 'Carte', href: '/' },
     { name: 'Ajout de spot', href: '/spot' },
@@ -34,16 +35,19 @@ function Header() {
   const [open, setOpen] = useState(false);
 
   return (
+    // Material UI components
     <AppBar position="sticky">
       <Toolbar className="header">
         <Container maxWidth="md" className="header">
           <div className="header-bar">
             <img className="header-bar__logo" src={ohisseLogo} alt="ohisse logo" />
+            {/* Desktop Nav */}
             <div className="header-bar__links">
               <Hidden smDown>
                 {navLinks.map((item) => (
                   <NavLink to={item.href} className="gutter-links">{item.name}</NavLink>
                 ))}
+                {/* Dark mode/Connect links */}
                 <div className="burger__connect--dark-mode">
                   <WbSunnyIcon className="gutter-links" />
                   <Switch />
@@ -52,6 +56,7 @@ function Header() {
                 <NavLink to="/" className="gutter-links"><img className="burger__connect--image" src={userLogo} alt="user logo" /></NavLink>
               </Hidden>
             </div>
+            {/* Button of hamburger menu */}
             <Hidden smUp>
               <IconButton>
                 <MenuIcon className="header-bar__button" onClick={() => setOpen(true)} />
@@ -60,6 +65,9 @@ function Header() {
           </div>
         </Container>
       </Toolbar>
+      {/* End of Desktop Nav */}
+
+      {/* Mobile Nav */}
       <div className="burger">
         <SwipeableDrawer
           anchor="right"
@@ -67,12 +75,14 @@ function Header() {
           onOpen={() => setOpen(true)}
           onClose={() => setOpen(false)}
         >
+          {/* Close button of the burger nav */}
           <div className="burger__top-nav">
             <div className="burger__close-button">
               <IconButton>
                 <CloseIcon onClick={() => setOpen(false)} />
               </IconButton>
             </div>
+            {/* Links of top nav burger */}
             <List>
               {navLinks.map((item) => (
                 <ListItem className="burger__links">
@@ -84,6 +94,7 @@ function Header() {
               </ListItem>
             </List>
           </div>
+          {/* Links of bottom burger nav */}
           <List>
             <ListItem className="burger__links burger__connect">
               <NavLink to="/"><img className="burger__connect--image" src={userLogo} alt="user logo" />Connexion</NavLink>
@@ -96,6 +107,7 @@ function Header() {
           </List>
         </SwipeableDrawer>
       </div>
+      {/* End of Mobile Nav */}
     </AppBar>
   );
 }
