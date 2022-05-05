@@ -1,11 +1,23 @@
 .header {
     background-color:#f2f4f3ff;
+    max-width: 100% !important;
 
     &-bar {
       display: flex;
       justify-content: space-between;
+      align-items: center;
       padding: 1em 0;
+
+      &__links {
+        display: flex;
+        align-items: center;
+        color: #000;
+      }
     }
+}
+
+.gutter-links {
+  margin-left:1em;
 }
 
 .burger {
@@ -36,7 +48,7 @@
     width:90% !important;
 
     &--image {
-      max-width: 1em;
+      width: 1em;
       margin-right: 1em;
     }
 

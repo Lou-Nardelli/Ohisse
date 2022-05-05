@@ -36,14 +36,22 @@ function Header() {
   return (
     <AppBar position="sticky">
       <Toolbar className="header">
-        <Container maxWidth="md">
+        <Container maxWidth="md" className="header">
           <div className="header-bar">
             <img className="header-bar__logo" src={ohisseLogo} alt="ohisse logo" />
-            <Hidden smDown>
-              {navLinks.map((item) => (
-                <NavLink to={item.href}>{item.name}</NavLink>
-              ))}
-            </Hidden>
+            <div className="header-bar__links">
+              <Hidden smDown>
+                {navLinks.map((item) => (
+                  <NavLink to={item.href} className="gutter-links">{item.name}</NavLink>
+                ))}
+                <div className="burger__connect--dark-mode">
+                  <WbSunnyIcon className="gutter-links" />
+                  <Switch />
+                  <Brightness2Icon />
+                </div>
+                <NavLink to="/" className="gutter-links"><img className="burger__connect--image" src={userLogo} alt="user logo" /></NavLink>
+              </Hidden>
+            </div>
             <Hidden smUp>
               <IconButton>
                 <MenuIcon className="header-bar__button" onClick={() => setOpen(true)} />
