@@ -10,7 +10,7 @@ function Ohisse() {
   return (
     <div className="ohisse">
       <Header />
-      <img src={ohisseLogo} alt="ohisse logo" />
+      <img src={ohisseLogo} className="ohisse__logo" alt="ohisse logo" />
       <h1>Composant : Ohisse</h1>
       <Home />
       {/* Routes */

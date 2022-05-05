@@ -1,4 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { nextIndex, previousIndex } from '../../../actions/spots';
 
 // styles
@@ -16,14 +17,6 @@ function SliderPicture() {
   const currentIndex = useSelector((state) => state.spots.currentIndexSliderPicture);
   const currentPicture = picture[currentIndex];
 
-  const sectionStyle = {
-    backgroundImage: `url(${currentPicture})`,
-    backgroundRepeat: 'no-repeat',
-    backgroundSize: 'contain',
-    minWidth: '100%',
-    minHeight: '25em',
-  };
-
   const handleNext = () => {
     console.log('i want to see the next picture');
     dispatch(nextIndex());
@@ -35,10 +28,12 @@ function SliderPicture() {
   };
 
   return (
-    <div className="sliderPicture" style={sectionStyle}>
-      <button className="sliderPicture__button" aria-label="previous" onClick={handlePrevious}> &lt; </button>
-      {/* <img className="sliderPicture__picture" src={currentPicture} alt="" /> */}
-      <button className="sliderPicture__button" aria-label="next" onClick={handleNext}> &gt; </button>
+    <div className="sliderPicture">
+      <button type="button" className="sliderPicture__button--previous" aria-label="previous" onClick={handlePrevious}> &lt; </button>
+      <Link to="">
+        <img className="sliderPicture__picture" src={currentPicture} alt="" />
+      </Link>
+      <button type="button" className="sliderPicture__button--next" aria-label="next" onClick={handleNext}> &gt; </button>
     </div>
   );
 }

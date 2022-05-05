@@ -2,8 +2,8 @@
   font-family: 'Roboto', sans-serif;
   margin: 1em auto;
   text-align: center;
-}
 
-.ohisse img {
-  max-width: 150px;
+  &__logo {
+    max-width: 150px;
+  }
 }
