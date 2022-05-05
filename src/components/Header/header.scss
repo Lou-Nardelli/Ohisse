@@ -8,7 +8,29 @@
     }
 }
 
+.burger {
+
+  &__link {
+    border-bottom: 1px solid #000;
+    padding: 1em 0;
+    margin: 1em;
+  }
+
+  &__link:last-child {
+    border-bottom: none;
+  }
+
+  &__account {
+    display: flex;
+    align-items: center;
+
+    &--image {
+      max-width: 1em;
+      margin-right: 1em;
+    }
+  }
+}
+
 .MuiPaper-root.MuiPaper-elevation.MuiPaper-elevation16.MuiDrawer-paper.MuiDrawer-paperAnchorRight.css-1160xiw-MuiPaper-root-MuiDrawer-paper {
-  background-color: red;
   width: 80%;
 }

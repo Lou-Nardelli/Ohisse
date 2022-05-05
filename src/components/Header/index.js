@@ -16,6 +16,7 @@ import {
 
 // == Import : local
 import ohisseLogo from 'src/assets/img/logo-complet-bicolor.png';
+import userLogo from 'src/assets/img/user.png';
 import './header.scss';
 
 // == Composant
@@ -48,26 +49,30 @@ function Header() {
           </div>
         </Container>
       </Toolbar>
-      <SwipeableDrawer
-        // className="background"
-        anchor="right"
-        open={open}
-        onOpen={() => setOpen(true)}
-        onClose={() => setOpen(false)}
-      >
-        <div>
-          <IconButton>
-            <CloseIcon onClick={() => setOpen(false)} />
-          </IconButton>
-        </div>
-        <List>
-          {navLinks.map((item) => (
-            <ListItem>
-              <NavLink to={item.href}>{item.name}</NavLink>
+      <div className="burger">
+        <SwipeableDrawer
+          anchor="right"
+          open={open}
+          onOpen={() => setOpen(true)}
+          onClose={() => setOpen(false)}
+        >
+          <div>
+            <IconButton>
+              <CloseIcon onClick={() => setOpen(false)} />
+            </IconButton>
+          </div>
+          <List>
+            {navLinks.map((item) => (
+              <ListItem className="burger__link">
+                <NavLink to={item.href}>{item.name}</NavLink>
+              </ListItem>
+            ))}
+            <ListItem className="burger__link burger__account">
+              <NavLink to="/"><img className="burger__account--image" src={userLogo} alt="user logo" />Mon Compte</NavLink>
             </ListItem>
-          ))}
-        </List>
-      </SwipeableDrawer>
+          </List>
+        </SwipeableDrawer>
+      </div>
     </AppBar>
   );
 }
