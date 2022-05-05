@@ -43,7 +43,7 @@ function Header() {
             <img className="header-bar__logo" src={ohisseLogo} alt="ohisse logo" />
             {/* Desktop Nav */}
             <div className="header-bar__links">
-              <Hidden smDown>
+              <Hidden mdDown>
                 {navLinks.map((item) => (
                   <NavLink to={item.href} className="gutter-links">{item.name}</NavLink>
                 ))}
@@ -57,7 +57,7 @@ function Header() {
               </Hidden>
             </div>
             {/* Button of hamburger menu */}
-            <Hidden smUp>
+            <Hidden mdUp>
               <IconButton>
                 <MenuIcon className="header-bar__button" onClick={() => setOpen(true)} />
               </IconButton>
