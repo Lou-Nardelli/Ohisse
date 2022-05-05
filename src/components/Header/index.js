@@ -78,7 +78,7 @@ function Header() {
           </div>
           <List>
             <ListItem className="burger__links burger__connect">
-              <NavLink to="/"><img className="burger__connect--image" src={userLogo} alt="user logo" />Connexion/Déconnexion</NavLink>
+              <NavLink to="/"><img className="burger__connect--image" src={userLogo} alt="user logo" />Connexion</NavLink>
               <div className="burger__connect--dark-mode">
                 <WbSunnyIcon />
                 <Switch />
