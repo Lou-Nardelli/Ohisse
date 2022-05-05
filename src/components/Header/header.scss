@@ -10,6 +10,10 @@
       align-items: center;
       padding: 1em 0;
 
+      &__logo {
+        max-width:150px;
+      }
+
       &__links {
         display: flex;
         align-items: center;

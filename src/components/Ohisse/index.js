@@ -10,8 +10,6 @@ function Ohisse() {
   return (
     <div className="ohisse">
       <Header />
-
-      <h1>Composant : Ohisse</h1>
       <Home />
       {/* Routes */
        /* Home url / */
