@@ -1,5 +1,8 @@
+// == Import : npm
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+
+// == Import : local
 import { nextIndex, previousIndex } from '../../../actions/spots';
 
 // styles
