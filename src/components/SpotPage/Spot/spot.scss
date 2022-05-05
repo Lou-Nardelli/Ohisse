@@ -1,0 +1,89 @@
+@use 'src/styles/vars';
+.spot {
+
+  overflow: hidden;
+  padding-bottom: 1em;
+
+  &__header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1em;
+
+    .header__name {
+      margin-right: 1em;
+    }
+
+    .header__button {
+      border: none;
+      background-color: white;
+      color: vars.$color-orange;
+      font-size: 1.5em;
+    }
+  }
+
+  &__picture {
+    max-height: 500px;
+  }
+
+  &__description {
+    display: flex;
+    align-items: center;
+    margin: 1em;
+
+    .description__address {
+        text-align: left;
+        line-height: 1.3em;
+    }
+
+    .description__features {
+      text-align: left;
+
+      .features__p {
+        margin-top: 0.3em;
+      }
+  }
+
+  }
+}
+
+@media only screen and (min-width : 768px) {
+
+  .spot {
+
+    &__header {
+     
+  
+      .header__name {
+        
+      }
+  
+      .header__button {
+   
+      }
+    }
+  
+    &__picture {
+     
+    }
+  
+    &__description {
+      justify-content: space-around;
+  
+      .description__address {
+
+      }
+  
+      .description__features {
+
+  
+        .features__p {
+
+        }
+    }
+  
+    }
+  }
+
+  }
+

@@ -20,13 +20,23 @@ function Spot({
 }) {
   return (
     <div className="spot">
-      <header>
-        <h1>{name}</h1>
-        <button type="button"> &#10084;</button>
-      </header>
-      <div>
-        <img src={picture} alt="" />
+      <div className="spot__header">
+        <h1 className="header__name">{name} </h1>
+        <button className="header__button" type="button"> &#10084;</button>
       </div>
+      <img className="spot__picture" src={picture} alt={name} />
+      <div className="spot__description">
+        <div className="description__address">
+          {number} {street}, {zipcode}, {city}, {country}
+        </div>
+        <div className="description__features">
+          <p className="features__p">Type: {type}</p>
+          <p className="features__p">Discipline: {discipline}</p>
+          <p className="features__p">La réputation: {reputation}</p>
+          <p className="features__p">Le type de roche: {rockType}</p>
+        </div>
+      </div>
+      <p className="spot__various"> Divers: {various}</p>
 
     </div>
   );
