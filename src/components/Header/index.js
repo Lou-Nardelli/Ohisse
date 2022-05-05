@@ -4,6 +4,8 @@ import { NavLink } from 'react-router-dom';
 import AppBar from '@mui/material/AppBar';
 import MenuIcon from '@material-ui/icons/Menu';
 import CloseIcon from '@material-ui/icons/Close';
+import WbSunnyIcon from '@material-ui/icons/WbSunny';
+import Brightness2Icon from '@material-ui/icons/Brightness2';
 import {
   Toolbar,
   Container,
@@ -12,6 +14,7 @@ import {
   SwipeableDrawer,
   List,
   ListItem,
+  Switch,
 } from '@mui/material';
 
 // == Import : local
@@ -56,19 +59,31 @@ function Header() {
           onOpen={() => setOpen(true)}
           onClose={() => setOpen(false)}
         >
-          <div>
-            <IconButton>
-              <CloseIcon onClick={() => setOpen(false)} />
-            </IconButton>
+          <div className="burger__top-nav">
+            <div className="burger__close-button">
+              <IconButton>
+                <CloseIcon onClick={() => setOpen(false)} />
+              </IconButton>
+            </div>
+            <List>
+              {navLinks.map((item) => (
+                <ListItem className="burger__links">
+                  <NavLink to={item.href}>{item.name}</NavLink>
+                </ListItem>
+              ))}
+              <ListItem className="burger__links burger__account">
+                <NavLink to="/"><img className="burger__account--image" src={userLogo} alt="user logo" />Mon Compte</NavLink>
+              </ListItem>
+            </List>
           </div>
           <List>
-            {navLinks.map((item) => (
-              <ListItem className="burger__link">
-                <NavLink to={item.href}>{item.name}</NavLink>
-              </ListItem>
-            ))}
-            <ListItem className="burger__link burger__account">
-              <NavLink to="/"><img className="burger__account--image" src={userLogo} alt="user logo" />Mon Compte</NavLink>
+            <ListItem className="burger__links burger__connect">
+              <NavLink to="/"><img className="burger__connect--image" src={userLogo} alt="user logo" />Connexion/Déconnexion</NavLink>
+              <div className="burger__connect--dark-mode">
+                <WbSunnyIcon />
+                <Switch />
+                <Brightness2Icon />
+              </div>
             </ListItem>
           </List>
         </SwipeableDrawer>

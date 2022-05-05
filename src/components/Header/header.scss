@@ -10,13 +10,14 @@
 
 .burger {
 
-  &__link {
+  &__links {
     border-bottom: 1px solid #000;
     padding: 1em 0;
     margin: 1em;
+    width:90% !important;
   }
 
-  &__link:last-child {
+  &__links:last-child {
     border-bottom: none;
   }
 
@@ -29,8 +30,26 @@
       margin-right: 1em;
     }
   }
+
+  &__connect {
+    justify-content: space-between !important;
+    width:90% !important;
+
+    &--image {
+      max-width: 1em;
+      margin-right: 1em;
+    }
+
+    &--dark-mode {
+      display: flex;
+      align-items: center;
+    }
+  }
 }
 
 .MuiPaper-root.MuiPaper-elevation.MuiPaper-elevation16.MuiDrawer-paper.MuiDrawer-paperAnchorRight.css-1160xiw-MuiPaper-root-MuiDrawer-paper {
   width: 80%;
+  background: #fca311;
+  flex-direction: column;
+  justify-content: space-between;
 }
