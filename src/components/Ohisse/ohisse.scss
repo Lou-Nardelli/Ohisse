@@ -1,7 +1,11 @@
 .ohisse {
   font-family: 'Roboto', sans-serif;
-  margin: 1em auto;
+
+  margin: auto;
   text-align: center;
+  position: relative;
+  height: 100vh;
+}
 
   &__logo {
     max-width: 150px;
