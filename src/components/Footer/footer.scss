@@ -1,0 +1,56 @@
+@use 'src/styles/vars';
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  border-radius: 3px;
+  background-color: vars.$color-orange;
+  &__socials {
+    padding: 1rem 0 0.5rem 0;
+    img {
+      filter: invert(9%) sepia(14%) saturate(6017%) hue-rotate(197deg) brightness(98%) contrast(91%);
+      max-height: 25px;
+      margin: 0 0.5rem;
+    }
+  }
+
+  &__about {
+    color: vars.$color-blue;
+    padding: 0.5rem 0;
+  }
+
+  &__links {
+    padding: 0.5rem 0;
+  }
+
+  &-link {
+    margin: 0 0.5rem;
+    font-weight: bold;
+    position: relative;
+    color: vars.$color-grey;
+  }
+  &-link:after {
+    content: '';
+    position: absolute;
+    width: 75%;
+    transform: scaleX(0);
+    height: 3px;
+    bottom: 0;
+    left: 0;
+    background-color: vars.$color-blue;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+  }
+  &-link:hover:after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+
+  &__copyright {
+    color: vars.$color-blue;
+    padding: 0.5rem 0;
+    font-size: small;
+    padding: 0.5rem;
+  }
+}
