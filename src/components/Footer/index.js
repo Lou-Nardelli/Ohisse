@@ -16,9 +16,9 @@ function Footer() {
         <Link to=""><img src={logoTw} alt="logo twitter" /></Link>
         <Link to=""><img src={logoIg} alt="logo instagram" /></Link>
       </div>
-      <div className="footer__about">
+      <h3 className="footer__about">
         A propos de O'Hisse :
-      </div>
+      </h3>
       <div className="footer__links">
         <Link className="footer-link" to="">L'équipe</Link>
         <Link className="footer-link" to="">Mentions légales</Link>
