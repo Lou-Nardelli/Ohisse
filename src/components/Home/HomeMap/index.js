@@ -6,11 +6,13 @@ import {
 // styles
 import './homemap.scss';
 
-const ohisseIcon = L.icon({
-  iconUrl: 'src/assets/img/logo-simple-bleu.png',
-  iconSize: [50, 64],
-});
-L.marker([48.856575, 2.346690], { icon: ohisseIcon }).addTo(map);
+// This code failed completely, inspired by this tutorial :
+// https://leafletjs.com/examples/custom-icons/
+// const ohisseIcon = L.icon({
+//   iconUrl: 'src/assets/img/logo-simple-bleu.png',
+//   iconSize: [50, 64],
+// });
+// L.marker([48.856575, 2.346690], { icon: ohisseIcon }).addTo(map);
 
 function HomeMap() {
   return (
