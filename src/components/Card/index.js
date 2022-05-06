@@ -1,19 +1,36 @@
 // == Import : npm
+import PropTypes from 'prop-types';
+// Styles
 import './card.scss';
 
 // == Composant
-function Card() {
+function Card({
+  name,
+  city,
+  resume,
+  picture,
+}) {
   return (
     <div className="card">
-      <img className="card__image" src="https://www.grimper.com/media/guide_salles/img_salles/arkose_montreuil_5_arkose.jpg" alt="montagne" />
-      <h1>Le Fosse Arthour</h1>
-      <h2>Caen</h2>
-      <div>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+      <div className="card__content">
+        <img className="card__content--image" src={picture} alt={name} />
+        <h1 className="card__content--title">{name},</h1>
+        <h2 className="card__content--location">{city}</h2>
+      </div>
+      <div className="card__text">
+        {/* Text resume limited to the 100 first characters */}
+        <p>{resume.substring(0, 100)}...</p>
       </div>
     </div>
   );
 }
+
+Card.propTypes = {
+  name: PropTypes.string.isRequired,
+  city: PropTypes.string.isRequired,
+  resume: PropTypes.string.isRequired,
+  picture: PropTypes.string.isRequired,
+};
 
 // == Export
 export default Card;
