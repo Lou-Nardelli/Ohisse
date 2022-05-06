@@ -17,7 +17,7 @@
     .header__button {
       border: none;
       background-color: white;
-      color: vars.$color-orange;
+      color: black;
       font-size: 1.5em;
     }
   }
@@ -34,6 +34,7 @@
     .description__address {
         text-align: left;
         line-height: 1.3em;
+        padding-right: 1em;
     }
 
     .description__features {
@@ -47,7 +48,7 @@
   }
 }
 
-@media only screen and (min-width : 768px) {
+@media only screen and (min-width : 600px) {
 
   .spot {
 
@@ -68,9 +69,12 @@
     }
   
     &__description {
-      justify-content: space-around;
+      display: flex;
+      flex-direction: column;
   
       .description__address {
+
+        margin-bottom: 1em;
 
       }
   

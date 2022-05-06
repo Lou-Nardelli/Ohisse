@@ -1,8 +1,26 @@
 import { NEXT_INDEX, PREVIOUS_INDEX } from '../actions/spots';
 
 export const initialState = {
-  list: [],
   currentIndexSliderPicture: 0,
+  currentSpot: {
+    id: 1,
+    name: 'ARKOSE',
+    number: 33,
+    street: 'Rue du Progrès',
+    zipcode: '93100',
+    city: 'Montreuil',
+    country: 'France',
+    longitude: '',
+    latitude: '',
+    discipline: 'voie',
+    type: 'interieur',
+    rock_type: 'synthétique',
+    picture: 'https://www.grimper.com/media/guide_salles/img_salles/arkose_montreuil_5_arkose.jpg',
+    various: 'lorem impsum lorem carium',
+    reputation: 'difficile',
+    min_difficulty: '5a',
+    max_difficulty: '9a',
+  },
 };
 
 const reducer = (state = initialState, action = {}) => {
