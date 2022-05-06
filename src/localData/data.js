@@ -31,7 +31,7 @@ export default [
     discipline: 'Bloc',
     type: 'interieur',
     rock_type: 'Synthétique',
-    picture: '',
+    picture: 'https://www.blockout.fr/images/articles/Nantes.jpg',
     various: 'lorem impsum lorem carium',
     reputation: 4,
     min_difficulty: '6d',

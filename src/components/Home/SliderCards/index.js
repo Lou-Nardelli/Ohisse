@@ -24,7 +24,7 @@ function SliderCards() {
     <div className="sliderCards">
       <button type="button" className="sliderCards__button--previous" aria-label="previous" onClick={handlePrevious}> &lt; </button>
       <Carousel
-        // autoPlay
+        autoPlay
         centerMode
         centerSlidePercentage={40}
         infiniteLoop
