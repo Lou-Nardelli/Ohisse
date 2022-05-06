@@ -1,7 +1,9 @@
 import { NEXT_INDEX, PREVIOUS_INDEX } from '../actions/spots';
 
 export const initialState = {
+  // currentIndex for slider picture in home page
   currentIndexSliderPicture: 0,
+  // currentSpot in single spot page
   currentSpot: {
     id: 1,
     name: 'ARKOSE',

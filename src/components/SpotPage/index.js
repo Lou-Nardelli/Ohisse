@@ -12,25 +12,42 @@ import Spot from './Spot';
 import './spotPage.scss';
 
 function SpotPage() {
+  // use state of currentSpot
   const spot = useSelector((state) => state.spots.currentSpot);
-  // todo destructuring objet spot
+  // destructuring
+  const {
+    name,
+    picture,
+    number,
+    street,
+    zipcode,
+    city,
+    country,
+    discipline,
+    type,
+    rock_type,
+    various,
+    reputation,
+    min_difficulty,
+    max_difficulty,
+  } = spot;
   return (
     <div className="spotPage">
       <Spot
-        name={spot.name}
-        picture={spot.picture}
-        number={spot.number}
-        street={spot.street}
-        zipcode={spot.zipcode}
-        city={spot.city}
-        country={spot.country}
-        discipline={spot.discipline}
-        type={spot.type}
-        rockType={spot.rock_type}
-        various={spot.various}
-        reputation={spot.reputation}
-        minDifficulty={spot.min_difficulty}
-        maxDifficulty={spot.max_difficulty}
+        name={name}
+        picture={picture}
+        number={number}
+        street={street}
+        zipcode={zipcode}
+        city={city}
+        country={country}
+        discipline={discipline}
+        type={type}
+        rockType={rock_type}
+        various={various}
+        reputation={reputation}
+        minDifficulty={min_difficulty}
+        maxDifficulty={max_difficulty}
       />
       <p>Composant carte</p>
       <p>Composant ajout commentaire</p>
