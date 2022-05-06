@@ -1,45 +1,44 @@
+@use 'src/styles/vars';
+
 .card {
+  margin: 20px 20px;
   max-width: 20em;
-  height:20em;
-  margin: 20px auto;
+  height: 10em;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  position: relative;
+  color: #fff;
 
-  &__content {
-    max-width: 20em;
-    height: 15em;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin: 20px auto;
-    border: 3px solid #14213d;
-    border-radius: 5px;
-    position: relative;
-    color: #fff;
-
-    &--image {
-      max-height:100%;
-    }
-
-    &--title {
-      font-family: Oleo Script,cursive;
-      bottom: 1.5em;
-      left: .5em;
-      font-size: 2em;
-      position: absolute;
-      color: #f2f4f3;
-      text-align: left;
-    }
-
-    &--location {
-      bottom: 1em;
-      left: .5em;
-      position: absolute;
-      font-size: 1.5em;
-      color: #f2f4f3;
-    }
+  &__image {
+    object-fit: cover;
+    border-radius:5px;
   }
 
-  &__text {
-    text-align: justify;
+  &__title {
+    font-family: Oleo Script,cursive;
+    bottom: 1.5em;
+    left: .5em;
+    font-size: 2em;
+    position: absolute;
+    color: #f2f4f3;
+    text-align: left;
+  }
+
+  &__location {
+    bottom: 1em;
+    left: .5em;
+    position: absolute;
+    font-size: 1.5em;
+    color: #f2f4f3;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .card {
+    // margin: 20px 20px;
+    max-width: 40em;
+    height: 20em;
   }
 }

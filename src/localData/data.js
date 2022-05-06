@@ -31,7 +31,7 @@ export default [
     discipline: 'Rocher',
     type: 'Salle',
     rock_type: 'Synthétique',
-    picture: '',
+    picture: 'https://www.grimper.com/media/guide_salles/img_salles/arkose_montreuil_5_arkose.jpg',
     various: 'lorem impsum lorem carium',
     reputation: 4,
     min_difficulty: '6d',
