@@ -7,7 +7,7 @@ import HomeMap from './HomeMap';
 import SliderPicture from './SliderPicture';
 
 function Home() {
-  const listSpots = useSelector((state) => state.spots.currentSpot);
+  const listSpots = useSelector((state) => state.spots.listSpots);
   return (
     <div className="home">
       <SliderPicture />
