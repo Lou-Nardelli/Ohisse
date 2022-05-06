@@ -4,6 +4,7 @@ import HomeMap from './HomeMap';
 
 // == Import : local
 import SliderPicture from './SliderPicture';
+import SliderCards from './SliderCards';
 
 function Home() {
   return (
@@ -44,6 +45,7 @@ function Home() {
         </p>
       </div>
       <HomeMap />
+      <SliderCards />
     </div>
   );
 }
