@@ -7,6 +7,7 @@ import {
 import spots from 'src/localData/data';
 
 // styles
+import { popupContent, popupHead } from './popupStyles';
 import './homemap.scss';
 
 // This code failed completely, inspired by this tutorial :
@@ -21,18 +22,20 @@ function HomeMap() {
   console.log(spots);
 
   return (
-    <MapContainer center={[48.856575, 2.346690]} zoom={5} scrollWheelZoom={false}>
+    <MapContainer center={[46, 2]} zoom={5} scrollWheelZoom>
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
       {spots.map((item) => (
         <Marker key={item.id} position={[item.longitude, item.latitude]}>
-          <Popup className="map-popup">
-            <img src={item.picture ? item.picture : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShhshYwTK1ZujWFb4UJzeLDzywVv6UgWowhA&usqp=CAU'} alt={`${item.name}`} />
-            {item.name} <br />
-            {item.type} <br />
-            {item.discipline}
+          <Popup>
+            <div className="map-popup" style={popupContent}>
+              <img src={item.picture ? item.picture : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShhshYwTK1ZujWFb4UJzeLDzywVv6UgWowhA&usqp=CAU'} alt={`${item.name}`} />
+              <h3 style={popupHead}>{item.name}</h3>
+              {item.type} <br />
+              {item.discipline}
+            </div>
           </Popup>
         </Marker>
       ))}
