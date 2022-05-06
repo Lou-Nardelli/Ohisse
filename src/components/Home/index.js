@@ -22,18 +22,18 @@ function Home() {
           salle de bloc dans l’hexagone et depuis 2021 les Jeux
           Olympiques.
           <br />
-          Les débutants comme les confirmés ont envie de dé-
-          couvrir de nouveaux lieux pour progresser ou bien
+          Les débutants comme les confirmés ont envie de découvrir de nouveaux
+          lieux pour progresser ou bien
           mettre en pratique leur activité préférée.
           <br />
-          Vous êtes à Bayonne, Rennes, Lille ou Paris, et vous sou-
-          haitez grimper en salle ou en extérieur ? Vous cherchez
+          Vous êtes à Bayonne, Rennes, Lille ou Paris, et vous souhaitez grimper
+          en salle ou en extérieur ? Vous cherchez
           des blocs ou des voies ? Alors, vous êtes au bon endroit
           ! En quelques clics, trouvez votre prochaine session de
           grimpe selon votre envie et votre niveau.
           Vous avez une voie ou un bloc qui n’est pas sur notre
           site, partagez-le avec les passionnés et retrouvez-vous
-          pour vos prochaines sessions d’autres grimpeurs avides
+          pour vos prochaines sessions avec d’autres grimpeurs avides
           de nouvelles sensations.
           <br />
           <br />
