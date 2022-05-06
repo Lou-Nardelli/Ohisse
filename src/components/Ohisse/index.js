@@ -2,6 +2,7 @@
 import Header from 'src/components/Header';
 import Footer from 'src/components/Footer';
 import Home from '../Home';
+import SpotPage from '../SpotPage';
 
 import './ohisse.scss';
 
@@ -11,6 +12,7 @@ function Ohisse() {
     <div className="ohisse">
       <Header />
       <Home />
+      <SpotPage />
       {/* Routes */
        /* Home url / */
        /* User url /user */
