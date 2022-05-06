@@ -11,14 +11,17 @@
     margin: 1em;
 
     .header__name {
-      margin-right: 1em;
+      font-family: Oleo Script,cursive;
+      font-weight: bold;
+      font-size: 2rem;
+      color: vars.$color-brown;
     }
 
     .header__button {
       border: none;
       background-color: white;
       font-size: 1.5em;
-      color: black;
+      color: vars.$color-brown;
 
 
       &--fav {
@@ -36,6 +39,8 @@
     max-height: 500px;
     max-width: 700px;
     border-radius: 10px;
+    display: block;
+    margin: auto;
   }
 
   &__description {
@@ -80,6 +85,7 @@
 
   &__strong {
     font-weight: bold;
+    color: vars.$color-brown;
   }
 }
 
