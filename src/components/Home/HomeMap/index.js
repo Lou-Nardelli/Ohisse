@@ -4,7 +4,9 @@ import {
 } from 'react-leaflet';
 
 // == Import : local
-import spots from 'src/localData/data';
+// import spots from 'src/localData/data';
+// import ext
+import PropTypes from 'prop-types';
 
 // styles
 import { popupContent, popupHead } from './popupStyles';
@@ -18,7 +20,7 @@ import './homemap.scss';
 // });
 // L.marker([48.856575, 2.346690], { icon: ohisseIcon }).addTo(map);
 
-function HomeMap() {
+function HomeMap({ spots }) {
   console.log(spots);
 
   return (
@@ -42,5 +44,9 @@ function HomeMap() {
     </MapContainer>
   );
 }
+
+HomeMap.propTypes = {
+  spots: PropTypes.arrayOf().isRequired,
+};
 
 export default HomeMap;
