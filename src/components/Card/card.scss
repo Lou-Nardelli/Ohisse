@@ -10,10 +10,10 @@
   flex-wrap: wrap;
   position: relative;
   color: #fff;
+  border-radius:5px;
 
   &__image {
     object-fit: cover;
-    border-radius:5px;
   }
 
   &__title {
