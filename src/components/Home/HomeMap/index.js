@@ -3,6 +3,9 @@ import {
   MapContainer, TileLayer, Marker, Popup,
 } from 'react-leaflet';
 
+// == Import : local
+import spots from 'src/localData/data';
+
 // styles
 import './homemap.scss';
 
@@ -15,17 +18,24 @@ import './homemap.scss';
 // L.marker([48.856575, 2.346690], { icon: ohisseIcon }).addTo(map);
 
 function HomeMap() {
+  console.log(spots);
+
   return (
     <MapContainer center={[48.856575, 2.346690]} zoom={5} scrollWheelZoom={false}>
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      <Marker position={[48.856575, 2.346690]}>
-        <Popup>
-          A pretty CSS3 popup. <br /> Easily customizable.
-        </Popup>
-      </Marker>
+      {spots.map((item) => (
+        <Marker key={item.id} position={[item.longitude, item.latitude]}>
+          <Popup className="map-popup">
+            <img src={item.picture ? item.picture : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShhshYwTK1ZujWFb4UJzeLDzywVv6UgWowhA&usqp=CAU'} alt={`${item.name}`} />
+            {item.name} <br />
+            {item.type} <br />
+            {item.discipline}
+          </Popup>
+        </Marker>
+      ))}
     </MapContainer>
   );
 }
