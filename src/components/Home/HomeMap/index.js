@@ -5,6 +5,7 @@ import {
 
 // == Import : local
 import spots from 'src/localData/data';
+import ohisseIcon from './icon';
 
 // styles
 import { popupContent, popupHead } from './popupStyles';
@@ -28,7 +29,7 @@ function HomeMap() {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
       {spots.map((item) => (
-        <Marker key={item.id} position={[item.longitude, item.latitude]}>
+        <Marker key={item.id} position={[item.longitude, item.latitude]} icon={ohisseIcon}>
           <Popup>
             <div className="map-popup" style={popupContent}>
               <img src={item.picture ? item.picture : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShhshYwTK1ZujWFb4UJzeLDzywVv6UgWowhA&usqp=CAU'} alt={`${item.name}`} />
