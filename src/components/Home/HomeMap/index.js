@@ -14,9 +14,8 @@ import './homemap.scss';
 
 function HomeMap({ spots }) {
   console.log(spots);
-  const currentPath = window.localStorage.pathname;
   return (
-    <MapContainer className={currentPath === '/map' ? 'leaflet-container fullscreen' : 'leaflet-container'} center={[46.7, 2]} zoom={5} scrollWheelZoom>
+    <MapContainer center={[46.7, 2]} zoom={5} scrollWheelZoom>
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -39,7 +38,7 @@ function HomeMap({ spots }) {
 
 HomeMap.propTypes = {
   spots: PropTypes.arrayOf(
-    PropTypes.objectOf({
+    PropTypes.shape({
       id: PropTypes.number.isRequired,
       longitude: PropTypes.string.isRequired,
       latitude: PropTypes.string.isRequired,
