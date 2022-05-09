@@ -7,8 +7,8 @@ import './typeSpot.scss';
 function TypeSpot({ title, url, picture }) {
   return (
     <div className="typeSpot">
-      <Link to={url}> <img src={picture} alt={title} /> </Link>
-      <h3>{title}</h3>
+      <Link to={url}> <img className="typeSpot__img" src={picture} alt={title} /> </Link>
+      <h3 className="typeSpot__title">{title}</h3>
     </div>
   );
 }
