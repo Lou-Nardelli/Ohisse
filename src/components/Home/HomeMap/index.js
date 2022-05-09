@@ -4,6 +4,7 @@ import {
 } from 'react-leaflet';
 
 // == Import : local
+import ohisseIcon from './icon';
 // import spots from 'src/localData/data';
 // import ext
 import PropTypes from 'prop-types';
@@ -30,7 +31,7 @@ function HomeMap({ spots }) {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
       {spots.map((item) => (
-        <Marker key={item.id} position={[item.longitude, item.latitude]}>
+        <Marker key={item.id} position={[item.longitude, item.latitude]} icon={ohisseIcon}>
           <Popup>
             <div className="map-popup" style={popupContent}>
               <img src={item.picture ? item.picture : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShhshYwTK1ZujWFb4UJzeLDzywVv6UgWowhA&usqp=CAU'} alt={`${item.name}`} />
