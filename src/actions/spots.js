@@ -14,3 +14,20 @@ export const previousIndex = () => ({
   type: PREVIOUS_INDEX,
 
 });
+
+// ACTION TYPE NEXT_CARD_INDEX
+export const NEXT_CARD_INDEX = 'NEXT_CARD_INDEX';
+
+// ACTION CREATOR nextCardIndex
+export const nextCardIndex = () => ({
+  type: NEXT_CARD_INDEX,
+});
+
+// ACTION TYPE PREVIOUS_CARD_INDEX
+export const PREVIOUS_CARD_INDEX = 'PREVIOUS_CARD_INDEX';
+
+// ACTION CREATOR previousCardIndex
+export const previousCardIndex = () => ({
+  type: PREVIOUS_CARD_INDEX,
+
+});

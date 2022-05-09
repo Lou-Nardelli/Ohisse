@@ -5,6 +5,7 @@ import HomeMap from './HomeMap';
 
 // == Import : local
 import SliderPicture from './SliderPicture';
+import SliderCards from './SliderCards';
 
 function Home() {
   const listSpots = useSelector((state) => state.spots.listSpots);
@@ -45,7 +46,10 @@ function Home() {
           </span>
         </p>
       </div>
+
       <HomeMap spots={listSpots} />
+      <SliderCards />
+
     </div>
   );
 }

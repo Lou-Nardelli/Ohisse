@@ -58,8 +58,8 @@ function Header() {
             </div>
             {/* Button of hamburger menu */}
             <Hidden mdUp>
-              <IconButton>
-                <MenuIcon className="header-bar__button" onClick={() => setOpen(true)} />
+              <IconButton onClick={() => setOpen(true)}>
+                <MenuIcon className="header-bar__button" />
               </IconButton>
             </Hidden>
           </div>
@@ -78,8 +78,8 @@ function Header() {
           {/* Close button of the burger nav */}
           <div className="burger__top-nav">
             <div className="burger__close-button">
-              <IconButton>
-                <CloseIcon onClick={() => setOpen(false)} />
+              <IconButton onClick={() => setOpen(false)}>
+                <CloseIcon />
               </IconButton>
             </div>
             {/* Links of top nav burger */}
