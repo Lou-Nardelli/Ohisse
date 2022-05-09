@@ -1,6 +1,6 @@
 // == Import : npm
 import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import AppBar from '@mui/material/AppBar';
 import MenuIcon from '@material-ui/icons/Menu';
 import CloseIcon from '@material-ui/icons/Close';
@@ -26,10 +26,10 @@ import './header.scss';
 function Header() {
   // Link's array
   const navLinks = [
-    { name: 'Carte', href: '/' },
+    { name: 'Carte', href: '/map' },
     { name: 'Ajout de spot', href: '/spot' },
-    { name: 'Salles intérieur', href: '' },
-    { name: 'Spots extérieurs', href: '' },
+    { name: 'Salles intérieures', href: '/fiches-interieur' },
+    { name: 'Spots extérieurs', href: '/fiches-exterieur' },
   ];
 
   const [open, setOpen] = useState(false);
@@ -40,7 +40,9 @@ function Header() {
       <Toolbar className="header">
         <Container maxWidth="md" className="header">
           <div className="header-bar">
-            <img className="header-bar__logo" src={ohisseLogo} alt="ohisse logo" />
+            <Link to="/">
+              <img className="header-bar__logo" src={ohisseLogo} alt="ohisse logo" />
+            </Link>
             {/* Desktop Nav */}
             <div className="header-bar__links">
               <Hidden mdDown>
