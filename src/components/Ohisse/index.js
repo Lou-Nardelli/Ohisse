@@ -14,6 +14,7 @@ import Error from '../Error';
 import Spots from '../Spots';
 
 import './ohisse.scss';
+import LogginForm from '../Forms/LogginForm';
 
 // == Composant
 function Ohisse() {
@@ -26,6 +27,7 @@ function Ohisse() {
   return (
     <div className="ohisse">
       <Header />
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/fiche-spot/:slug" element={<SpotPage />} />
@@ -39,6 +41,7 @@ function Ohisse() {
         <Route path="/mentions-legales" element={<Home />} />
         <Route path="*" element={<Error />} />
       </Routes>
+
       <Footer />
     </div>
   );
