@@ -2,28 +2,21 @@
 import {
   MapContainer, TileLayer, Marker, Popup,
 } from 'react-leaflet';
-
+// import ext
+import PropTypes from 'prop-types';
 // == Import : local
 import ohisseIcon from './icon';
 // import spots from 'src/localData/data';
-// import ext
-import PropTypes from 'prop-types';
 
 // styles
 import { popupContent, popupHead } from './popupStyles';
 import './homemap.scss';
 
-// This code failed completely, inspired by this tutorial :
-// https://leafletjs.com/examples/custom-icons/
-// const ohisseIcon = L.icon({
-//   iconUrl: 'src/assets/img/logo-simple-bleu.png',
-//   iconSize: [50, 64],
-// });
-// L.marker([48.856575, 2.346690], { icon: ohisseIcon }).addTo(map);
-
 function HomeMap({ spots }) {
+  console.log(spots);
+  const currentPath = window.localStorage.pathname;
   return (
-    <MapContainer center={[46.7, 2]} zoom={5} scrollWheelZoom>
+    <MapContainer className={currentPath === '/map' ? 'leaflet-container fullscreen' : 'leaflet-container'} center={[46.7, 2]} zoom={5} scrollWheelZoom>
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -45,7 +38,16 @@ function HomeMap({ spots }) {
 }
 
 HomeMap.propTypes = {
-  spots: PropTypes.arrayOf.isRequired,
+  spots: PropTypes.arrayOf(
+    PropTypes.shapeOf({
+      id: PropTypes.number.isRequired,
+      longitude: PropTypes.string.isRequired,
+      latitude: PropTypes.string.isRequired,
+      picture: PropTypes.string.isRequired,
+      type: PropTypes.string.isRequired,
+      discipline: PropTypes.string.isRequired,
+    }).isRequired,
+  ).isRequired,
 };
 
 export default HomeMap;

@@ -1,4 +1,3 @@
-
 import spots from 'src/localData/data';
 
 import {
@@ -7,7 +6,6 @@ import {
   NEXT_CARD_INDEX,
   PREVIOUS_CARD_INDEX,
 } from '../actions/spots';
-
 
 export const initialState = {
   listSpots: spots,
