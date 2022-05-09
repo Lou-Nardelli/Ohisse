@@ -4,7 +4,10 @@ import {
 } from 'react-leaflet';
 
 // == Import : local
-import spots from 'src/localData/data';
+import ohisseIcon from './icon';
+// import spots from 'src/localData/data';
+// import ext
+import PropTypes from 'prop-types';
 
 // styles
 import { popupContent, popupHead } from './popupStyles';
@@ -18,7 +21,7 @@ import './homemap.scss';
 // });
 // L.marker([48.856575, 2.346690], { icon: ohisseIcon }).addTo(map);
 
-function HomeMap() {
+function HomeMap({ spots }) {
   return (
     <MapContainer center={[46.7, 2]} zoom={5} scrollWheelZoom>
       <TileLayer
@@ -26,7 +29,7 @@ function HomeMap() {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
       {spots.map((item) => (
-        <Marker key={item.id} position={[item.longitude, item.latitude]}>
+        <Marker key={item.id} position={[item.longitude, item.latitude]} icon={ohisseIcon}>
           <Popup>
             <div className="map-popup" style={popupContent}>
               <img src={item.picture ? item.picture : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShhshYwTK1ZujWFb4UJzeLDzywVv6UgWowhA&usqp=CAU'} alt={`${item.name}`} />
@@ -40,5 +43,9 @@ function HomeMap() {
     </MapContainer>
   );
 }
+
+HomeMap.propTypes = {
+  spots: PropTypes.arrayOf.isRequired,
+};
 
 export default HomeMap;
