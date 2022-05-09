@@ -1,5 +1,6 @@
 // styles
 import './home.scss';
+import { useSelector } from 'react-redux';
 import HomeMap from './HomeMap';
 
 // == Import : local
@@ -7,6 +8,7 @@ import SliderPicture from './SliderPicture';
 import SliderCards from './SliderCards';
 
 function Home() {
+  const listSpots = useSelector((state) => state.spots.listSpots);
   return (
     <div className="home">
       <SliderPicture />
@@ -44,8 +46,10 @@ function Home() {
           </span>
         </p>
       </div>
-      <HomeMap />
+
+      <HomeMap spots={listSpots} />
       <SliderCards />
+
     </div>
   );
 }
