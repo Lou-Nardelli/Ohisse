@@ -1,3 +1,7 @@
+// == Import : npm
+import { Routes, Route } from 'react-router-dom';
+
+// == Import : local
 import { useSelector } from 'react-redux';
 
 // == Import
@@ -5,6 +9,8 @@ import Header from 'src/components/Header';
 import Footer from 'src/components/Footer';
 import Home from '../Home';
 import SpotPage from '../SpotPage';
+import HomeMap from '../Home/HomeMap';
+import Error from '../Error';
 import Spots from '../Spots';
 
 import './ohisse.scss';
@@ -20,20 +26,19 @@ function Ohisse() {
   return (
     <div className="ohisse">
       <Header />
-      <Home />
-      <SpotPage />
-      {
-        // depending on the route,
-        // either the list of spots interior or the list of outdoor spots
-        // will be displayed
-      }
-      <Spots title="Salles intérieures" listSpots={spotsInterior} />
-      <Spots title="Spots extérieurs" listSpots={spotsOutdoor} />
-      {/* Routes */
-       /* Home url / */
-       /* User url /user */
-       /* Spots url /spots */
-       }
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/fiche-spot/:slug" element={<SpotPage />} />
+        {/* <Route path="/fiches-interieur" element={<Spots listSpots={spotsIndoor} />} />
+        <Route path="/fiches-exterieur" element={<Spots listSpots={spotsOutdoor} />} /> */}
+        <Route path="/map" element={<HomeMap />} />
+        <Route path="/connexion" element={<Home />} />
+        <Route path="/inscription" element={<Home />} />
+        <Route path="/profil" element={<Home />} />
+        <Route path="/equipe" element={<Home />} />
+        <Route path="/mentions-legales" element={<Home />} />
+        <Route path="*" element={<Error />} />
+      </Routes>
       <Footer />
     </div>
   );
