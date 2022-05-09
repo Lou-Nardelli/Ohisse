@@ -13,12 +13,14 @@
     color: vars.$color-brown;
   }
 
-  &__message,
-  &__message--desktop {
+  &__message {
     letter-spacing: 1px;
     line-height: 1.2rem;
     color: vars.$color-blue;
     margin-bottom: 1rem;
+    text-align: justify;
+    margin-left: 1rem;
+    margin-right: 1rem;
   }
 
   &__input {
@@ -44,3 +46,9 @@
 
 
 }
+
+@media only screen and (min-width: 768px) {
+  .logginForm__input {
+    padding: 0.5rem 3rem;
+  }
+  }

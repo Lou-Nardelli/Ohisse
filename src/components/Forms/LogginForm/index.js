@@ -23,8 +23,7 @@ function LogginForm() {
   return (
     <div className="logginForm">
       <h2 className="logginForm__title"> Welcome back !</h2>
-      <p className="logginForm__message"> Connectez-vous </p>
-      <p className="logginForm__message--desktop">pour partager de nouveaux spots,
+      <p className="logginForm__message"> Connectez-vous pour partager de nouveaux spots,
         échanger avec la communauté des grimpeurs O'Hisse,
         sauvegardez vos spots favoris
       </p>
