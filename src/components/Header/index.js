@@ -28,7 +28,7 @@ function Header() {
   // Link's array
   const navLinks = [
     { name: 'Carte', href: '/map' },
-    { name: 'Ajout de spot', href: '/spot' },
+    { name: 'Ajout de spot', href: '/ajout-spot' },
     { name: 'Salles intérieures', href: '/fiches-interieur' },
     { name: 'Spots extérieurs', href: '/fiches-exterieur' },
   ];
