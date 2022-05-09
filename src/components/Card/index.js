@@ -8,9 +8,10 @@ function Card({
   name,
   city,
   picture,
+  className,
 }) {
   return (
-    <div className="card">
+    <div className={className}>
       <img className="card__image" src={picture} alt={name} />
       <h1 className="card__title">{name},</h1>
       <h2 className="card__location">{city}</h2>
@@ -22,6 +23,7 @@ Card.propTypes = {
   name: PropTypes.string.isRequired,
   city: PropTypes.string.isRequired,
   picture: PropTypes.string.isRequired,
+  className: PropTypes.string.isRequired,
 };
 
 // == Export

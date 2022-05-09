@@ -37,16 +37,17 @@ function HomeMap({ spots }) {
 }
 
 HomeMap.propTypes = {
-  spots: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      longitude: PropTypes.string.isRequired,
-      latitude: PropTypes.string.isRequired,
-      picture: PropTypes.string.isRequired,
-      type: PropTypes.string.isRequired,
-      discipline: PropTypes.string.isRequired,
-    }).isRequired,
-  ).isRequired,
+  // spots: PropTypes.arrayOf(
+    // PropTypes.shape({
+     // id: PropTypes.number.isRequired,
+      // longitude: PropTypes.string.isRequired,
+      // latitude: PropTypes.string.isRequired,
+      // picture: PropTypes.string.isRequired,
+      // type: PropTypes.string.isRequired,
+      // discipline: PropTypes.string.isRequired,
+    // }).isRequired,
+  // ).isRequired,
+  spots: PropTypes.array.isRequired,
 };
 
 export default HomeMap;

@@ -1,0 +1,21 @@
+@use 'src/styles/_vars';
+
+.spots{
+  &__title {
+    color: vars.$color-brown;
+    font-family: Oleo Script,cursive;
+    font-size: 1.3rem;
+    text-align: center;
+  }
+
+  &__cards {
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+
+  }
+
+}
+
