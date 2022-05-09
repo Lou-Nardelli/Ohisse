@@ -15,6 +15,7 @@ import Spots from '../Spots';
 
 import './ohisse.scss';
 import LogginForm from '../Forms/LogginForm';
+import SelectSpotType from '../Forms/SpotAddForm/SelectSpotType';
 
 // == Composant
 function Ohisse() {
@@ -34,6 +35,7 @@ function Ohisse() {
         <Route path="/fiches-interieur" element={<Spots listSpots={spotsIndoor} title="Salles intérieures" />} />
         <Route path="/fiches-exterieur" element={<Spots listSpots={spotsOutdoor} title="Spots extérieurs" />} />
         <Route path="/map" element={<HomeMap />} />
+        <Route path="/ajout-spot" element={<SelectSpotType />} />
         <Route path="/connexion" element={<LogginForm />} />
         <Route path="/inscription" element={<Home />} />
         <Route path="/profil" element={<Home />} />
