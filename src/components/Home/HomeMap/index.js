@@ -39,7 +39,7 @@ function HomeMap({ spots }) {
 
 HomeMap.propTypes = {
   spots: PropTypes.arrayOf(
-    PropTypes.shapeOf({
+    PropTypes.objectOf({
       id: PropTypes.number.isRequired,
       longitude: PropTypes.string.isRequired,
       latitude: PropTypes.string.isRequired,
