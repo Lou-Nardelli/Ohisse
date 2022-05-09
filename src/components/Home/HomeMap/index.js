@@ -46,7 +46,7 @@ function HomeMap({ spots }) {
 }
 
 HomeMap.propTypes = {
-  spots: PropTypes.arrayOf.isRequired,
+  spots: PropTypes.array.isRequired,
 };
 
 export default HomeMap;
