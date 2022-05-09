@@ -90,7 +90,7 @@ function Header() {
             <List>
               {navLinks.map((item) => (
                 <ListItem className="burger__links">
-                  <NavLink to={item.href}>{item.name}</NavLink>
+                  <NavLink to={item.href} onClick={() => setOpen(false)}>{item.name}</NavLink>
                 </ListItem>
               ))}
               <ListItem className="burger__links burger__account">
