@@ -14,6 +14,7 @@ import Error from '../Error';
 import Spots from '../Spots';
 
 import './ohisse.scss';
+import LogginForm from '../Forms/LogginForm';
 
 // == Composant
 function Ohisse() {
@@ -26,19 +27,21 @@ function Ohisse() {
   return (
     <div className="ohisse">
       <Header />
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/fiche-spot/:slug" element={<SpotPage />} />
-        <Route path="/fiches-interieur" element={<Spots listSpots={spotsIndoor} />} />
-        <Route path="/fiches-exterieur" element={<Spots listSpots={spotsOutdoor} />} />
-        <Route path="/map" element={<Map />} />
-        <Route path="/connexion" element={<Home />} />
+        <Route path="/fiches-interieur" element={<Spots listSpots={spotsIndoor} title="Salles intérieures" />} />
+        <Route path="/fiches-exterieur" element={<Spots listSpots={spotsOutdoor} title="Spots extérieurs" />} />
+        <Route path="/map" element={<HomeMap />} />
+        <Route path="/connexion" element={<LogginForm />} />
         <Route path="/inscription" element={<Home />} />
         <Route path="/profil" element={<Home />} />
         <Route path="/equipe" element={<Home />} />
         <Route path="/mentions-legales" element={<Home />} />
         <Route path="*" element={<Error />} />
       </Routes>
+
       <Footer />
     </div>
   );

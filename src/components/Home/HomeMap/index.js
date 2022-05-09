@@ -12,8 +12,8 @@ import ohisseIcon from './icon';
 import { popupContent, popupHead } from './popupStyles';
 import './homemap.scss';
 
-function HomeMap() {
-  console.log(spots);
+function HomeMap({ spots }) {
+  // console.log(spots);
   return (
     <MapContainer center={[46.7, 2]} zoom={5} scrollWheelZoom>
       <TileLayer
@@ -36,18 +36,18 @@ function HomeMap() {
   );
 }
 
-// HomeMap.propTypes = {
-//   spots: PropTypes.arrayOf(
-//     PropTypes.shape({
-//       id: PropTypes.number.isRequired,
-//       longitude: PropTypes.string.isRequired,
-//       latitude: PropTypes.string.isRequired,
-//       picture: PropTypes.string.isRequired,
-//       type: PropTypes.string.isRequired,
-//       discipline: PropTypes.string.isRequired,
-//     }).isRequired,
-//   ).isRequired,
-// spots: PropTypes.array.isRequired,
-// };
+HomeMap.propTypes = {
+  // spots: PropTypes.arrayOf(
+  //   PropTypes.shape({
+  //    id: PropTypes.number.isRequired,
+  //     longitude: PropTypes.string.isRequired,
+  //     latitude: PropTypes.string.isRequired,
+  //     picture: PropTypes.string.isRequired,
+  //     type: PropTypes.string.isRequired,
+  //     discipline: PropTypes.string.isRequired,
+  //   }).isRequired,
+  // ).isRequired,
+  spots: PropTypes.array.isRequired,
+};
 
 export default HomeMap;

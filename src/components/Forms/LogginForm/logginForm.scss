@@ -1,0 +1,54 @@
+@use 'src/styles/_vars';
+
+.logginForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__title {
+    font-family: Oleo Script,cursive;
+    font-weight: bold;
+    font-size: 2rem;
+    padding: 1rem;
+    color: vars.$color-brown;
+  }
+
+  &__message {
+    letter-spacing: 1px;
+    line-height: 1.2rem;
+    color: vars.$color-blue;
+    margin-bottom: 1rem;
+    text-align: justify;
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+
+  &__input {
+    margin-bottom: 1rem;
+  }
+
+  &__button {
+    background-color: vars.$color-orange;
+    border: solid 1px;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+  }
+
+  &__inscription {
+    margin-bottom: 1rem;
+  }
+
+
+  .inscription__message {
+    padding-top: 1rem;
+    border-top: solid 1px;
+  }
+
+
+}
+
+@media only screen and (min-width: 768px) {
+  .logginForm__input {
+    padding: 0.5rem 3rem;
+  }
+  }

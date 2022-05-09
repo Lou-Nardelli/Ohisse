@@ -21,6 +21,7 @@ import {
 import ohisseLogo from 'src/assets/img/logo-complet-bicolor.png';
 import userLogo from 'src/assets/img/user.png';
 import './header.scss';
+import AccountConnect from './AccountConnect';
 
 // == Composant
 function Header() {
@@ -55,7 +56,8 @@ function Header() {
                   <Switch />
                   <Brightness2Icon />
                 </div>
-                <NavLink to="/" className="gutter-links"><img className="burger__connect--image" src={userLogo} alt="user logo" /></NavLink>
+                {/* Menu component with connexion pop-up */}
+                <AccountConnect />
               </Hidden>
             </div>
             {/* Button of hamburger menu */}
@@ -88,18 +90,18 @@ function Header() {
             <List>
               {navLinks.map((item) => (
                 <ListItem className="burger__links">
-                  <NavLink to={item.href}>{item.name}</NavLink>
+                  <NavLink to={item.href} onClick={() => setOpen(false)}>{item.name}</NavLink>
                 </ListItem>
               ))}
               <ListItem className="burger__links burger__account">
-                <NavLink to="/"><img className="burger__account--image" src={userLogo} alt="user logo" />Mon Compte</NavLink>
+                <NavLink to="/" onClick={() => setOpen(false)}><img className="burger__account--image" src={userLogo} alt="user logo" />Mon Compte</NavLink>
               </ListItem>
             </List>
           </div>
           {/* Links of bottom burger nav */}
           <List>
             <ListItem className="burger__links burger__connect">
-              <NavLink to="/"><img className="burger__connect--image" src={userLogo} alt="user logo" />Connexion</NavLink>
+              <NavLink to="/" onClick={() => setOpen(false)}><img className="burger__connect--image" src={userLogo} alt="user logo" />Connexion</NavLink>
               <div className="burger__connect--dark-mode">
                 <WbSunnyIcon />
                 <Switch />

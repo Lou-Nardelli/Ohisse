@@ -11,7 +11,7 @@ function SliderCards() {
   return (
     <div className="sliderCards">
       <Carousel
-        // autoPlay
+        autoPlay
         centerMode
         centerSlidePercentage={40}
         infiniteLoop
