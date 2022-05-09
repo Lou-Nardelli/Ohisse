@@ -8,6 +8,7 @@ import SpotPage from '../SpotPage';
 import Spots from '../Spots';
 
 import './ohisse.scss';
+import LogginForm from '../Forms/LogginForm';
 
 // == Composant
 function Ohisse() {
@@ -29,6 +30,7 @@ function Ohisse() {
       }
       <Spots title="Salles intérieures" listSpots={spotsInterior} />
       <Spots title="Spots extérieurs" listSpots={spotsOutdoor} />
+      <LogginForm />
       {/* Routes */
        /* Home url / */
        /* User url /user */
