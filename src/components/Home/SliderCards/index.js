@@ -41,6 +41,7 @@ function SliderCards() {
                 name={item.name}
                 city={item.city}
                 picture={item.picture}
+                className="card"
               />
             </Link>
           ))

@@ -22,6 +22,7 @@ function Spots({ listSpots, title }) {
                 name={item.name}
                 city={item.city}
                 picture={item.picture}
+                className="card cardLittle"
               />
             </Link>
           ))
