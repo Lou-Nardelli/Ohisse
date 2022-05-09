@@ -14,7 +14,7 @@ import './spotPage.scss';
 
 function SpotPage() {
   // use state of currentSpot
-  const currentSpot = useSelector((state) => state.spots.listSpots);
+  const currentSpot = useSelector((state) => state.spots.currentSpot);
   // console.log(currentSpot);
   // destructuring
   const {
@@ -32,7 +32,7 @@ function SpotPage() {
     reputation,
     min_difficulty,
     max_difficulty,
-  } = currentSpot;
+  } = currentSpot[0];
   return (
     <div className="spotPage">
       <Spot
