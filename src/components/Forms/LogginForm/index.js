@@ -15,8 +15,8 @@ function LogginForm() {
       <input className="logginForm__input" type="email" name="email" id="email" placeholder="E-mail" />
       <input className="logginForm__input" type="password" name="password" id="password" placeholder="Mot de passe" />
       <button className="logginForm__button" type="button"> Se connecter </button>
-      <p className="logginForm__inscription-message"> Vous n'avez pas encore de compte ? </p>
-      <Link className="logginForm__inscription--link" to=""> Créez un nouveau compte </Link>
+      <p className="logginForm__inscription inscription__message"> Vous n'avez pas encore de compte ? </p>
+      <Link className="logginForm__inscription inscription__link" to=""> Créez un nouveau compte </Link>
     </div>
   );
 }
