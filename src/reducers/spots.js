@@ -1,3 +1,6 @@
+
+import spots from 'src/localData/data';
+
 import {
   NEXT_INDEX,
   PREVIOUS_INDEX,
@@ -5,12 +8,14 @@ import {
   PREVIOUS_CARD_INDEX,
 } from '../actions/spots';
 
+
 export const initialState = {
+  listSpots: spots,
   // currentIndex for slider picture in home page
   currentIndexSliderPicture: 0,
   currentIndexSliderCard: 0,
   // currentSpot in single spot page
-  currentSpot: {
+  currentSpot: [{
     id: 1,
     name: 'ARKOSE',
     number: 33,
@@ -18,8 +23,8 @@ export const initialState = {
     zipcode: '93100',
     city: 'Montreuil',
     country: 'France',
-    longitude: '',
-    latitude: '',
+    longitude: '48.85186663238125',
+    latitude: '2.4192897136670743',
     discipline: 'voie',
     type: 'interieur',
     rock_type: 'synthétique',
@@ -28,7 +33,7 @@ export const initialState = {
     reputation: 'difficile',
     min_difficulty: '5a',
     max_difficulty: '9a',
-  },
+  }],
 };
 
 const reducer = (state = initialState, action = {}) => {
