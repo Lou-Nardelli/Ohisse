@@ -9,7 +9,7 @@ import Header from 'src/components/Header';
 import Footer from 'src/components/Footer';
 import Home from '../Home';
 import SpotPage from '../SpotPage';
-import HomeMap from '../Home/HomeMap';
+import Map from '../Map';
 import Error from '../Error';
 import Spots from '../Spots';
 

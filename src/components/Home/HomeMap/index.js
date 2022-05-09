@@ -3,10 +3,10 @@ import {
   MapContainer, TileLayer, Marker, Popup,
 } from 'react-leaflet';
 // import ext
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 // == Import : local
+import spots from 'src/localData/data';
 import ohisseIcon from './icon';
-// import spots from 'src/localData/data';
 
 // styles
 import { popupContent, popupHead } from './popupStyles';
