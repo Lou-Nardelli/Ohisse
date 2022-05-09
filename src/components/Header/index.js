@@ -94,14 +94,14 @@ function Header() {
                 </ListItem>
               ))}
               <ListItem className="burger__links burger__account">
-                <NavLink to="/"><img className="burger__account--image" src={userLogo} alt="user logo" />Mon Compte</NavLink>
+                <NavLink to="/" onClick={() => setOpen(false)}><img className="burger__account--image" src={userLogo} alt="user logo" />Mon Compte</NavLink>
               </ListItem>
             </List>
           </div>
           {/* Links of bottom burger nav */}
           <List>
             <ListItem className="burger__links burger__connect">
-              <NavLink to="/"><img className="burger__connect--image" src={userLogo} alt="user logo" />Connexion</NavLink>
+              <NavLink to="/" onClick={() => setOpen(false)}><img className="burger__connect--image" src={userLogo} alt="user logo" />Connexion</NavLink>
               <div className="burger__connect--dark-mode">
                 <WbSunnyIcon />
                 <Switch />
