@@ -1,5 +1,7 @@
 export const initialState = {
   list: [],
+  inputEmail: '',
+  inputPassword: '',
 };
 
 const reducer = (state = initialState, action = {}) => {
