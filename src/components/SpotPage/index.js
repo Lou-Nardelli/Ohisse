@@ -1,6 +1,7 @@
 import { useSelector } from 'react-redux';
 // Componants
 import Spot from './Spot';
+import HomeMap from '../Home/HomeMap';
 
 // datas
 // later data will be in the state (ex:currentSpot)
@@ -13,7 +14,8 @@ import './spotPage.scss';
 
 function SpotPage() {
   // use state of currentSpot
-  const spot = useSelector((state) => state.spots.currentSpot);
+  const currentSpot = useSelector((state) => state.spots.currentSpot);
+  console.log(currentSpot);
   // destructuring
   const {
     name,
@@ -30,7 +32,7 @@ function SpotPage() {
     reputation,
     min_difficulty,
     max_difficulty,
-  } = spot;
+  } = currentSpot[0];
   return (
     <div className="spotPage">
       <Spot
@@ -49,7 +51,7 @@ function SpotPage() {
         minDifficulty={min_difficulty}
         maxDifficulty={max_difficulty}
       />
-      <p>Composant carte</p>
+      <HomeMap spots={currentSpot} />
       <p>Composant ajout commentaire</p>
       <p>Composant commentaires</p>
     </div>
