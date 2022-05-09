@@ -22,8 +22,6 @@ import './homemap.scss';
 // L.marker([48.856575, 2.346690], { icon: ohisseIcon }).addTo(map);
 
 function HomeMap({ spots }) {
-  // console.log(spots);
-
   return (
     <MapContainer center={[46.7, 2]} zoom={5} scrollWheelZoom>
       <TileLayer
