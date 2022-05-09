@@ -21,6 +21,7 @@ import {
 import ohisseLogo from 'src/assets/img/logo-complet-bicolor.png';
 import userLogo from 'src/assets/img/user.png';
 import './header.scss';
+import AccountConnect from './AccountConnect';
 
 // == Composant
 function Header() {
@@ -55,7 +56,8 @@ function Header() {
                   <Switch />
                   <Brightness2Icon />
                 </div>
-                <NavLink to="/" className="gutter-links"><img className="burger__connect--image" src={userLogo} alt="user logo" /></NavLink>
+                {/* Menu component with connexion pop-up */}
+                <AccountConnect />
               </Hidden>
             </div>
             {/* Button of hamburger menu */}

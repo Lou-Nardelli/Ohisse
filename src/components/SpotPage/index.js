@@ -15,7 +15,7 @@ import './spotPage.scss';
 function SpotPage() {
   // use state of currentSpot
   const currentSpot = useSelector((state) => state.spots.listSpots);
-  console.log(currentSpot);
+  // console.log(currentSpot);
   // destructuring
   const {
     name,
