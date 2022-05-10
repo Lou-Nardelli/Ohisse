@@ -1,0 +1,95 @@
+.profile {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  hr {
+    border: 1px solid #14213d;
+    width: 80%;
+    border-radius: 3px;
+  }
+
+  &__header {
+    padding:3em;
+    display:flex;
+    
+    &--picture {
+      border-radius: 50%;
+      width: 10rem;
+      border: 5px solid #fca311;
+      padding: .3em;
+    }
+
+    &--informations {
+      margin-left:2em;
+      max-width:70%;
+
+      h1 {
+        font-size: 2em;
+        font-family: 'Oleo Script';
+        color: #fca311;
+      }
+    
+      h2 {
+        font-size: 1.2em;
+        color: #14213d;
+        font-weight: 700;
+        margin-bottom:1em;
+      }
+    
+      h3 {
+        font-size: 1em;
+        color: #14213d;
+        font-weight: 700;
+        margin-bottom: .5em;
+      }
+    }
+  }
+
+  &__favorites {
+    padding: 0 3em;
+    text-align: center;
+
+    &--title {
+      color: #14213d;
+      font-size: 1.5em;
+      font-weight: 700;
+      margin: 1em auto;
+      font-family: 'Oleo Script';
+    }
+
+    &--cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .profile {
+
+    &__header {
+      padding:3em;
+      display:flex;
+      flex-wrap:wrap;
+      justify-content: center;
+
+      &--informations {
+        margin-left:2em;
+        text-align: center;
+        margin: 1em 0;
+      }
+    }
+
+    &__favorites {
+      padding: 0;
+
+      &--cards > a {
+        width: 50%;
+        display: flex;
+        justify-content: center;
+      }
+    }
+  }
+}
