@@ -19,6 +19,7 @@ function SliderCards() {
         showIndicators={false}
         showStatus={false}
         swipeable
+        showThumbs={false}
       >
         {
           datas.map((item) => (
