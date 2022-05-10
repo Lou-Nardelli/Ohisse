@@ -2,6 +2,7 @@
 import {
   MapContainer, TileLayer, Marker, Popup,
 } from 'react-leaflet';
+import { Link } from 'react-router-dom';
 // import ext
 import PropTypes from 'prop-types';
 // == Import : local
@@ -24,8 +25,10 @@ function HomeMap({ spots }) {
         <Marker key={item.id} position={[item.longitude, item.latitude]} icon={ohisseIcon}>
           <Popup>
             <div className="map-popup" style={popupContent}>
-              <img src={item.picture ? item.picture : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShhshYwTK1ZujWFb4UJzeLDzywVv6UgWowhA&usqp=CAU'} alt={`${item.name}`} />
-              <h3 style={popupHead}>{item.name}</h3>
+              <Link to={`/fiche-spot/${item.name}`}>
+                <img src={item.picture ? item.picture : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShhshYwTK1ZujWFb4UJzeLDzywVv6UgWowhA&usqp=CAU'} alt={`${item.name}`} />
+                <h3 style={popupHead}>{item.name}</h3>
+              </Link>
               {item.type} <br />
               {item.discipline}
             </div>

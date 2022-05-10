@@ -1,0 +1,52 @@
+@use '/src/styles/vars';
+
+.spotin {
+  max-width: 700px;
+  height: 100%;
+  margin: auto;
+  &__title {
+    font-family: Oleo Script,cursive;
+    color: vars.$color-brown;
+    font-size: 2rem;
+    text-align: center;
+    font-weight: bold;
+    margin: 1rem 0;
+    letter-spacing: 1px;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+
+    &--label-name {
+      display: flex;
+      flex-direction: column;
+
+      label {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+
+    &--label-address {
+      display: flex;
+
+      label {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+
+    &--label-spot {
+      display: flex;
+    }
+
+    &-input {
+
+    }
+
+    &-button {
+
+    }
+  }
+}
