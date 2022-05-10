@@ -1,9 +1,10 @@
 @use '/src/styles/vars';
 
 .spotin {
-  max-width: 700px;
   height: 100%;
   margin: auto;
+  max-width: 700px;
+  width: 100%;
   &__title {
     font-family: Oleo Script,cursive;
     color: vars.$color-brown;
@@ -39,6 +40,12 @@
 
     &--label-spot {
       display: flex;
+      flex-wrap: wrap;
+      flex-direction: column;
+
+      img {
+        width: 50px;
+      }
     }
 
     &-input {
