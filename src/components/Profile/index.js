@@ -17,6 +17,7 @@ function Profile() {
 
   return (
     <div className="profile">
+      {/* Informations about the user */}
       <div className="profile__header">
         <img className="profile__header--picture" src="https://media-exp1.licdn.com/dms/image/C4E03AQHPgEEauP688A/profile-displayphoto-shrink_800_800/0/1614604415420?e=1657756800&v=beta&t=PzI--5McIbwdTFry7zoClStK3AgzMjMlZ4Cyt_pc6EI" alt="profile_picture" />
         <div className="profile__header--informations">
@@ -29,6 +30,7 @@ function Profile() {
         </div>
       </div>
       <hr />
+      {/* List of favorites spots */}
       <div className="profile__favorites">
         <h1 className="profile__favorites--title">Mes favoris</h1>
         <div className="profile__favorites--cards">
@@ -44,6 +46,7 @@ function Profile() {
           ))}
         </div>
       </div>
+      {/* Map of the profile page */}
       <div className="profile__map">
         <MapContainer center={[46.7, 2]} zoom={6} scrollWheelZoom>
           <TileLayer
