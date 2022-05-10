@@ -88,7 +88,7 @@ function AccountConnect() {
             <PersonIcon /> Mon compte
           </MenuItem>
         </Link>
-        <Link to="/">
+        <Link to="/profil">
           <MenuItem>
             <StarIcon /> Mes favoris
           </MenuItem>
