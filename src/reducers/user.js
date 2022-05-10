@@ -4,6 +4,12 @@ export const initialState = {
   list: [],
   inputEmail: '',
   inputPassword: '',
+  inputPseudo: '',
+  inputFirstname: '',
+  inputLastname: '',
+  inputValidatePassword: '',
+  inputCity: '',
+  inputCountry: '',
 };
 
 const reducer = (state = initialState, action = {}) => {
