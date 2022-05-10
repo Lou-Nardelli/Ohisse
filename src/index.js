@@ -22,6 +22,9 @@ import Ohisse from 'src/components/Ohisse';
 import store from 'src/store';
 
 // console.log(store.getState());
+require('dotenv').config();
+
+console.log(process.env.MAIN_PATH);
 
 const rootReactElement = (
   <BrowserRouter>
