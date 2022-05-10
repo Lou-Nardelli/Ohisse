@@ -7,3 +7,12 @@ export const changeField = (value, name) => ({
   value,
   name,
 });
+
+// ACTION TYPE CONFIRM_PASSWORD
+export const CONFIRM_PASSWORD = 'CONFIRM_PASSWORD';
+
+// ACTION CREATOR confirmPassword
+export const confirmPassword = (value) => ({
+  type: CONFIRM_PASSWORD,
+  value,
+});
