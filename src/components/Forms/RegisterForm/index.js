@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { changeField, confirmPassword } from '../../../actions/user';
+import { changeField, confirmPassword, registerUser } from '../../../actions/user';
 // styles
 import './registerForm.scss';
 
@@ -25,12 +25,19 @@ function RegisterForm() {
     dispatch(confirmPassword(value));
   };
 
+  // handle to submit form (register user)
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // console.log('i submit the form');
+    dispatch(registerUser());
+  };
+
   return (
     <div className="registerForm">
       <h1 className="registerForm__title">Créez un compte
       </h1>
 
-      <form className="registerForm__form">
+      <form className="registerForm__form" onSubmit={handleSubmit}>
         <input className="registerForm__input" type="text" name="pseudo" id="pseudo" placeholder="Votre pseudo" value={inputPseudo} required onChange={(event) => handleChangeField(event.target.value, 'inputPseudo')} />
         <input className="registerForm__input" type="text" name="lastname" id="lastname" placeholder="Nom" value={inputLastname} onChange={(event) => handleChangeField(event.target.value, 'inputLastname')} />
         <input className="registerForm__input" type="text" name="firstname" id="firstname" placeholder="Prénom" value={inputFirstname} onChange={(event) => handleChangeField(event.target.value, 'inputFirstname')} />
