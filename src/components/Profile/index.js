@@ -31,43 +31,67 @@ function Profile() {
       </div>
       <hr />
       {/* List of favorites spots */}
-      <div className="profile__favorites">
-        <h1 className="profile__favorites--title">Mes favoris</h1>
-        <div className="profile__favorites--cards">
-          {listSpots.map((item) => (
-            <Link key={item.id} to="">
-              <Card
-                name={item.name}
-                city={item.city}
-                picture={item.picture}
-                className="card cardLittle"
-              />
-            </Link>
-          ))}
-        </div>
-      </div>
-      {/* Map of the profile page */}
-      <div className="profile__map">
-        <MapContainer center={[46.7, 2]} zoom={6} scrollWheelZoom>
-          <TileLayer
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          />
-          {listSpots.map((item) => (
-            <Marker key={item.id} position={[item.longitude, item.latitude]} icon={ohisseIcon}>
-              <Popup>
-                <div className="map-popup" style={popupContent}>
-                  <Link to={`/fiche-spot/${item.name}`}>
-                    <img src={item.picture ? item.picture : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShhshYwTK1ZujWFb4UJzeLDzywVv6UgWowhA&usqp=CAU'} alt={`${item.name}`} />
-                    <h3 style={popupHead}>{item.name}</h3>
+      <div className="section">
+        <section className="section-favorites">
+          <div className="profile__favorites">
+            <h1 className="profile__favorites--title">Mes favoris</h1>
+            <div className="profile__favorites--cards">
+              {listSpots.map((item) => (
+                <>
+                  <Link key={item.id} to="">
+                    <Card
+                      name={item.name}
+                      city={item.city}
+                      picture={item.picture}
+                      className="card cardLittle"
+                    />
                   </Link>
-                  {item.type} <br />
-                  {item.discipline}
-                </div>
-              </Popup>
-            </Marker>
-          ))}
-        </MapContainer>
+                  <Link key={item.id} to="">
+                    <Card
+                      name={item.name}
+                      city={item.city}
+                      picture={item.picture}
+                      className="card cardLittle"
+                    />
+                  </Link>
+                  <Link key={item.id} to="">
+                    <Card
+                      name={item.name}
+                      city={item.city}
+                      picture={item.picture}
+                      className="card cardLittle"
+                    />
+                  </Link>
+                </>
+              ))}
+            </div>
+          </div>
+        </section>
+        {/* Map of the profile page */}
+        <section className="section-map">
+          <div className="profile__map">
+            <MapContainer center={[46.7, 2]} zoom={6} scrollWheelZoom>
+              <TileLayer
+                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+              />
+              {listSpots.map((item) => (
+                <Marker key={item.id} position={[item.longitude, item.latitude]} icon={ohisseIcon}>
+                  <Popup>
+                    <div className="map-popup" style={popupContent}>
+                      <Link to={`/fiche-spot/${item.name}`}>
+                        <img src={item.picture ? item.picture : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShhshYwTK1ZujWFb4UJzeLDzywVv6UgWowhA&usqp=CAU'} alt={`${item.name}`} />
+                        <h3 style={popupHead}>{item.name}</h3>
+                      </Link>
+                      {item.type} <br />
+                      {item.discipline}
+                    </div>
+                  </Popup>
+                </Marker>
+              ))}
+            </MapContainer>
+          </div>
+        </section>
       </div>
     </div>
   );

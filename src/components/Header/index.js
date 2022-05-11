@@ -48,7 +48,7 @@ function Header() {
             <div className="header-bar__links">
               <Hidden mdDown>
                 {navLinks.map((item) => (
-                  <NavLink to={item.href} className="gutter-links">{item.name}</NavLink>
+                  <NavLink key={item.name} to={item.href} className="gutter-links">{item.name}</NavLink>
                 ))}
                 {/* Dark mode/Connect links */}
                 <div className="burger__connect--dark-mode">
@@ -89,8 +89,13 @@ function Header() {
             {/* Links of top nav burger */}
             <List>
               {navLinks.map((item) => (
-                <ListItem className="burger__links">
-                  <NavLink to={item.href} onClick={() => setOpen(false)}>{item.name}</NavLink>
+                <ListItem key={item.name} className="burger__links">
+                  <NavLink
+                    to={item.href}
+                    onClick={() => setOpen(false)}
+                  >
+                    {item.name}
+                  </NavLink>
                 </ListItem>
               ))}
               <ListItem className="burger__links burger__account">
