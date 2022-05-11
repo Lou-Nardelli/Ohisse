@@ -5,9 +5,13 @@ import {
   PREVIOUS_INDEX,
   NEXT_CARD_INDEX,
   PREVIOUS_CARD_INDEX,
+  SAVE_SPOTS,
+  SAVE_SPOT_BY_ID,
+  IS_LOADING,
 } from '../actions/spots';
 
 export const initialState = {
+  isLoading: true,
   listSpots: spots,
   // currentIndex for slider picture in home page
   currentIndexSliderPicture: 0,
@@ -82,6 +86,24 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         currentIndexSliderCard: state.currentIndexSliderCard - 1,
+      };
+    }
+    case SAVE_SPOTS:
+      return {
+        ...state,
+        listSpots: action.data,
+      };
+    case SAVE_SPOT_BY_ID: {
+      console.log(action.data);
+      return {
+        ...state,
+        currentSpot: [action.data],
+      };
+    }
+    case IS_LOADING: {
+      return {
+        ...state,
+        isLoading: !state.isLoading,
       };
     }
 

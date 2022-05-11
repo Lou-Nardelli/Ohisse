@@ -5,7 +5,6 @@ import {
 // import ext
 import PropTypes from 'prop-types';
 // == Import : local
-import spots from 'src/localData/data';
 import ohisseIcon from './icon';
 
 // styles
@@ -13,7 +12,7 @@ import { popupContent, popupHead } from './popupStyles';
 import './homemap.scss';
 
 function HomeMap({ spots }) {
-  // console.log(spots);
+  console.log(spots);
   return (
     <MapContainer center={[46.7, 2]} zoom={5} scrollWheelZoom>
       <TileLayer
