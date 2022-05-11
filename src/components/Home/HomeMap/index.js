@@ -12,7 +12,7 @@ import { popupContent, popupHead } from './popupStyles';
 import './homemap.scss';
 
 function HomeMap({ spots }) {
-  console.log(spots);
+  // console.log(spots);
   return (
     <MapContainer center={[46.7, 2]} zoom={5} scrollWheelZoom>
       <TileLayer

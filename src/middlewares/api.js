@@ -32,7 +32,7 @@ const apiMiddleWare = (store) => (next) => (action) => {
         .get(`api/spots/${action.id}`)
         .then(
           (response) => {
-            console.log(response.data);
+            // console.log(response.data);
             // to save all spots in the state
             store.dispatch(saveSpotById(response.data));
           },

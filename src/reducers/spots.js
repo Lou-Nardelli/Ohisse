@@ -94,7 +94,7 @@ const reducer = (state = initialState, action = {}) => {
         listSpots: action.data,
       };
     case SAVE_SPOT_BY_ID: {
-      console.log(action.data);
+      // console.log(action.data);
       return {
         ...state,
         currentSpot: [action.data],
