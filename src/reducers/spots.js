@@ -5,6 +5,7 @@ import {
   PREVIOUS_INDEX,
   NEXT_CARD_INDEX,
   PREVIOUS_CARD_INDEX,
+  SAVE_SPOTS,
 } from '../actions/spots';
 
 export const initialState = {
@@ -84,6 +85,11 @@ const reducer = (state = initialState, action = {}) => {
         currentIndexSliderCard: state.currentIndexSliderCard - 1,
       };
     }
+    case SAVE_SPOTS:
+      return {
+        ...state,
+        listSpots: action.data,
+      };
 
     default:
       return state;

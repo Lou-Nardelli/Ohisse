@@ -1,8 +1,9 @@
 // == Import : npm
 import { Routes, Route } from 'react-router-dom';
+import { useEffect } from 'react';
 
 // == Import : local
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 // == Import
 import Header from 'src/components/Header';
@@ -17,15 +18,26 @@ import './ohisse.scss';
 import LogginForm from '../Forms/LogginForm';
 import SelectSpotType from '../Forms/SpotAddForm/SelectSpotType';
 import RegisterForm from '../Forms/RegisterForm';
+import { fetchSpots } from '../../actions/spots';
 
 // == Composant
 function Ohisse() {
+  // hook useDispatch to dispatch actions
+  const dispatch = useDispatch();
+  // when mounting component Ohisse
+  useEffect(
+    () => {
+      // load all spots from API
+      dispatch(fetchSpots());
+    },
+    [],
+  );
   // all spots (from state)
   const spots = useSelector((state) => state.spots.listSpots);
   // filter to get a array of interior spots
-  const spotsIndoor = spots.filter((item) => item.type === 'interieur');
+  const spotsIndoor = spots.filter((item) => item.type === 'Salle' || item.type === 'salle');
   // filter to get a array of outdoor spots
-  const spotsOutdoor = spots.filter((item) => item.type === 'exterieur');
+  const spotsOutdoor = spots.filter((item) => item.type === 'Spot' || item.type === 'spot');
   return (
     <div className="ohisse">
       <Header />

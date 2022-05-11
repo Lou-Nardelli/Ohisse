@@ -31,3 +31,21 @@ export const previousCardIndex = () => ({
   type: PREVIOUS_CARD_INDEX,
 
 });
+
+// ACTION TYPE FETCH_SPOTS
+export const FETCH_SPOTS = 'FETCH_SPOTS';
+
+// ACTION CREATOR fetchSpots
+export const fetchSpots = () => ({
+  type: FETCH_SPOTS,
+
+});
+
+// ACTION TYPE SAVE_SPOTS
+export const SAVE_SPOTS = 'SAVE_SPOTS';
+
+// ACTION CREATOR saveSpots
+export const saveSpots = (data) => ({
+  type: SAVE_SPOTS,
+  data,
+});
