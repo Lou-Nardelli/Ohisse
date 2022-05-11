@@ -37,32 +37,14 @@ function Profile() {
             <h1 className="profile__favorites--title">Mes favoris</h1>
             <div className="profile__favorites--cards">
               {listSpots.map((item) => (
-                <>
-                  <Link key={item.id} to="">
-                    <Card
-                      name={item.name}
-                      city={item.city}
-                      picture={item.picture}
-                      className="card cardLittle"
-                    />
-                  </Link>
-                  <Link key={item.id} to="">
-                    <Card
-                      name={item.name}
-                      city={item.city}
-                      picture={item.picture}
-                      className="card cardLittle"
-                    />
-                  </Link>
-                  <Link key={item.id} to="">
-                    <Card
-                      name={item.name}
-                      city={item.city}
-                      picture={item.picture}
-                      className="card cardLittle"
-                    />
-                  </Link>
-                </>
+                <Link key={item.id} to="">
+                  <Card
+                    name={item.name}
+                    city={item.city}
+                    picture={item.picture}
+                    className="card cardLittle"
+                  />
+                </Link>
               ))}
             </div>
           </div>
