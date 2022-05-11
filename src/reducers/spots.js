@@ -5,6 +5,7 @@ import {
   PREVIOUS_INDEX,
   NEXT_CARD_INDEX,
   PREVIOUS_CARD_INDEX,
+  CHANGE_FIELD,
 } from '../actions/spots';
 
 export const initialState = {
@@ -32,6 +33,15 @@ export const initialState = {
     min_difficulty: '5a',
     max_difficulty: '9a',
   }],
+  inputName: '',
+  inputAddress: '',
+  inputZipCode: '',
+  inputCity: '',
+  inputCountry: '',
+  inputDiscipline: '',
+  inputReputation: '',
+  inputDescription: '',
+  inputPicture: '',
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -84,7 +94,11 @@ const reducer = (state = initialState, action = {}) => {
         currentIndexSliderCard: state.currentIndexSliderCard - 1,
       };
     }
-
+    case CHANGE_FIELD:
+      return {
+        ...state,
+        [action.name]: action.value,
+      };
     default:
       return state;
   }
