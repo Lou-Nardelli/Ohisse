@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 import {
-  FETCH_SPOTS, FETCH_SPOT_BY_ID, FETCH_SPOT_BY_SLUG, saveSpots,
+  FETCH_SPOTS, FETCH_SPOT_BY_ID, isLoading, saveSpotById, saveSpots,
 } from '../actions/spots';
 
 const axiosInstance = axios.create({
@@ -33,12 +33,15 @@ const apiMiddleWare = (store) => (next) => (action) => {
         .then(
           (response) => {
             console.log(response.data);
-          // to save all spots in the state
-          // store.dispatch(saveSpots(response.data));
+            // to save all spots in the state
+            store.dispatch(saveSpotById(response.data));
           },
         )
         .catch(
           () => console.log(`api/spots/${action.id}`),
+        )
+        .finally(
+          () => store.dispatch(isLoading()),
         );
       next(action);
       break;

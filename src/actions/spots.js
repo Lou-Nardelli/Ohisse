@@ -58,3 +58,21 @@ export const fetchSpotById = (id) => ({
   type: FETCH_SPOT_BY_ID,
   id,
 });
+
+// ACTION TYPE SAVE_SPOT_BY_ID
+export const SAVE_SPOT_BY_ID = 'SAVE_SPOT_BY_ID';
+
+// ACTION CREATOR saveSpotById
+export const saveSpotById = (data) => ({
+  type: SAVE_SPOT_BY_ID,
+  data,
+});
+
+// ACTION TYPE IS_LOADING
+export const IS_LOADING = 'IS_LOADING';
+
+// ACTION CREATOR isLoading
+export const isLoading = () => ({
+  type: IS_LOADING,
+
+});
