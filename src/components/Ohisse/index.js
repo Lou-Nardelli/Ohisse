@@ -17,6 +17,7 @@ import Profile from '../Profile';
 import './ohisse.scss';
 import LogginForm from '../Forms/LogginForm';
 import SelectSpotType from '../Forms/SpotAddForm/SelectSpotType';
+import RegisterForm from '../Forms/RegisterForm';
 
 // == Composant
 function Ohisse() {
@@ -38,8 +39,8 @@ function Ohisse() {
         <Route path="/map" element={<HomeMap />} />
         <Route path="/ajout-spot" element={<SelectSpotType />} />
         <Route path="/connexion" element={<LogginForm />} />
-        <Route path="/inscription" element={<Home />} />
         <Route path="/profil" element={<Profile />} />
+        <Route path="/inscription" element={<RegisterForm />} />
         <Route path="/equipe" element={<Home />} />
         <Route path="/mentions-legales" element={<Home />} />
         <Route path="*" element={<Error />} />
