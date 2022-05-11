@@ -62,7 +62,7 @@ function SpotIn() {
           </label>
           <label htmlFor="country">Pays
             <select name="country">
-              <option value="" defaultChecked>Merci de choisir le pays</option>
+              <option value="" selected disabled hidden>Merci de choisir le pays</option>
               <option value="france">France</option>
               <option value="italy">Italie</option>
               <option value="spain">Espagne</option>
@@ -73,7 +73,7 @@ function SpotIn() {
         <div className="spotin__form--label-spot">
           <label htmlFor="discipline">Discipline
             <select name="discipline">
-              <option value="" defaultChecked>Quelle(s) discipline(s) dans cette salle</option>
+              <option value="" selected disabled hidden>Quelle(s) discipline(s) dans cette salle</option>
               <option value="boulder">Bloc</option>
               <option value="route">Voie</option>
               <option value="both">Les deux</option>
@@ -81,7 +81,7 @@ function SpotIn() {
           </label>
           <label htmlFor="reputation">Réputation de la salle
             <select name="discipline">
-              <option value="" defaultChecked>Le niveau global de la salle</option>
+              <option value="" selected disabled hidden>Le niveau global de la salle</option>
               <option value="easy">Plutôt facile</option>
               <option value="medium">D'un niveau moyen</option>
               <option value="hard">Putôt costaud</option>
