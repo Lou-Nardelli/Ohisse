@@ -1,7 +1,7 @@
 @use '/src/styles/vars';
 
+
 .spotin {
-  height: 100%;
   margin: auto;
   max-width: 700px;
   width: 100%;
@@ -18,20 +18,40 @@
   &__form {
     display: flex;
     flex-direction: column;
+    text-align: center;
+    padding: 0 1rem;
+
+    input,
+    select,
+    textarea {
+      text-align: center;
+      margin-top: 0.2rem;
+      width: 75%;
+      align-self: center;
+    }
+    textarea {
+      height: 100px;
+      font-family: 'Catamaran', sans-serif;
+    }
+
+    label {
+      margin-bottom: 0.5rem;
+      display: flex;
+      flex-direction: column;
+      font-weight: bold;
+      color: vars.$color-blue;
+      letter-spacing: 1px;
+      cursor: default;
+    }
 
     &--label-name {
       display: flex;
       flex-direction: column;
-
-      label {
-        display: flex;
-        flex-direction: column;
-      }
     }
 
     &--label-address {
       display: flex;
-
+      flex-direction: column;
       label {
         display: flex;
         flex-direction: column;
@@ -40,20 +60,65 @@
 
     &--label-spot {
       display: flex;
-      flex-wrap: wrap;
       flex-direction: column;
 
       img {
-        width: 50px;
+        margin: 0.5rem 0;
+        width: 10%;
+        align-self: center;
       }
     }
 
-    &-input {
-
+    &--mapsubmit {
+      display: flex;
+      flex-direction: column;
+      height: fit-content;
     }
 
     &-button {
+      margin: 1rem 0;
+      background-color: vars.$color-orange;
+      border: solid 1px vars.$color-blue;
+      color: vars.$color-blue;
+      margin-bottom: 1rem;
+      padding: 0.5rem;
+      width: 50%;
+      align-self: center;
+    }
+  }
+}
 
+@media only screen and (min-width: 768px) {
+  .spotin {
+    &__form {
+      &--label-name {
+        width: 50%;
+        align-self: center;
+      }
+
+      &--label-address {
+        display: flex;
+        flex-direction: row;
+      }
+
+      &--label-spot {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+
+        label {
+          width: 100%;
+        }
+
+        #spotin__form-input-picture {
+          width: 50%;
+        }
+
+        textarea {
+          width: 670px;
+        }
+      }
     }
   }
 }

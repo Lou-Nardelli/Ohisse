@@ -1,9 +1,10 @@
 // == Import : npm
-// import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 // == Import : local
 // import { changeField } from '../../../../actions/user';
 import logoOhisse from 'src/assets/img/logo-simple-bicolor.png';
+import HomeMap from '../../../Home/HomeMap';
 
 // styles
 import './spotin.scss';
@@ -13,11 +14,12 @@ function SpotIn() {
   // const dispatch = useDispatch();
   // Used to read the state
   // const inputSpotInNameValue = useSelector((state) => state.currentSpot.name);
+  const currentSpot = useSelector((state) => state.spots.currentSpot);
 
   return (
     <div className="spotin">
       <h2 className="spotin__title">
-        ☕ A l'abri, à l'intérieur ☕
+        A l'abri, à l'intérieur<br />☕
       </h2>
       <form
         className="spotin__form"
@@ -39,15 +41,15 @@ function SpotIn() {
               type="text"
               name="address"
               className="spotin__form-input"
-              placeholder="Nom de la salle"
+              placeholder="Adresse"
             />
           </label>
           <label htmlFor="zipcode">Code Postal
             <input
-              type="text"
+              type="number"
               name="zipcode"
               className="spotin__form-input"
-              placeholder="Nom de la salle"
+              placeholder="Code postal"
             />
           </label>
           <label htmlFor="city">Ville
@@ -55,7 +57,7 @@ function SpotIn() {
               type="text"
               name="city"
               className="spotin__form-input"
-              placeholder="Nom de la salle"
+              placeholder="Ville"
             />
           </label>
           <label htmlFor="country">Pays
@@ -71,7 +73,7 @@ function SpotIn() {
         <div className="spotin__form--label-spot">
           <label htmlFor="discipline">Discipline
             <select name="discipline">
-              <option value="" defaultChecked>Merci de choisir la discipline de la salle</option>
+              <option value="" defaultChecked>Quelle(s) discipline(s) dans cette salle</option>
               <option value="boulder">Bloc</option>
               <option value="route">Voie</option>
               <option value="both">Les deux</option>
@@ -79,31 +81,35 @@ function SpotIn() {
           </label>
           <label htmlFor="reputation">Réputation de la salle
             <select name="discipline">
-              <option value="" defaultChecked>La réputation de la salle pour son niveau</option>
+              <option value="" defaultChecked>Le niveau global de la salle</option>
               <option value="easy">Plutôt facile</option>
               <option value="medium">D'un niveau moyen</option>
               <option value="hard">Putôt costaud</option>
             </select>
           </label>
           <label htmlFor="description">Description
-            <input
+            <textarea
               type="text"
               name="description"
               className="spotin__form-inputdescription"
-              placeholder="Une petite description avec les informations intéressantes à avoir sur ce lieu"
+              placeholder="Les informations intéressantes et manquantes à avoir sur ce lieu"
             />
           </label>
           <label htmlFor="picture">Photo
             <input
-              type="text"
+              type="url"
               name="picture"
               className="spotin__form-input"
+              id="spotin__form-input-picture"
               placeholder="URL d'une photo de la salle"
             />
             <img src={logoOhisse} alt="link given" />
           </label>
         </div>
-        <button type="submit" className="spotin__form-button">J'ajoute ce spot !</button>
+        <div className="spotin__form--mapsubmit">
+          <HomeMap spots={currentSpot} />
+          <button type="submit" className="spotin__form-button">J'ajoute ce spot !</button>
+        </div>
       </form>
     </div>
   );
