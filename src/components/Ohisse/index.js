@@ -12,6 +12,7 @@ import SpotPage from '../SpotPage';
 import HomeMap from '../Map';
 import Error from '../Error';
 import Spots from '../Spots';
+import Profile from '../Profile';
 
 import './ohisse.scss';
 import LogginForm from '../Forms/LogginForm';
@@ -38,8 +39,8 @@ function Ohisse() {
         <Route path="/map" element={<HomeMap />} />
         <Route path="/ajout-spot" element={<SelectSpotType />} />
         <Route path="/connexion" element={<LogginForm />} />
+        <Route path="/profil" element={<Profile />} />
         <Route path="/inscription" element={<RegisterForm />} />
-        <Route path="/profil" element={<Home />} />
         <Route path="/equipe" element={<Home />} />
         <Route path="/mentions-legales" element={<Home />} />
         <Route path="*" element={<Error />} />

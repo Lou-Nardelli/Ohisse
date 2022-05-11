@@ -48,7 +48,7 @@ function Header() {
             <div className="header-bar__links">
               <Hidden mdDown>
                 {navLinks.map((item) => (
-                  <NavLink to={item.href} className="gutter-links">{item.name}</NavLink>
+                  <NavLink key={item.name} to={item.href} className="gutter-links">{item.name}</NavLink>
                 ))}
                 {/* Dark mode/Connect links */}
                 <div className="burger__connect--dark-mode">
@@ -89,19 +89,24 @@ function Header() {
             {/* Links of top nav burger */}
             <List>
               {navLinks.map((item) => (
-                <ListItem className="burger__links">
-                  <NavLink to={item.href} onClick={() => setOpen(false)}>{item.name}</NavLink>
+                <ListItem key={item.name} className="burger__links">
+                  <NavLink
+                    to={item.href}
+                    onClick={() => setOpen(false)}
+                  >
+                    {item.name}
+                  </NavLink>
                 </ListItem>
               ))}
               <ListItem className="burger__links burger__account">
-                <NavLink to="/" onClick={() => setOpen(false)}><img className="burger__account--image" src={userLogo} alt="user logo" />Mon Compte</NavLink>
+                <NavLink to="/profil" onClick={() => setOpen(false)}><img className="burger__account--image" src={userLogo} alt="user logo" />Mon Compte</NavLink>
               </ListItem>
             </List>
           </div>
           {/* Links of bottom burger nav */}
           <List>
             <ListItem className="burger__links burger__connect">
-              <NavLink to="/" onClick={() => setOpen(false)}><img className="burger__connect--image" src={userLogo} alt="user logo" />Connexion</NavLink>
+              <NavLink to="/connexion" onClick={() => setOpen(false)}><img className="burger__connect--image" src={userLogo} alt="user logo" />Connexion</NavLink>
               <div className="burger__connect--dark-mode">
                 <WbSunnyIcon />
                 <Switch />
