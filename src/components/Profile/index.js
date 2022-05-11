@@ -14,19 +14,22 @@ import ohisseIcon from './icon';
 // == Composant
 function Profile() {
   const listSpots = useSelector((state) => state.spots.listSpots);
+  const currentUser = useSelector((state) => state.user.currentUser);
+
+  if (currentUser.description.length === 0) {
+    currentUser.description = "Ma description n'est pas encore remplie, mais je procrastine encore un peu avant de m'y mettre !";
+  }
 
   return (
     <div className="profile">
       {/* Informations about the user */}
       <div className="profile__header">
-        <img className="profile__header--picture" src="https://media-exp1.licdn.com/dms/image/C4E03AQHPgEEauP688A/profile-displayphoto-shrink_800_800/0/1614604415420?e=1657756800&v=beta&t=PzI--5McIbwdTFry7zoClStK3AgzMjMlZ4Cyt_pc6EI" alt="profile_picture" />
+        <img className="profile__header--picture" src="https://media-exp1.licdn.com/dms/image/D5635AQHa2jqlhY57-Q/profile-framedphoto-shrink_800_800/0/1643542347773?e=1652364000&v=beta&t=sm9DmS8opoU9LcZtcwwcWUcH4vgj3U5hChQn3UTAtv4" alt="profile_picture" />
         <div className="profile__header--informations">
-          <h1>Coco l'Asticot</h1>
-          <h2>Bayonne</h2>
+          <h1>{currentUser.firstname} {currentUser.lastname} - alias {currentUser.pseudo}</h1>
+          <h2>{currentUser.city}</h2>
           <h3>Description</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-            Nemo labnderit? Deleniti perferendis ex soluta
-          </p>
+          <p>{currentUser.description}</p>
         </div>
       </div>
       <hr />

@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 // Componants
 import Spot from './Spot';
 import HomeMap from '../Home/HomeMap';
+import Loading from '../Loading';
 
 // datas
 // later data will be in the state (ex:currentSpot)
@@ -33,6 +34,7 @@ function SpotPage() {
     },
     [],
   );
+  const isLoading = useSelector((state) => state.spots.isLoading);
   // use state of currentSpot
   const currentSpot = useSelector((state) => state.spots.currentSpot);
   // console.log(currentSpot);
@@ -55,25 +57,34 @@ function SpotPage() {
   } = currentSpot[0];
   return (
     <div className="spotPage">
-      <Spot
-        name={name}
-        picture={picture}
-        number={number}
-        street={street}
-        zipcode={zipcode}
-        city={city}
-        country={country}
-        discipline={discipline}
-        type={type}
-        rockType={rock_type}
-        various={various}
-        reputation={reputation}
-        minDifficulty={min_difficulty}
-        maxDifficulty={max_difficulty}
-      />
-      <HomeMap spots={currentSpot} />
-      <p>Composant ajout commentaire</p>
-      <p>Composant commentaires</p>
+      {isLoading === false && (
+        <>
+          <Spot
+            name={name}
+            picture={picture}
+            number={number}
+            street={street}
+            zipcode={zipcode}
+            city={city}
+            country={country}
+            discipline={discipline}
+            type={type}
+            rockType={rock_type}
+            various={various}
+            reputation={reputation}
+            minDifficulty={min_difficulty}
+            maxDifficulty={max_difficulty}
+          />
+          <HomeMap spots={currentSpot} />
+          <p>Composant ajout commentaire</p>
+          <p>Composant commentaires</p>
+        </>
+      )}
+
+      {isLoading === true && (
+        <Loading />
+      )}
+
     </div>
   );
 }

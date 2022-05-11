@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 import {
-  FETCH_SPOTS, FETCH_SPOT_BY_ID, isLoading, saveSpotById, saveSpots,
+  FETCH_SPOTS, FETCH_SPOT_BY_ID, saveSpotById, saveSpots,
 } from '../actions/spots';
 
 const axiosInstance = axios.create({
@@ -39,9 +39,6 @@ const apiMiddleWare = (store) => (next) => (action) => {
         )
         .catch(
           () => console.log(`api/spots/${action.id}`),
-        )
-        .finally(
-          () => store.dispatch(isLoading()),
         );
       next(action);
       break;

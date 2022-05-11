@@ -1,7 +1,9 @@
 @use 'src/styles/_vars';
 
 .spots{
+  height: 100%;
   &__title {
+    margin: 3rem 0;
     color: vars.$color-brown;
     font-family: Oleo Script,cursive;
     font-size: 1.3rem;

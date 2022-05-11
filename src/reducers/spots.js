@@ -7,11 +7,11 @@ import {
   PREVIOUS_CARD_INDEX,
   SAVE_SPOTS,
   SAVE_SPOT_BY_ID,
-  IS_LOADING,
+  FETCH_SPOT_BY_ID,
 } from '../actions/spots';
 
 export const initialState = {
-  isLoading: true,
+  isLoading: false,
   listSpots: spots,
   // currentIndex for slider picture in home page
   currentIndexSliderPicture: 0,
@@ -93,17 +93,18 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         listSpots: action.data,
       };
+    case FETCH_SPOT_BY_ID:
+      // isLoading during the fetch
+      return {
+        ...state,
+        isLoading: true,
+      };
     case SAVE_SPOT_BY_ID: {
-      // console.log(action.data);
+      console.log(action.data);
       return {
         ...state,
         currentSpot: [action.data],
-      };
-    }
-    case IS_LOADING: {
-      return {
-        ...state,
-        isLoading: !state.isLoading,
+        isLoading: false,
       };
     }
 
