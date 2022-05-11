@@ -49,3 +49,12 @@ export const saveSpots = (data) => ({
   type: SAVE_SPOTS,
   data,
 });
+
+// ACTION TYPE FETCH_SPOT_BY_ID
+export const FETCH_SPOT_BY_ID = 'FETCH_SPOT_BY_ID';
+
+// ACTION CREATOR fetchSpotById
+export const fetchSpotById = (id) => ({
+  type: FETCH_SPOT_BY_ID,
+  id,
+});

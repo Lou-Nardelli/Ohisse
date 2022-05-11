@@ -1,4 +1,6 @@
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 // Componants
 import Spot from './Spot';
 import HomeMap from '../Home/HomeMap';
@@ -11,8 +13,26 @@ import HomeMap from '../Home/HomeMap';
 
 // styles
 import './spotPage.scss';
+import { fetchSpotById } from '../../actions/spots';
 
 function SpotPage() {
+  const dispatch = useDispatch();
+  // the slug of url
+  const { slug } = useParams();
+  // console.log(slug);
+  const spots = useSelector((state) => state.spots.listSpots);
+  // console.log(spots);
+  const spot = spots.find((element) => element.name === slug);
+  // console.log(spot.id);
+  // console.log(slug);
+  // when mounting the component
+  useEffect(
+    () => {
+      // i want fetch one spot
+      dispatch(fetchSpotById(spot.id));
+    },
+    [],
+  );
   // use state of currentSpot
   const currentSpot = useSelector((state) => state.spots.currentSpot);
   // console.log(currentSpot);

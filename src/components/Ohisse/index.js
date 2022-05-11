@@ -35,9 +35,9 @@ function Ohisse() {
   // all spots (from state)
   const spots = useSelector((state) => state.spots.listSpots);
   // filter to get a array of interior spots
-  const spotsIndoor = spots.filter((item) => item.type === 'Salle' || item.type === 'salle');
+  const spotsIndoor = spots.filter((item) => item.type === 'Salle');
   // filter to get a array of outdoor spots
-  const spotsOutdoor = spots.filter((item) => item.type === 'Spot' || item.type === 'spot');
+  const spotsOutdoor = spots.filter((item) => item.type === 'Spot');
   return (
     <div className="ohisse">
       <Header />
