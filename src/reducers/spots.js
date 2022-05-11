@@ -6,6 +6,7 @@ import {
   NEXT_CARD_INDEX,
   PREVIOUS_CARD_INDEX,
   CHANGE_FIELD,
+  RECOVER_LAT_LNG,
 } from '../actions/spots';
 
 export const initialState = {
@@ -42,6 +43,8 @@ export const initialState = {
   inputReputation: '',
   inputDescription: '',
   inputPicture: '',
+  inputLat: '',
+  inputLng: '',
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -98,6 +101,12 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         [action.name]: action.value,
+      };
+    case RECOVER_LAT_LNG:
+      return {
+        ...state,
+        inputLat: action.latlng.lat,
+        inputLng: action.latlng.lng,
       };
     default:
       return state;

@@ -41,3 +41,12 @@ export const changeField = (value, name) => ({
   value,
   name,
 });
+
+// ACTION TYPE RECOVER_LAT_LNG
+export const RECOVER_LAT_LNG = 'RECOVER_LAT_LNG';
+
+// ACTION CREATOR recoverLatLng
+export const recoverLatLng = (latlng) => ({
+  type: RECOVER_LAT_LNG,
+  latlng,
+});

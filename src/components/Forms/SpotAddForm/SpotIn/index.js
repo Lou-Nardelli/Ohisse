@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 // == Import : local
 // import { changeField } from '../../../../actions/user';
 import logoOhisse from 'src/assets/img/logo-simple-bicolor.png';
-import HomeMap from '../../../Home/HomeMap';
+import SpotAddMap from '../SpotAddMap';
 import { changeField } from '../../../../actions/spots';
 
 // styles
@@ -144,7 +144,7 @@ function SpotIn() {
           </label>
         </div>
         <div className="spotin__form--mapsubmit">
-          <HomeMap spots={currentSpot} />
+          <SpotAddMap spots={currentSpot} />
           <button type="submit" className="spotin__form-button">J'ajoute ce spot !</button>
         </div>
       </form>
