@@ -9,6 +9,11 @@
   margin: 0 auto;
   width: 50%;
 
+  a {
+    display: flex;
+    justify-content: center;
+  }
+
   &__title {
     color: #14213d;
     font-size: 1.3em;
@@ -17,8 +22,9 @@
 
   &__content {
     display: flex;
+    flex-direction: column;
+    align-items: center;
     padding: 1em;
-    position: relative;
 
     &--title {
       color: #fca311;
@@ -30,10 +36,9 @@
 
     &--gif {
       border-radius: 10px;
-      margin: 1em 0;
+      margin-top: -5em;
+      position: static;
       width: 50%;
-      position: absolute;
-      right: -10em;
     }
   }
 
@@ -48,24 +53,6 @@
   }
 }
 
-@media screen and (max-width: 700px) {
-  .error {
-
-    &__content {
-      display: flex;
-      padding: 1em;
-      flex-wrap: wrap;
-      justify-content: center;
-
-      &--gif {
-        border-radius: 10px;
-        position: static;
-        margin-top: -5em;
-      }
-    }
-  }
-}
-
 @media screen and (max-width: 450px) {
   .error {
 
@@ -74,6 +61,10 @@
       &--title {
         font-size:10em;
       }
+    }
+
+    &__button {
+      width:15em;
     }
   }
 }
