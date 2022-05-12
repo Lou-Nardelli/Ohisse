@@ -10,6 +10,7 @@ import {
   SAVE_SPOTS,
   SAVE_SPOT_BY_ID,
   FETCH_SPOT_BY_ID,
+  PURGE_SPOTADD_FORM,
 } from '../actions/spots';
 
 export const initialState = {
@@ -132,6 +133,23 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         currentSpot: [action.data],
         isLoading: false,
+      };
+    }
+    case PURGE_SPOTADD_FORM: {
+      return {
+        ...state,
+        inputName: '',
+        inputZipCode: '',
+        inputCity: '',
+        inputCountry: '',
+        inputDiscipline: '',
+        inputRockType: '',
+        inputMinDif: '',
+        inputMaxDif: '',
+        inputDescription: '',
+        inputPicture: '',
+        inputLat: '',
+        inputLng: '',
       };
     }
 

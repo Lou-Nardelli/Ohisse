@@ -1,11 +1,12 @@
 // == Import : npm
 import { useSelector, useDispatch } from 'react-redux';
+import { useEffect } from 'react';
 
 // == Import : local
 // import { changeField } from '../../../../actions/user';
 import logoOhisse from 'src/assets/img/logo-simple-bicolor.png';
 import SpotAddMap from '../SpotAddMap';
-import { changeField } from '../../../../actions/spots';
+import { changeField, purgeSpotaddForm } from '../../../../actions/spots';
 
 // styles
 import './spotout.scss';
@@ -58,6 +59,10 @@ function SpotOut() {
   const handleChangeField = (value, name) => {
     dispatch(changeField(value, name));
   };
+
+  useEffect(() => {
+    dispatch(purgeSpotaddForm());
+  }, [SpotOut]);
 
   const value = (element) => element === inputMinDifValue;
 

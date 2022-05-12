@@ -1,11 +1,12 @@
 // == Import : npm
 import { useSelector, useDispatch } from 'react-redux';
+import { useEffect } from 'react';
 
 // == Import : local
 // import { changeField } from '../../../../actions/user';
 import logoOhisse from 'src/assets/img/logo-simple-bicolor.png';
 import SpotAddMap from '../SpotAddMap';
-import { changeField } from '../../../../actions/spots';
+import { changeField, purgeSpotaddForm } from '../../../../actions/spots';
 
 // styles
 import './spotin.scss';
@@ -28,6 +29,10 @@ function SpotIn() {
   const handleChangeField = (value, name) => {
     dispatch(changeField(value, name));
   };
+
+  useEffect(() => {
+    dispatch(purgeSpotaddForm());
+  }, [SpotIn]);
 
   return (
     <div className="spotin">
