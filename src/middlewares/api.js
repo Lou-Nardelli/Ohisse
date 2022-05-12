@@ -3,6 +3,7 @@ import axios from 'axios';
 import {
   FETCH_SPOTS, FETCH_SPOT_BY_ID, saveSpotById, saveSpots,
 } from '../actions/spots';
+import { isRegister, REGISTER_USER } from '../actions/user';
 
 const axiosInstance = axios.create({
   // API url
@@ -42,6 +43,46 @@ const apiMiddleWare = (store) => (next) => (action) => {
         );
       next(action);
       break;
+      // inscription user
+    case REGISTER_USER: {
+      // double destructuration
+      const {
+        user: {
+          inputEmail,
+          inputPassword,
+          inputPseudo,
+          inputFirstname,
+          inputLastname,
+          inputCity,
+          inputCountry,
+        },
+      } = store.getState();
+
+      axiosInstance
+        .post(
+          'api/register',
+          {
+            firstname: inputFirstname,
+            lastname: inputLastname,
+            pseudo: inputPseudo,
+            city: inputCity,
+            country: inputCountry,
+            description: null,
+            email: inputEmail,
+            password: inputPassword,
+            role: 'user',
+          },
+        )
+        .then((response) => {
+          console.log(response.data);
+          store.dispatch(isRegister());
+        })
+        .catch(() => {
+          console.log('oups...');
+        });
+      next(action);
+      break;
+    }
 
     default:
       next(action);
