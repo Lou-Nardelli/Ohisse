@@ -11,7 +11,7 @@ export const initialState = {
   inputCity: '',
   inputCountry: '',
   isError: false,
-  isRegister: true,
+  isRegister: false,
   isLoggin: false,
 
   currentUser: {
