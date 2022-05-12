@@ -1,11 +1,13 @@
 .error {
-  height: 100%;
-  display: flex;
-  flex-wrap:wrap;
-  justify-content: center;
   align-content: center;
-  width:50%;
-  margin:0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  width: 50%;
 
   &__title {
     color: #14213d;
@@ -43,5 +45,35 @@
     background-color: #14213d;
     color: #fff;
     border-radius: 4px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .error {
+
+    &__content {
+      display: flex;
+      padding: 1em;
+      flex-wrap: wrap;
+      justify-content: center;
+
+      &--gif {
+        border-radius: 10px;
+        position: static;
+        margin-top: -5em;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .error {
+
+    &__content {
+
+      &--title {
+        font-size:10em;
+      }
+    }
   }
 }
