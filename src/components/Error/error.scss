@@ -1,0 +1,32 @@
+.error {
+  height: 100%;
+  display: flex;
+  flex-wrap:wrap;
+  justify-content: center;
+  align-content: center;
+  width:50%;
+  margin:0 auto;
+
+  &__title {
+    color: #14213d;
+    font-size: 1.5em;
+    font-weight: 300;
+  }
+
+  &__content {
+    color: #fca311;
+    font-size: 15em;
+    font-weight: 300;
+    font-family: 'Oleo Script';
+  }
+
+  &__button {
+    max-width: 100%;
+    width: 30em;
+    height: 3em;
+    border: none;
+    background-color: #14213d;
+    color: #fff;
+    border-radius: 4px;
+  }
+}
