@@ -5,6 +5,8 @@ import {
   PREVIOUS_INDEX,
   NEXT_CARD_INDEX,
   PREVIOUS_CARD_INDEX,
+  CHANGE_FIELD,
+  RECOVER_LAT_LNG,
   SAVE_SPOTS,
   SAVE_SPOT_BY_ID,
   FETCH_SPOT_BY_ID,
@@ -36,6 +38,17 @@ export const initialState = {
     min_difficulty: '5a',
     max_difficulty: '9a',
   }],
+  inputName: '',
+  inputAddress: '',
+  inputZipCode: '',
+  inputCity: '',
+  inputCountry: '',
+  inputDiscipline: '',
+  inputReputation: '',
+  inputDescription: '',
+  inputPicture: '',
+  inputLat: '',
+  inputLng: '',
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -88,6 +101,17 @@ const reducer = (state = initialState, action = {}) => {
         currentIndexSliderCard: state.currentIndexSliderCard - 1,
       };
     }
+    case CHANGE_FIELD:
+      return {
+        ...state,
+        [action.name]: action.value,
+      };
+    case RECOVER_LAT_LNG:
+      return {
+        ...state,
+        inputLat: action.latlng.lat,
+        inputLng: action.latlng.lng,
+      };
     case SAVE_SPOTS:
       return {
         ...state,

@@ -18,6 +18,8 @@ import Profile from '../Profile';
 import './ohisse.scss';
 import LogginForm from '../Forms/LogginForm';
 import SelectSpotType from '../Forms/SpotAddForm/SelectSpotType';
+import SpotIn from '../Forms/SpotAddForm/SpotIn';
+import SpotOut from '../Forms/SpotAddForm/SpotOut';
 import RegisterForm from '../Forms/RegisterForm';
 import { fetchSpots } from '../../actions/spots';
 
@@ -50,6 +52,8 @@ function Ohisse() {
         <Route path="/fiches-exterieur" element={<Spots listSpots={spotsOutdoor} title="Spots extérieurs" />} />
         <Route path="/map" element={<HomeMap />} />
         <Route path="/ajout-spot" element={<SelectSpotType />} />
+        <Route path="/ajout-spot-interieur" element={<SpotIn />} />
+        <Route path="/ajout-spot-exterieur" element={<SpotOut />} />
         <Route path="/connexion" element={<LogginForm />} />
         <Route path="/profil" element={<Profile />} />
         <Route path="/inscription" element={<RegisterForm />} />

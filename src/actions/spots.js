@@ -31,7 +31,24 @@ export const previousCardIndex = () => ({
   type: PREVIOUS_CARD_INDEX,
 
 });
+// ACTION TYPE CHANGE_FIELD
+export const CHANGE_FIELD = 'CHANGE_FIELD';
 
+// ACTION CREATOR changeField
+export const changeField = (value, name) => ({
+  type: CHANGE_FIELD,
+  value,
+  name,
+});
+
+// ACTION TYPE RECOVER_LAT_LNG
+export const RECOVER_LAT_LNG = 'RECOVER_LAT_LNG';
+
+// ACTION CREATOR recoverLatLng
+export const recoverLatLng = (latlng) => ({
+  type: RECOVER_LAT_LNG,
+  latlng,
+  
 // ACTION TYPE FETCH_SPOTS
 export const FETCH_SPOTS = 'FETCH_SPOTS';
 
@@ -74,5 +91,4 @@ export const IS_LOADING = 'IS_LOADING';
 // ACTION CREATOR isLoading
 export const isLoading = () => ({
   type: IS_LOADING,
-
 });
