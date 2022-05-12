@@ -83,12 +83,12 @@ function AccountConnect() {
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       >
         {/* Menu inside the pop-up */}
-        <Link to="/connexion">
+        <Link to="/profil">
           <MenuItem>
             <PersonIcon /> Mon compte
           </MenuItem>
         </Link>
-        <Link to="/">
+        <Link to="/profil">
           <MenuItem>
             <StarIcon /> Mes favoris
           </MenuItem>

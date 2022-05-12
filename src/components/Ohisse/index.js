@@ -1,8 +1,9 @@
 // == Import : npm
 import { Routes, Route } from 'react-router-dom';
+import { useEffect } from 'react';
 
 // == Import : local
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 // == Import
 import Header from 'src/components/Header';
@@ -12,21 +13,34 @@ import SpotPage from '../SpotPage';
 import HomeMap from '../Map';
 import Error from '../Error';
 import Spots from '../Spots';
+import Profile from '../Profile';
 
 import './ohisse.scss';
 import LogginForm from '../Forms/LogginForm';
 import SelectSpotType from '../Forms/SpotAddForm/SelectSpotType';
 import SpotIn from '../Forms/SpotAddForm/SpotIn';
 import SpotOut from '../Forms/SpotAddForm/SpotOut';
+import RegisterForm from '../Forms/RegisterForm';
+import { fetchSpots } from '../../actions/spots';
 
 // == Composant
 function Ohisse() {
+  // hook useDispatch to dispatch actions
+  const dispatch = useDispatch();
+  // when mounting component Ohisse
+  useEffect(
+    () => {
+      // load all spots from API
+      dispatch(fetchSpots());
+    },
+    [],
+  );
   // all spots (from state)
   const spots = useSelector((state) => state.spots.listSpots);
   // filter to get a array of interior spots
-  const spotsIndoor = spots.filter((item) => item.type === 'interieur');
+  const spotsIndoor = spots.filter((item) => item.type === 'Salle');
   // filter to get a array of outdoor spots
-  const spotsOutdoor = spots.filter((item) => item.type === 'exterieur');
+  const spotsOutdoor = spots.filter((item) => item.type === 'Spot');
   return (
     <div className="ohisse">
       <Header />
@@ -41,8 +55,8 @@ function Ohisse() {
         <Route path="/ajout-spot-interieur" element={<SpotIn />} />
         <Route path="/ajout-spot-exterieur" element={<SpotOut />} />
         <Route path="/connexion" element={<LogginForm />} />
-        <Route path="/inscription" element={<Home />} />
-        <Route path="/profil" element={<Home />} />
+        <Route path="/profil" element={<Profile />} />
+        <Route path="/inscription" element={<RegisterForm />} />
         <Route path="/equipe" element={<Home />} />
         <Route path="/mentions-legales" element={<Home />} />
         <Route path="*" element={<Error />} />

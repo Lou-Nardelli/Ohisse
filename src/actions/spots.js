@@ -31,7 +31,6 @@ export const previousCardIndex = () => ({
   type: PREVIOUS_CARD_INDEX,
 
 });
-
 // ACTION TYPE CHANGE_FIELD
 export const CHANGE_FIELD = 'CHANGE_FIELD';
 
@@ -49,4 +48,47 @@ export const RECOVER_LAT_LNG = 'RECOVER_LAT_LNG';
 export const recoverLatLng = (latlng) => ({
   type: RECOVER_LAT_LNG,
   latlng,
+  
+// ACTION TYPE FETCH_SPOTS
+export const FETCH_SPOTS = 'FETCH_SPOTS';
+
+// ACTION CREATOR fetchSpots
+export const fetchSpots = () => ({
+  type: FETCH_SPOTS,
+
+});
+
+// ACTION TYPE SAVE_SPOTS
+export const SAVE_SPOTS = 'SAVE_SPOTS';
+
+// ACTION CREATOR saveSpots
+export const saveSpots = (data) => ({
+  type: SAVE_SPOTS,
+  data,
+});
+
+// ACTION TYPE FETCH_SPOT_BY_ID
+export const FETCH_SPOT_BY_ID = 'FETCH_SPOT_BY_ID';
+
+// ACTION CREATOR fetchSpotById
+export const fetchSpotById = (id) => ({
+  type: FETCH_SPOT_BY_ID,
+  id,
+});
+
+// ACTION TYPE SAVE_SPOT_BY_ID
+export const SAVE_SPOT_BY_ID = 'SAVE_SPOT_BY_ID';
+
+// ACTION CREATOR saveSpotById
+export const saveSpotById = (data) => ({
+  type: SAVE_SPOT_BY_ID,
+  data,
+});
+
+// ACTION TYPE IS_LOADING
+export const IS_LOADING = 'IS_LOADING';
+
+// ACTION CREATOR isLoading
+export const isLoading = () => ({
+  type: IS_LOADING,
 });

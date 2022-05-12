@@ -7,9 +7,13 @@ import {
   PREVIOUS_CARD_INDEX,
   CHANGE_FIELD,
   RECOVER_LAT_LNG,
+  SAVE_SPOTS,
+  SAVE_SPOT_BY_ID,
+  FETCH_SPOT_BY_ID,
 } from '../actions/spots';
 
 export const initialState = {
+  isLoading: false,
   listSpots: spots,
   // currentIndex for slider picture in home page
   currentIndexSliderPicture: 0,
@@ -108,6 +112,26 @@ const reducer = (state = initialState, action = {}) => {
         inputLat: action.latlng.lat,
         inputLng: action.latlng.lng,
       };
+    case SAVE_SPOTS:
+      return {
+        ...state,
+        listSpots: action.data,
+      };
+    case FETCH_SPOT_BY_ID:
+      // isLoading during the fetch
+      return {
+        ...state,
+        isLoading: true,
+      };
+    case SAVE_SPOT_BY_ID: {
+      console.log(action.data);
+      return {
+        ...state,
+        currentSpot: [action.data],
+        isLoading: false,
+      };
+    }
+
     default:
       return state;
   }

@@ -1,0 +1,151 @@
+.profile {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  hr {
+    border: 1px solid #14213d;
+    width: 80%;
+    border-radius: 3px;
+  }
+
+  &__header {
+    padding:3em;
+    display:flex;
+    
+    &--picture {
+      border-radius: 50%;
+      width: 10rem;
+      border: 5px solid #fca311;
+      padding: .3em;
+    }
+
+    &--informations {
+      margin-left:2em;
+      max-width:70%;
+
+      h1 {
+        font-size: 2em;
+        font-family: 'Oleo Script';
+        color: #fca311;
+      }
+    
+      h2 {
+        font-size: 1.2em;
+        color: #14213d;
+        font-weight: 700;
+        margin-bottom:1em;
+      }
+    
+      h3 {
+        font-size: 1em;
+        color: #14213d;
+        font-weight: 700;
+        margin-bottom: .5em;
+      }
+    }
+  }
+
+  &__favorites {
+    padding: 0 3em;
+    text-align: center;
+
+    &--title {
+      color: #14213d;
+      font-size: 1.5em;
+      font-weight: 700;
+      margin: 1em auto;
+      font-family: 'Oleo Script';
+    }
+
+    &--cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  }
+
+  &__map {
+    width: 90%;
+    margin: 2em 0;
+    border: 5px solid #fca311;
+    border-radius: 10px;
+    padding: .3em;
+    min-height: 300px;
+
+    .leaflet-container {
+      max-width:100%;
+      height:100%;
+    }
+  }
+}
+
+.section {
+
+  &-map {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .profile {
+
+    &__header {
+      padding:3em;
+      display:flex;
+      flex-wrap:wrap;
+      justify-content: center;
+
+      &--informations {
+        margin-left:2em;
+        text-align: center;
+        margin: 1em 0;
+      }
+    }
+
+    &__favorites {
+      padding: 0;
+
+      &--cards > a {
+        width: 50%;
+        display: flex;
+        justify-content: center;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .profile {
+
+    &__favorites--cards {
+      justify-content: flex-start;
+    }
+  }
+  .section {
+    display: flex;
+    width: 80%;
+
+    &-favorites {
+      width: 70%;
+
+      .profile__favorites {
+        padding:0;
+      }
+    }
+
+    &-map {
+      width: 30%;
+
+      .profile__map {
+        margin: 2em 0 .5em;
+        border: 5px solid #fca311;
+        border-radius: 10px;
+        padding: .3em;
+        width: 100%;
+        max-height:70vh;
+      }
+    }
+  }
+}
