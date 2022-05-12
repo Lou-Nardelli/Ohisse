@@ -146,6 +146,17 @@
           width: 670px;
         }
       }
+
+      &--mapsubmit {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+
+        input {
+          width: 100%;
+        }
+      }
     }
   }
 }
