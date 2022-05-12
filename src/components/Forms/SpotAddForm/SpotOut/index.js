@@ -109,7 +109,7 @@ function SpotOut() {
               value={inputCountryValue}
               onChange={(event) => handleChangeField(event.target.value, 'inputCountry')}
             >
-              <option value="" selected disabled hidden>Merci de choisir le pays</option>
+              <option value="" defaultValue disabled hidden>Merci de choisir le pays</option>
               <option value="france">France</option>
               <option value="italy">Italie</option>
               <option value="spain">Espagne</option>
@@ -124,7 +124,7 @@ function SpotOut() {
               value={inputDisciplineValue}
               onChange={(event) => handleChangeField(event.target.value, 'inputDiscipline')}
             >
-              <option value="" selected disabled hidden>Quelle(s) discipline(s) sur ce spot</option>
+              <option value="" defaultValue disabled hidden>Quelle(s) discipline(s) sur ce spot</option>
               <option value="boulder">Bloc</option>
               <option value="route">Voie</option>
               <option value="both">Les deux</option>
@@ -136,10 +136,10 @@ function SpotOut() {
               value={inputRockTypeValue}
               onChange={(event) => handleChangeField(event.target.value, 'inputRockType')}
             >
-              <option value="" selected disabled hidden>Quel type de roche</option>
+              <option value="" defaultValue disabled hidden>Quel type de roche</option>
               {
                 rocks.map((item) => (
-                  <option value={item}>{item}</option>
+                  <option key={item} value={item}>{item}</option>
                 ))
               }
             </select>
@@ -150,10 +150,10 @@ function SpotOut() {
               value={inputMinDifValue}
               onChange={(event) => handleChangeField(event.target.value, 'inputMinDif')}
             >
-              <option value="" selected disabled hidden>Le niveau minimum</option>
+              <option value="" defaultValue disabled hidden>Le niveau minimum</option>
               {
                 cotations.map((item) => (
-                  <option value={item}>{item}</option>
+                  <option key={item} value={item}>{item}</option>
                 ))
               }
             </select>
@@ -164,11 +164,11 @@ function SpotOut() {
               value={inputMaxDifValue}
               onChange={(event) => handleChangeField(event.target.value, 'inputMaxDif')}
             >
-              <option value="" selected disabled hidden>Le niveau maximum</option>
+              <option value="" defaultValue disabled hidden>Le niveau maximum</option>
               {
                 cotations.map((item, index) => {
                   if (cotations.findIndex(value) <= index) {
-                    return <option value={item}>{item}</option>;
+                    return <option key={item} value={item}>{item}</option>;
                   }
                   return null;
                 })
@@ -191,7 +191,7 @@ function SpotOut() {
               name="picture"
               className="spotout__form-input"
               id="spotout__form-input-picture"
-              placeholder="URL d'une photo de la salle"
+              placeholder="URL d'une photo du spot"
               value={inputPictureValue}
               onChange={(event) => handleChangeField(event.target.value, 'inputPicture')}
             />

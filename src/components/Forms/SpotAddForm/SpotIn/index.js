@@ -87,7 +87,7 @@ function SpotIn() {
               value={inputCountryValue}
               onChange={(event) => handleChangeField(event.target.value, 'inputCountry')}
             >
-              <option value="" selected disabled hidden>Merci de choisir le pays</option>
+              <option value="" defaultValue disabled hidden>Merci de choisir le pays</option>
               <option value="france">France</option>
               <option value="italy">Italie</option>
               <option value="spain">Espagne</option>
@@ -102,7 +102,7 @@ function SpotIn() {
               value={inputDisciplineValue}
               onChange={(event) => handleChangeField(event.target.value, 'inputDiscipline')}
             >
-              <option value="" selected disabled hidden>Quelle(s) discipline(s) dans cette salle</option>
+              <option value="" defaultValue disabled hidden>Quelle(s) discipline(s) dans cette salle</option>
               <option value="boulder">Bloc</option>
               <option value="route">Voie</option>
               <option value="both">Les deux</option>
@@ -114,7 +114,7 @@ function SpotIn() {
               value={inputReputationValue}
               onChange={(event) => handleChangeField(event.target.value, 'inputReputation')}
             >
-              <option value="" selected disabled hidden>Le niveau global de la salle</option>
+              <option value="" defaultValue disabled hidden>Le niveau global de la salle</option>
               <option value="easy">Plutôt facile</option>
               <option value="medium">D'un niveau moyen</option>
               <option value="hard">Putôt costaud</option>

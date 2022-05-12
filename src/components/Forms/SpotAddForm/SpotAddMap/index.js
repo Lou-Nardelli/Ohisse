@@ -39,6 +39,7 @@ function SpotAddMap({ spots }) {
           className="spotin__form-input"
           placeholder="Cliquez sur la carte"
           value={inputLat}
+          readOnly
         />
       </label>
       <label htmlFor="city">Longitude
@@ -48,6 +49,7 @@ function SpotAddMap({ spots }) {
           className="spotin__form-input"
           placeholder="Cliquez sur la carte"
           value={inputLng}
+          readOnly
         />
       </label>
       <MapContainer center={[46.7, 2]} zoom={5} scrollWheelZoom>
