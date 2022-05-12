@@ -25,3 +25,11 @@ export const registerUser = () => ({
   type: REGISTER_USER,
 
 });
+
+// ACTION TYPE IS_REGISTER
+export const IS_REGISTER = 'IS_REGISTER';
+
+// ACTION CREATOR isRegister
+export const isRegister = () => ({
+  type: IS_REGISTER,
+});

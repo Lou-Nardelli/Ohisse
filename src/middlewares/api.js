@@ -3,7 +3,7 @@ import axios from 'axios';
 import {
   FETCH_SPOTS, FETCH_SPOT_BY_ID, saveSpotById, saveSpots,
 } from '../actions/spots';
-import { REGISTER_USER } from '../actions/user';
+import { isRegister, REGISTER_USER } from '../actions/user';
 
 const axiosInstance = axios.create({
   // API url
@@ -70,12 +70,12 @@ const apiMiddleWare = (store) => (next) => (action) => {
             description: null,
             email: inputEmail,
             password: inputPassword,
-            // role: 1,
+            role: 'user',
           },
         )
         .then((response) => {
           console.log(response.data);
-          // todo action to register response to state (state -> user -> currentUser)
+          store.dispatch(isRegister());
         })
         .catch(() => {
           console.log('oups...');

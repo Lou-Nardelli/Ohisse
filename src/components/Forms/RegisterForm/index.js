@@ -1,5 +1,8 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { changeField, confirmPassword, registerUser } from '../../../actions/user';
+import { Link } from 'react-router-dom';
+import {
+  changeField, confirmPassword, registerUser,
+} from '../../../actions/user';
 // styles
 import './registerForm.scss';
 
@@ -16,6 +19,7 @@ function RegisterForm() {
     inputCity,
     inputCountry,
     isError,
+    isRegister,
   } = useSelector((state) => state.user);
 
   const handleChangeField = (value, name) => {
@@ -52,6 +56,11 @@ function RegisterForm() {
 
         <button className="registerForm__button" type="submit"> Créer un nouveau compte </button>
       </form>
+      {isRegister === true && (
+        <Link to="/connexion">
+          <p className="registerForm__message">Compte enregistré, veuillez vous connecter</p>
+        </Link>
+      )}
 
     </div>
   );
