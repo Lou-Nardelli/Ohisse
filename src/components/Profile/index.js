@@ -3,7 +3,7 @@ import {
   MapContainer, TileLayer, Marker, Popup,
 } from 'react-leaflet';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import Card from '../Card';
 
 // styles
@@ -15,9 +15,14 @@ import ohisseIcon from './icon';
 function Profile() {
   const listSpots = useSelector((state) => state.spots.listSpots);
   const currentUser = useSelector((state) => state.user.currentUser);
+  const isLogged = useSelector((state) => state.user.isLogged);
 
   if (currentUser.description.length === 0) {
     currentUser.description = "Ma description n'est pas encore remplie, mais je procrastine encore un peu avant de m'y mettre !";
+  }
+
+  if (!isLogged) {
+    return (<Navigate to="/" replace />);
   }
 
   return (
