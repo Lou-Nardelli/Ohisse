@@ -14,10 +14,25 @@
   }
 
   &__content {
-    color: #fca311;
-    font-size: 15em;
-    font-weight: 300;
-    font-family: 'Oleo Script';
+    display: flex;
+    padding: 1em;
+    position: relative;
+
+    &--title {
+      color: #fca311;
+      font-family: Oleo Script;
+      font-size: 15em;
+      font-weight: 300;
+      z-index: 1;
+    }
+
+    &--gif {
+      border-radius: 10px;
+      margin: 1em 0;
+      width: 50%;
+      position: absolute;
+      right: -10em;
+    }
   }
 
   &__button {
