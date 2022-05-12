@@ -33,3 +33,12 @@ export const IS_REGISTER = 'IS_REGISTER';
 export const isRegister = () => ({
   type: IS_REGISTER,
 });
+
+// ACTION TYPE LOGGIN
+export const LOGGIN = 'LOGGIN';
+
+// ACTION CREATOR loggin
+export const loggin = () => ({
+  type: LOGGIN,
+
+});

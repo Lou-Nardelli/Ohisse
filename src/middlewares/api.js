@@ -3,7 +3,7 @@ import axios from 'axios';
 import {
   FETCH_SPOTS, FETCH_SPOT_BY_ID, saveSpotById, saveSpots,
 } from '../actions/spots';
-import { isRegister, REGISTER_USER } from '../actions/user';
+import { isRegister, LOGGIN, REGISTER_USER } from '../actions/user';
 
 const axiosInstance = axios.create({
   // API url
@@ -76,6 +76,40 @@ const apiMiddleWare = (store) => (next) => (action) => {
         .then((response) => {
           console.log(response.data);
           store.dispatch(isRegister());
+        })
+        .catch(() => {
+          console.log('oups...');
+        });
+      next(action);
+      break;
+    }
+    // to connect the user
+    case LOGGIN: {
+      // double destructuration
+      const { user: { inputEmail, inputPassword } } = store.getState();
+
+      // we send to API password and email
+      axiosInstance
+        .post(
+          // 'login',
+          {
+            email: inputEmail,
+            password: inputPassword,
+          },
+        )
+        // we recive information about user and token
+        .then((response) => {
+          const { data: user } = response;
+
+          // we save token to axios
+          axiosInstance.defaults.headers.common.Authorization = `Bearer ${user.token}`;
+
+          // on demande la sauvegarde de ce user
+          // store.dispatch(saveUser(user));
+
+          // on peut demander la récupération des favoris
+          // immédiatement après s'être loggé
+          // store.dispatch(fetchFavorites());
         })
         .catch(() => {
           console.log('oups...');
