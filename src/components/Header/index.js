@@ -1,6 +1,8 @@
 // == Import : npm
 import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, NavLink } from 'react-router-dom';
+import { logout } from 'src/actions/user';
 import AppBar from '@mui/material/AppBar';
 import MenuIcon from '@material-ui/icons/Menu';
 import CloseIcon from '@material-ui/icons/Close';
@@ -25,6 +27,9 @@ import AccountConnect from './AccountConnect';
 
 // == Composant
 function Header() {
+  const isLogged = useSelector((state) => state.user.isLogged);
+  const dispatch = useDispatch();
+
   // Link's array
   const navLinks = [
     { name: 'Carte', href: '/map' },
@@ -34,6 +39,10 @@ function Header() {
   ];
 
   const [open, setOpen] = useState(false);
+
+  const handleLogout = () => {
+    dispatch(logout());
+  };
 
   return (
     // Material UI components
@@ -57,7 +66,7 @@ function Header() {
                   <Brightness2Icon />
                 </div>
                 {/* Menu component with connexion pop-up */}
-                <AccountConnect />
+                <AccountConnect handleLogout={handleLogout} />
               </Hidden>
             </div>
             {/* Button of hamburger menu */}
@@ -98,15 +107,31 @@ function Header() {
                   </NavLink>
                 </ListItem>
               ))}
-              <ListItem className="burger__links burger__account">
-                <NavLink to="/profil" onClick={() => setOpen(false)}><img className="burger__account--image" src={userLogo} alt="user logo" />Mon Compte</NavLink>
-              </ListItem>
+              {isLogged && (
+                <ListItem className="burger__links burger__account">
+                  <NavLink to="/profil" onClick={() => setOpen(false)}><img className="burger__account--image" src={userLogo} alt="user logo" />Mon Compte</NavLink>
+                </ListItem>
+              )}
             </List>
           </div>
           {/* Links of bottom burger nav */}
           <List>
             <ListItem className="burger__links burger__connect">
-              <NavLink to="/connexion" onClick={() => setOpen(false)}><img className="burger__connect--image" src={userLogo} alt="user logo" />Connexion</NavLink>
+              {isLogged && (
+                <NavLink
+                  to="/"
+                  onClick={() => {
+                    setOpen(false);
+                    handleLogout();
+                  }}
+                >
+                  <img className="burger__connect--image" src={userLogo} alt="user logo" />
+                  Déconnexion
+                </NavLink>
+              )}
+              {!isLogged && (
+                <NavLink to="/connexion" onClick={() => setOpen(false)}><img className="burger__connect--image" src={userLogo} alt="user logo" />Connexion</NavLink>
+              )}
               <div className="burger__connect--dark-mode">
                 <WbSunnyIcon />
                 <Switch />

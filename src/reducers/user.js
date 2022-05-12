@@ -1,4 +1,9 @@
-import { CHANGE_FIELD, CONFIRM_PASSWORD, IS_REGISTER } from '../actions/user';
+import {
+  CHANGE_FIELD,
+  CONFIRM_PASSWORD,
+  IS_REGISTER,
+  LOGOUT,
+} from '../actions/user';
 
 export const initialState = {
   list: [],
@@ -53,6 +58,11 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         isRegister: true,
+      };
+    case LOGOUT:
+      return {
+        ...state,
+        isLogged: false,
       };
 
     default:
