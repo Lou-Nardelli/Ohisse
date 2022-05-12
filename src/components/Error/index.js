@@ -13,7 +13,7 @@ function Error() {
         <p className="error__content--title">404</p>
         <img className="error__content--gif" src={failGif} alt="Fail climbing gif" />
       </div>
-      <button type="button" className="error__button"><Link to="/">Retour à l'accueil</Link></button>
+      <Link to="/"><button type="button" className="error__button">Retour à l'accueil</button></Link>
     </div>
   );
 }
