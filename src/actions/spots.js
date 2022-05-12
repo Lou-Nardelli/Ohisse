@@ -48,7 +48,7 @@ export const RECOVER_LAT_LNG = 'RECOVER_LAT_LNG';
 export const recoverLatLng = (latlng) => ({
   type: RECOVER_LAT_LNG,
   latlng,
-  
+});
 // ACTION TYPE FETCH_SPOTS
 export const FETCH_SPOTS = 'FETCH_SPOTS';
 
