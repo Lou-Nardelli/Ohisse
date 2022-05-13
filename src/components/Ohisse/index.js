@@ -1,5 +1,5 @@
 // == Import : npm
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 
 // == Import : local
@@ -32,6 +32,16 @@ function Ohisse() {
     // load all spots from API
     dispatch(fetchSpots());
   }, []);
+
+  const location = useLocation();
+  // when url change
+  useEffect(
+    () => {
+      // scroll up
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    },
+    [location],
+  );
   // all spots (from state)
   const spots = useSelector((state) => state.spots.listSpots);
   // filter to get a array of interior spots
