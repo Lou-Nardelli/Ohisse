@@ -1,3 +1,5 @@
+@import 'src/styles/theme-colors.scss';
+
 .error {
   align-content: center;
   display: flex;
@@ -15,7 +17,9 @@
   }
 
   &__title {
-    color: #14213d;
+    @include themed() {
+      color: ask($text);
+    }
     font-size: 1.3em;
     font-weight: 300;
   }
@@ -47,7 +51,9 @@
     width: 30em;
     height: 3em;
     border: none;
-    background-color: #14213d;
+    @include themed() {
+      background-color: ask($button);
+    }
     color: #fff;
     border-radius: 4px;
   }

@@ -1,5 +1,5 @@
 @use '/src/styles/vars';
-
+@import 'src/styles/theme-colors.scss';
 
 .spotin {
   margin: auto;
@@ -7,7 +7,9 @@
   width: 100%;
   &__title {
     font-family: Oleo Script,cursive;
-    color: vars.$color-brown;
+    @include themed() {
+      color: ask($title-brown);
+    }
     font-size: 2rem;
     text-align: center;
     font-weight: bold;
@@ -30,6 +32,12 @@
       align-self: center;
       border: 1px solid vars.$color-orange;
       border-radius: 5px;
+      @include themed() {
+        background-color: ask($bg);
+      }
+      @include themed() {
+        color: ask($text);
+      }
     }
 
     input::-webkit-outer-spin-button,
@@ -45,8 +53,12 @@
     }
 
     textarea::selection {
-      color: vars.$color-orange;
-      background-color: vars.$color-blue;
+      @include themed() {
+        color: ask($text);
+      }
+      @include themed() {
+        background-color: ask($bg);
+      }
     }
 
     textarea:focus {
@@ -66,7 +78,9 @@
       display: flex;
       flex-direction: column;
       font-weight: bold;
-      color: vars.$color-blue;
+      @include themed() {
+        color: ask($text);
+      }
       letter-spacing: 1px;
       cursor: default;
     }
@@ -104,9 +118,13 @@
 
     &-button {
       margin: 1rem 0;
-      background-color: vars.$color-orange;
+      @include themed() {
+        background-color: ask($button);
+      }
       border: solid 1px vars.$color-blue;
-      color: vars.$color-blue;
+      @include themed() {
+        color: ask($text);
+      }
       margin-bottom: 1rem;
       padding: 0.5rem;
       width: 50%;

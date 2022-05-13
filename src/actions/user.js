@@ -41,3 +41,12 @@ export const LOGOUT = 'LOGOUT';
 export const logout = () => ({
   type: LOGOUT,
 });
+
+// ACTION TYPE DARKMODE
+export const DARKMODE = 'DARKMODE';
+
+// ACTION CREATOR darkMode
+export const darkMode = (isDarkMode) => ({
+  type: DARKMODE,
+  isDarkMode,
+});

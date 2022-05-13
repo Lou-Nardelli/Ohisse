@@ -1,14 +1,19 @@
 @use 'src/styles/_vars';
+@import 'src/styles/theme-colors.scss';
 
 .selectSpotType {
   margin-bottom:  2rem;
+  height: 100%;
+  
   &__question {
     font-family: Oleo Script,cursive;
     font-weight: bold;
     font-size: 2rem;
     padding: 1rem;
-    color: vars.$color-brown;
     text-align: center;
+    @include themed() {
+      color: ask($title-brown);
+    }
   }
 
   &__choice {

@@ -35,6 +35,8 @@ function Ohisse() {
     },
     [],
   );
+  // calling boolean of dark-theme mode
+  const theme = useSelector((state) => state.user.isDarkMode);
   // all spots (from state)
   const spots = useSelector((state) => state.spots.listSpots);
   // filter to get a array of interior spots
@@ -42,27 +44,30 @@ function Ohisse() {
   // filter to get a array of outdoor spots
   const spotsOutdoor = spots.filter((item) => item.type === 'Spot');
   return (
-    <div className="ohisse">
-      <Header />
+    // using a div that contains the dark/light theme class
+    <div className={`theme ${theme ? 'theme--dark' : 'theme--light'}`}>
+      <div className="ohisse">
+        <Header />
 
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/fiche-spot/:slug" element={<SpotPage />} />
-        <Route path="/fiches-interieur" element={<Spots listSpots={spotsIndoor} title="Salles intérieures" />} />
-        <Route path="/fiches-exterieur" element={<Spots listSpots={spotsOutdoor} title="Spots extérieurs" />} />
-        <Route path="/map" element={<HomeMap />} />
-        <Route path="/ajout-spot" element={<SelectSpotType />} />
-        <Route path="/ajout-spot-interieur" element={<SpotIn />} />
-        <Route path="/ajout-spot-exterieur" element={<SpotOut />} />
-        <Route path="/connexion" element={<LogginForm />} />
-        <Route path="/profil" element={<Profile />} />
-        <Route path="/inscription" element={<RegisterForm />} />
-        <Route path="/equipe" element={<Home />} />
-        <Route path="/mentions-legales" element={<Home />} />
-        <Route path="*" element={<Error />} />
-      </Routes>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/fiche-spot/:slug" element={<SpotPage />} />
+          <Route path="/fiches-interieur" element={<Spots listSpots={spotsIndoor} title="Salles intérieures" />} />
+          <Route path="/fiches-exterieur" element={<Spots listSpots={spotsOutdoor} title="Spots extérieurs" />} />
+          <Route path="/map" element={<HomeMap />} />
+          <Route path="/ajout-spot" element={<SelectSpotType />} />
+          <Route path="/ajout-spot-interieur" element={<SpotIn />} />
+          <Route path="/ajout-spot-exterieur" element={<SpotOut />} />
+          <Route path="/connexion" element={<LogginForm />} />
+          <Route path="/profil" element={<Profile />} />
+          <Route path="/inscription" element={<RegisterForm />} />
+          <Route path="/equipe" element={<Home />} />
+          <Route path="/mentions-legales" element={<Home />} />
+          <Route path="*" element={<Error />} />
+        </Routes>
 
-      <Footer />
+        <Footer />
+      </div>
     </div>
   );
 }

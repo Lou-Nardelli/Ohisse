@@ -1,8 +1,11 @@
 @use 'src/styles/vars';
+@import 'src/styles/theme-colors.scss';
 
 .header {
-    background-color: vars.$color-grey;
     max-width: 100% !important;
+    @include themed() {
+      background-color: ask($bg);
+    }
 
     &-bar {
       display: flex;
@@ -17,9 +20,23 @@
       &__links {
         display: flex;
         align-items: center;
-        color: #14213d;
+        @include themed() {
+          color: ask($nav-text);
+        }
       }
     }
+}
+
+svg {
+  @include themed() {
+    color: ask($text);
+  }
+}
+
+.MuiSwitch-track {
+  @include themed() {
+    background-color: ask($nav-switch);
+  }
 }
 
 .gutter-links {
