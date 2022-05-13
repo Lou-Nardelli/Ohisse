@@ -40,6 +40,7 @@ function SpotAddMap({ spots }) {
           placeholder="Cliquez sur la carte"
           value={inputLat}
           readOnly
+          required
         />
       </label>
       <label htmlFor="city">Longitude
@@ -50,6 +51,7 @@ function SpotAddMap({ spots }) {
           placeholder="Cliquez sur la carte"
           value={inputLng}
           readOnly
+          required
         />
       </label>
       <MapContainer center={[46.7, 2]} zoom={5} scrollWheelZoom>

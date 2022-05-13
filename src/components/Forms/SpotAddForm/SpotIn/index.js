@@ -29,9 +29,9 @@ function SpotIn() {
   const inputPictureValue = useSelector((state) => state.spots.inputPicture);
   const currentSpot = useSelector((state) => state.spots.currentSpot);
 
-  useEffect(() => {
-    dispatch(purgeSpotaddForm());
-  }, [SpotIn]);
+  // useEffect(() => {
+  //   dispatch(purgeSpotaddForm());
+  // }, [SpotIn]);
 
   const handleChangeField = (value, name) => {
     dispatch(changeField(value, name));
@@ -61,6 +61,7 @@ function SpotIn() {
               placeholder="Nom de la salle"
               value={inputNameValue}
               onChange={(event) => handleChangeField(event.target.value, 'inputName')}
+              required
             />
           </label>
         </div>
@@ -105,6 +106,7 @@ function SpotIn() {
               placeholder="Ville"
               value={inputCityValue}
               onChange={(event) => handleChangeField(event.target.value, 'inputCity')}
+              required
             />
           </label>
           <label htmlFor="country">Pays
@@ -112,12 +114,13 @@ function SpotIn() {
               name="country"
               value={inputCountryValue}
               onChange={(event) => handleChangeField(event.target.value, 'inputCountry')}
+              required
             >
               <option value="" defaultValue disabled hidden>Merci de choisir le pays</option>
-              <option value="france">France</option>
-              <option value="italy">Italie</option>
-              <option value="spain">Espagne</option>
-              <option value="swiss">Suisse</option>
+              <option value="France">France</option>
+              <option value="Italie">Italie</option>
+              <option value="Espagne">Espagne</option>
+              <option value="Suisse">Suisse</option>
             </select>
           </label>
         </div>
@@ -127,11 +130,12 @@ function SpotIn() {
               name="discipline"
               value={inputDisciplineValue}
               onChange={(event) => handleChangeField(event.target.value, 'inputDiscipline')}
+              required
             >
               <option value="" defaultValue disabled hidden>Quelle(s) discipline(s) dans cette salle</option>
-              <option value="boulder">Bloc</option>
-              <option value="route">Voie</option>
-              <option value="both">Les deux</option>
+              <option value="Bloc">Bloc</option>
+              <option value="Voie">Voie</option>
+              <option value="Bloc/Voie">Les deux</option>
             </select>
           </label>
           <label htmlFor="reputation">Réputation de la salle
@@ -154,6 +158,7 @@ function SpotIn() {
               placeholder="Les informations intéressantes et manquantes à avoir sur ce lieu"
               value={inputDescriptionValue}
               onChange={(event) => handleChangeField(event.target.value, 'inputDescription')}
+              required
             />
           </label>
           <label htmlFor="picture">Photo

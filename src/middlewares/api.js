@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 import {
-  FETCH_SPOTS, FETCH_SPOT_BY_ID, REGISTER_SPOT, saveSpotById, saveSpots,
+  FETCH_SPOTS, FETCH_SPOT_BY_ID, REGISTER_SPOT, saveSpotById, saveSpots, fetchSpots,
 } from '../actions/spots';
 import { isRegister, REGISTER_USER } from '../actions/user';
 
@@ -130,7 +130,7 @@ const apiMiddleWare = (store) => (next) => (action) => {
         )
         .then((response) => {
           console.log(response.data);
-          // store.dispatch(fetchSpots());
+          store.dispatch(fetchSpots());
         })
         .catch(() => {
           console.log('oups...');

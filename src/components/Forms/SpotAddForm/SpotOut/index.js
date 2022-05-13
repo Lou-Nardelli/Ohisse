@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 // import { changeField } from '../../../../actions/user';
 import logoOhisse from 'src/assets/img/logo-simple-bicolor.png';
 import SpotAddMap from '../SpotAddMap';
-import { changeField, purgeSpotaddForm } from '../../../../actions/spots';
+import { changeField, purgeSpotaddForm, registerSpot } from '../../../../actions/spots';
 
 // styles
 import './spotout.scss';
@@ -64,6 +64,12 @@ function SpotOut() {
     dispatch(purgeSpotaddForm());
   }, [SpotOut]);
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log('i submit');
+    dispatch(registerSpot());
+  };
+
   const value = (element) => element === inputMinDifValue;
 
   return (
@@ -73,7 +79,7 @@ function SpotOut() {
       </h2>
       <form
         className="spotout__form"
-        // onSubmit={handleSubmit}
+        onSubmit={handleSubmit}
       >
         <div className="spotout__form--label-name">
           <label htmlFor="name">Nom du spot
@@ -84,6 +90,7 @@ function SpotOut() {
               placeholder="Nom du spot"
               value={inputNameValue}
               onChange={(event) => handleChangeField(event.target.value, 'inputName')}
+              required
             />
           </label>
         </div>
@@ -106,6 +113,7 @@ function SpotOut() {
               placeholder="Ville"
               value={inputCityValue}
               onChange={(event) => handleChangeField(event.target.value, 'inputCity')}
+              required
             />
           </label>
           <label htmlFor="country">Pays
@@ -113,12 +121,13 @@ function SpotOut() {
               name="country"
               value={inputCountryValue}
               onChange={(event) => handleChangeField(event.target.value, 'inputCountry')}
+              required
             >
               <option value="" defaultValue disabled hidden>Merci de choisir le pays</option>
-              <option value="france">France</option>
-              <option value="italy">Italie</option>
-              <option value="spain">Espagne</option>
-              <option value="swiss">Suisse</option>
+              <option value="France">France</option>
+              <option value="Italie">Italie</option>
+              <option value="Espange">Espagne</option>
+              <option value="Suisse">Suisse</option>
             </select>
           </label>
         </div>
@@ -128,11 +137,12 @@ function SpotOut() {
               name="discipline"
               value={inputDisciplineValue}
               onChange={(event) => handleChangeField(event.target.value, 'inputDiscipline')}
+              required
             >
               <option value="" defaultValue disabled hidden>Quelle(s) discipline(s) sur ce spot</option>
-              <option value="boulder">Bloc</option>
-              <option value="route">Voie</option>
-              <option value="both">Les deux</option>
+              <option value="Bloc">Bloc</option>
+              <option value="Voie">Voie</option>
+              <option value="Bloc/Voie">Les deux</option>
             </select>
           </label>
           <label htmlFor="rocktype">Type de roche
@@ -188,6 +198,7 @@ function SpotOut() {
               placeholder="Les informations intéressantes et manquantes à avoir sur ce lieu"
               value={inputDescriptionValue}
               onChange={(event) => handleChangeField(event.target.value, 'inputDescription')}
+              required
             />
           </label>
           <label htmlFor="picture">Photo

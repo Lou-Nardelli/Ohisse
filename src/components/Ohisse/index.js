@@ -28,13 +28,10 @@ function Ohisse() {
   // hook useDispatch to dispatch actions
   const dispatch = useDispatch();
   // when mounting component Ohisse
-  useEffect(
-    () => {
-      // load all spots from API
-      dispatch(fetchSpots());
-    },
-    [],
-  );
+  useEffect(() => {
+    // load all spots from API
+    dispatch(fetchSpots());
+  }, []);
   // all spots (from state)
   const spots = useSelector((state) => state.spots.listSpots);
   // filter to get a array of interior spots
