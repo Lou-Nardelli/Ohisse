@@ -27,9 +27,9 @@
     }
 }
 
-svg {
+.header-bar svg {
   @include themed() {
-    color: ask($text);
+    color: ask($button);
   }
 }
 
