@@ -17,7 +17,7 @@ export const initialState = {
   inputCountry: '',
   isError: false,
   isRegister: false,
-  isLogged: true,
+  isLogged: false,
 
   currentUser: {
     firstname: 'Thibault',
