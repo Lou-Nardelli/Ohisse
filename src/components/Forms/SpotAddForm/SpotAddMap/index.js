@@ -21,7 +21,7 @@ function SpotAddMap({ spots }) {
   // Events
   function HandleClickMap() {
     const dispatch = useDispatch();
-    const map = useMapEvents({
+    useMapEvents({
       click(event) {
         // console.log(event.latlng);
         dispatch(recoverLatLng(event.latlng));
