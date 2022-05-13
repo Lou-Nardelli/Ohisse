@@ -6,7 +6,9 @@ import { useEffect } from 'react';
 // import { changeField } from '../../../../actions/user';
 import logoOhisse from 'src/assets/img/logo-simple-bicolor.png';
 import SpotAddMap from '../SpotAddMap';
-import { changeField, purgeSpotaddForm } from '../../../../actions/spots';
+import {
+  changeField, purgeSpotaddForm, registerSpot,
+} from '../../../../actions/spots';
 
 // styles
 import './spotin.scss';
@@ -16,6 +18,7 @@ function SpotIn() {
   const dispatch = useDispatch();
   // Used to read the state
   const inputNameValue = useSelector((state) => state.spots.inputName);
+  const inputNumberValue = useSelector((state) => state.spots.inputNumber);
   const inputAddressValue = useSelector((state) => state.spots.inputAddress);
   const inputZipCodeValue = useSelector((state) => state.spots.inputZipCode);
   const inputCityValue = useSelector((state) => state.spots.inputCity);
@@ -26,13 +29,19 @@ function SpotIn() {
   const inputPictureValue = useSelector((state) => state.spots.inputPicture);
   const currentSpot = useSelector((state) => state.spots.currentSpot);
 
+  useEffect(() => {
+    dispatch(purgeSpotaddForm());
+  }, [SpotIn]);
+
   const handleChangeField = (value, name) => {
     dispatch(changeField(value, name));
   };
 
-  useEffect(() => {
-    dispatch(purgeSpotaddForm());
-  }, [SpotIn]);
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log('i submit');
+    dispatch(registerSpot());
+  };
 
   return (
     <div className="spotin">
@@ -41,7 +50,7 @@ function SpotIn() {
       </h2>
       <form
         className="spotin__form"
-        // onSubmit={handleSubmit}
+        onSubmit={handleSubmit}
       >
         <div className="spotin__form--label-name">
           <label htmlFor="name">Nom de la salle
@@ -52,6 +61,18 @@ function SpotIn() {
               placeholder="Nom de la salle"
               value={inputNameValue}
               onChange={(event) => handleChangeField(event.target.value, 'inputName')}
+            />
+          </label>
+        </div>
+        <div className="spotin__form--label-address">
+          <label htmlFor="number">Numéro
+            <input
+              type="number"
+              name="number"
+              className="spotin__form-input"
+              placeholder="Numéro"
+              value={inputNumberValue}
+              onChange={(event) => handleChangeField(event.target.value, 'inputNumber')}
             />
           </label>
         </div>
