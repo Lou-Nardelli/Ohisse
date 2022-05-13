@@ -55,6 +55,7 @@ export const initialState = {
   inputLat: '',
   inputLng: '',
   type: '',
+
 };
 
 const reducer = (state = initialState, action = {}) => {

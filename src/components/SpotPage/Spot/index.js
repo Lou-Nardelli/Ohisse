@@ -64,7 +64,7 @@ Spot.propTypes = {
   country: PropTypes.string.isRequired,
   discipline: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
-  rockType: PropTypes.string.isRequired,
+  rockType: PropTypes.string,
   picture: PropTypes.string,
   various: PropTypes.string,
   reputation: PropTypes.string,
@@ -81,6 +81,7 @@ Spot.defaultProps = {
   number: '',
   street: '',
   zipcode: '',
+  rockType: '',
 };
 
 export default Spot;
