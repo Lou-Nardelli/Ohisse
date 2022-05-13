@@ -120,9 +120,7 @@
     &-button {
       margin: 1rem 0;
       border: solid 1px vars.$color-blue;
-      @include themed() {
-        background-color: ask($button);
-      }
+      background-color: vars.$color-orange;
       border: solid 1px vars.$color-blue;
       @include themed() {
         color: ask($text);
