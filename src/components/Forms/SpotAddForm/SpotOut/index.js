@@ -64,6 +64,10 @@ function SpotOut() {
     dispatch(purgeSpotaddForm());
   }, [SpotOut]);
 
+  useEffect(() => {
+    dispatch(changeField('Spot', 'type'));
+  }, []);
+
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log('i submit');

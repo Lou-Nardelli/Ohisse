@@ -33,6 +33,10 @@ function SpotIn() {
   //   dispatch(purgeSpotaddForm());
   // }, [SpotIn]);
 
+  useEffect(() => {
+    dispatch(changeField('Salle', 'type'));
+  }, []);
+
   const handleChangeField = (value, name) => {
     dispatch(changeField(value, name));
   };
@@ -161,6 +165,7 @@ function SpotIn() {
               required
             />
           </label>
+
           <label htmlFor="picture">Photo
             <input
               type="url"
