@@ -117,6 +117,13 @@ const apiMiddleWare = (store) => (next) => (action) => {
 
           // we fetch all favorite spots
           // store.dispatch(fetchFavorites());
+        })
+        .catch(() => {
+          console.log('oups...');
+        });
+      next(action);
+      break;
+    }
 
     case REGISTER_SPOT: {
       // double destructuration
@@ -166,7 +173,6 @@ const apiMiddleWare = (store) => (next) => (action) => {
         .then((response) => {
           console.log(response.data);
           store.dispatch(fetchSpots());
-
         })
         .catch(() => {
           console.log('oups...');
