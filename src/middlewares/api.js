@@ -4,7 +4,7 @@ import {
   FETCH_SPOTS, FETCH_SPOT_BY_ID, REGISTER_SPOT, saveSpotById, saveSpots, fetchSpots,
 } from '../actions/spots';
 import {
-  isLogged, isRegister, LOGGIN, REGISTER_USER,
+  isLogged, isRegister, LOGGIN, LOGOUT, REGISTER_USER,
 } from '../actions/user';
 
 const axiosInstance = axios.create({
@@ -102,15 +102,21 @@ const apiMiddleWare = (store) => (next) => (action) => {
         )
         // we recive information about user and token
         .then((response) => {
-          // const { data: accès_token } = response;
-          console.log(response.data.access_token);
-          const token = response.data.access_token;
+          console.log('connexion OK');
+
+          const tokenAPI = response.data.access_token;
+
+          // we save token to local storage
+          localStorage.setItem('token', JSON.stringify(tokenAPI));
+
+          // we retrieve token of the localStorage
+          const tokenStringigy = localStorage.getItem('token');
+          // we transform token into JSON
+          const token = JSON.parse(tokenStringigy);
+          console.log(token);
 
           // we save token to axios
           axiosInstance.defaults.headers.common.Authorization = `Bearer ${token}`;
-
-          // we save token to local storage
-          localStorage.setItem('token', JSON.stringify(token));
 
           // we modify the state to inform that the use is connected
           store.dispatch(isLogged());
@@ -151,9 +157,24 @@ const apiMiddleWare = (store) => (next) => (action) => {
         },
       } = store.getState();
 
+      // we retrieve token of the localStorage
+      // const tokenStringigy = localStorage.getItem('token');
+      // we transform token into JSON
+      // const token = JSON.parse(tokenStringigy);
+      // console.log(token);
+
+      // console.log(axiosInstance);
+
       axiosInstance
         .post(
           'api/spots/create',
+          /*
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          },
+          */
           {
             name: inputName,
             number: 33,
@@ -172,6 +193,7 @@ const apiMiddleWare = (store) => (next) => (action) => {
             min_difficulty: inputMinDif,
             max_difficulty: inputMaxDif,
           },
+
         )
         .then((response) => {
           console.log(response.data);
@@ -180,6 +202,14 @@ const apiMiddleWare = (store) => (next) => (action) => {
         .catch((error) => {
           console.log(error);
         });
+      next(action);
+      break;
+    }
+    case LOGOUT: {
+      // we delete token
+      localStorage.removeItem('token');
+      // we clean axioInstance
+      delete axiosInstance.defaults.headers.common.Authorization;
       next(action);
       break;
     }
