@@ -34,6 +34,24 @@ export const isRegister = () => ({
   type: IS_REGISTER,
 });
 
+
+// ACTION TYPE LOGGIN
+export const LOGGIN = 'LOGGIN';
+
+// ACTION CREATOR loggin
+export const loggin = () => ({
+  type: LOGGIN,
+
+});
+
+// ACTION TYPE IS_LOGGED
+export const IS_LOGGED = 'IS_LOGGED';
+
+// ACTION CREATOR isLogged
+export const isLogged = () => ({
+  type: IS_LOGGED,
+
+
 // ACTION TYPE LOGOUT
 export const LOGOUT = 'LOGOUT';
 
