@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 import {
-  FETCH_SPOTS, FETCH_SPOT_BY_ID, saveSpotById, saveSpots,
+  FETCH_SPOTS, FETCH_SPOT_BY_ID, REGISTER_SPOT, saveSpotById, saveSpots, fetchSpots,
 } from '../actions/spots';
 import { isRegister, REGISTER_USER } from '../actions/user';
 
@@ -76,6 +76,61 @@ const apiMiddleWare = (store) => (next) => (action) => {
         .then((response) => {
           console.log(response.data);
           store.dispatch(isRegister());
+        })
+        .catch(() => {
+          console.log('oups...');
+        });
+      next(action);
+      break;
+    }
+    case REGISTER_SPOT: {
+      // double destructuration
+      const {
+        spots: {
+          inputName,
+          inputAddress,
+          inputNumber,
+          inputZipCode,
+          inputCity,
+          inputCountry,
+          inputDiscipline,
+          inputRockType,
+          inputReputation,
+          inputMinDif,
+          inputMaxDif,
+          inputDescription,
+          inputPicture,
+          inputLat,
+          inputLng,
+          type,
+        },
+      } = store.getState();
+
+      axiosInstance
+        .post(
+          'api/spots/create',
+          {
+            name: inputName,
+            number: 33,
+            street: inputAddress,
+            zipcode: inputZipCode,
+            city: inputCity,
+            country: inputCountry,
+            latitude: `${inputLng}`,
+            longitude: `${inputLat}`,
+            discipline: inputDiscipline,
+            type: type,
+            rock_type: inputRockType,
+            picture: inputPicture,
+            various: inputDescription,
+            reputation: inputReputation,
+            min_difficulty: inputMinDif,
+            max_difficulty: inputMaxDif,
+          },
+        )
+        .then((response) => {
+          console.log(response.data);
+          store.dispatch(fetchSpots());
         })
         .catch(() => {
           console.log('oups...');

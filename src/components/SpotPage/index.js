@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Navigate } from 'react-router-dom';
 // Componants
 import Spot from './Spot';
 import HomeMap from '../Home/HomeMap';
@@ -24,8 +24,12 @@ function SpotPage() {
   const spots = useSelector((state) => state.spots.listSpots);
   // console.log(spots);
   const spot = spots.find((element) => element.name === slug);
-  // console.log(spot.id);
-  // console.log(slug);
+  // console.log(spots);
+  // console.log(spot);
+
+  if (!spot) {
+    return <Navigate to="/" replace />;
+  }
   // when mounting the component
   useEffect(
     () => {
@@ -55,6 +59,7 @@ function SpotPage() {
     min_difficulty,
     max_difficulty,
   } = currentSpot[0];
+
   return (
     <div className="spotPage">
       {isLoading === false && (
