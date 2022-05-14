@@ -10,6 +10,7 @@ import {
   SAVE_SPOTS,
   SAVE_SPOT_BY_ID,
   FETCH_SPOT_BY_ID,
+  PURGE_SPOTADD_FORM,
 } from '../actions/spots';
 
 export const initialState = {
@@ -39,16 +40,22 @@ export const initialState = {
     max_difficulty: '9a',
   }],
   inputName: '',
-  inputAddress: '',
-  inputZipCode: '',
+  inputAddress: null,
+  inputNumber: null,
+  inputZipCode: null,
   inputCity: '',
   inputCountry: '',
   inputDiscipline: '',
-  inputReputation: '',
+  inputRockType: null,
+  inputReputation: null,
+  inputMinDif: null,
+  inputMaxDif: null,
   inputDescription: '',
-  inputPicture: '',
+  inputPicture: null,
   inputLat: '',
   inputLng: '',
+  type: '',
+
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -129,6 +136,26 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         currentSpot: [action.data],
         isLoading: false,
+      };
+    }
+    case PURGE_SPOTADD_FORM: {
+      return {
+        ...state,
+        inputName: '',
+        inputAddress: null,
+        inputZipCode: null,
+        inputNumber: null,
+        inputCity: '',
+        inputCountry: '',
+        inputDiscipline: null,
+        inputRockType: null,
+        inputReputation: null,
+        inputMinDif: null,
+        inputMaxDif: null,
+        inputDescription: null,
+        inputPicture: null,
+        inputLat: '',
+        inputLng: '',
       };
     }
 

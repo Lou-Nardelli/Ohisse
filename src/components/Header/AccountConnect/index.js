@@ -1,5 +1,7 @@
 // == Import : npm
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import { useState } from 'react';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import StarIcon from '@material-ui/icons/Star';
@@ -19,7 +21,7 @@ import userLogo from 'src/assets/img/user.png';
 import './accountConnect.scss';
 
 // == Composant
-function AccountConnect() {
+function AccountConnect({ handleLogout }) {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -28,6 +30,8 @@ function AccountConnect() {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  const isLogged = useSelector((state) => state.user.isLogged);
 
   return (
     <div className="accountConnect">
@@ -83,29 +87,44 @@ function AccountConnect() {
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       >
         {/* Menu inside the pop-up */}
-        <Link to="/profil">
-          <MenuItem>
-            <PersonIcon /> Mon compte
-          </MenuItem>
-        </Link>
-        <Link to="/profil">
-          <MenuItem>
-            <StarIcon /> Mes favoris
-          </MenuItem>
-          <Divider />
-        </Link>
-        <Link to="/">
-          <MenuItem>
-            <ListItemIcon>
-              <ExitToAppIcon fontSize="small" />
-            </ListItemIcon>
-            Me déconnecter
-          </MenuItem>
-        </Link>
+        {isLogged && (
+          <div>
+            <Link to="/profil">
+              <MenuItem>
+                <PersonIcon /> Mon compte
+              </MenuItem>
+            </Link>
+            <Link to="/profil">
+              <MenuItem>
+                <StarIcon /> Mes favoris
+              </MenuItem>
+              <Divider />
+            </Link>
+            <Link to="/">
+              <MenuItem onClick={handleLogout}>
+                <ListItemIcon>
+                  <ExitToAppIcon fontSize="small" />
+                </ListItemIcon>
+                Me déconnecter
+              </MenuItem>
+            </Link>
+          </div>
+        )}
+        {!isLogged && (
+          <Link to="/connexion">
+            <MenuItem>
+              <PersonIcon /> Se connecter
+            </MenuItem>
+          </Link>
+        )}
       </Menu>
     </div>
   );
 }
+
+AccountConnect.propTypes = {
+  handleLogout: PropTypes.func.isRequired,
+};
 
 // == Export
 export default AccountConnect;
