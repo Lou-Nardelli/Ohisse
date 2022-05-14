@@ -109,6 +109,9 @@ const apiMiddleWare = (store) => (next) => (action) => {
           // we save token to axios
           axiosInstance.defaults.headers.common.Authorization = `Bearer ${token}`;
 
+          // we save token to local storage
+          localStorage.setItem('token', JSON.stringify(token));
+
           // we modify the state to inform that the use is connected
           store.dispatch(isLogged());
 
@@ -174,8 +177,8 @@ const apiMiddleWare = (store) => (next) => (action) => {
           console.log(response.data);
           store.dispatch(fetchSpots());
         })
-        .catch(() => {
-          console.log('oups...');
+        .catch((error) => {
+          console.log(error);
         });
       next(action);
       break;
