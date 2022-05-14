@@ -209,7 +209,7 @@ const apiMiddleWare = (store) => (next) => (action) => {
       // we delete token
       localStorage.removeItem('token');
       // we clean axioInstance
-      delete axiosInstance.defaults.headers.common.Authorization;
+      // delete axiosInstance.defaults.headers.common.Authorization;
       next(action);
       break;
     }

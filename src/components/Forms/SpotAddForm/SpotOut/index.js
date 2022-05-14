@@ -60,9 +60,9 @@ function SpotOut() {
     dispatch(changeField(value, name));
   };
 
-  useEffect(() => {
-    dispatch(purgeSpotaddForm());
-  }, [SpotOut]);
+  // useEffect(() => {
+  //   dispatch(purgeSpotaddForm());
+  // }, [SpotOut]);
 
   useEffect(() => {
     dispatch(changeField('Spot', 'type'));
