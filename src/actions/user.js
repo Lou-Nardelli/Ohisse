@@ -42,3 +42,12 @@ export const loggin = () => ({
   type: LOGGIN,
 
 });
+
+// ACTION TYPE IS_LOGGED
+export const IS_LOGGED = 'IS_LOGGED';
+
+// ACTION CREATOR isLogged
+export const isLogged = () => ({
+  type: IS_LOGGED,
+
+});
