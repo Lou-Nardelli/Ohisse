@@ -1,4 +1,6 @@
 @use 'src/styles/_vars.scss';
+@import 'src/styles/theme-colors.scss';
+
 
 .leaflet-container {
   margin: auto;
@@ -6,6 +8,12 @@
   max-width: 700px;
   height: 310px;
   border-radius: 5px;
+}
+
+.leaflet-tile {
+  @include themed() {
+    filter: brightness(0.6) invert(1) contrast(3) hue-rotate(200deg) saturate(0.3) brightness(0.7);
+  }
 }
 
 .map-popup {
