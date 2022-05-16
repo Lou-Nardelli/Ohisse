@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 // styles
 import './logginForm.scss';
-import { changeField } from '../../../actions/user';
+import { changeField, loggin } from '../../../actions/user';
 
 function LogginForm() {
   // to modify the state
@@ -20,6 +20,12 @@ function LogginForm() {
     dispatch(changeField(value, name));
   };
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log('i call api to connect');
+    dispatch(loggin());
+  };
+
   return (
     <div className="logginForm">
       <h2 className="logginForm__title"> Welcome back !</h2>
@@ -27,11 +33,14 @@ function LogginForm() {
         échanger avec la communauté des grimpeurs O'Hisse,
         sauvegardez vos spots favoris
       </p>
-      <input className="logginForm__input" type="email" name="email" id="email" placeholder="E-mail" value={inputEmailValue} onChange={(event) => handleChangeField(event.target.value, 'inputEmail')} />
-      <input className="logginForm__input" type="password" name="password" id="password" placeholder="Mot de passe" value={inputPasswordValue} onChange={(event) => handleChangeField(event.target.value, 'inputPassword')} />
-      <button className="logginForm__button" type="button"> Se connecter </button>
+      <form action="submit" className="logginForm__form" onSubmit={handleSubmit}>
+        <input className="logginForm__input" type="email" name="email" id="email" placeholder="E-mail" value={inputEmailValue} onChange={(event) => handleChangeField(event.target.value, 'inputEmail')} />
+        <input className="logginForm__input" type="password" name="password" id="password" placeholder="Mot de passe" value={inputPasswordValue} onChange={(event) => handleChangeField(event.target.value, 'inputPassword')} />
+        <button className="logginForm__button" type="submit"> Se connecter </button>
+      </form>
       <p className="logginForm__inscription inscription__message"> Vous n'avez pas encore de compte ? </p>
       <Link className="logginForm__inscription inscription__link" to="/inscription"> Créez un nouveau compte </Link>
+
     </div>
   );
 }

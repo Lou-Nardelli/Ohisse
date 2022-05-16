@@ -100,3 +100,11 @@ export const PURGE_SPOTADD_FORM = 'PURGE_SPOTADD_FORM';
 export const purgeSpotaddForm = () => ({
   type: PURGE_SPOTADD_FORM,
 });
+
+// ACTION TYPE REGISTER_SPOT
+export const REGISTER_SPOT = 'REGISTER_SPOT';
+
+// ACTION CREATOR registerSpot
+export const registerSpot = () => ({
+  type: REGISTER_SPOT,
+});
