@@ -25,6 +25,16 @@
   @include themed() {
     background-color: ask($bg);
     color: ask($text);
+
+    h3 {
+      color: ask($title-brown);
+    }
+  }
+}
+
+.leaflet-popup-tip {
+  @include themed() {
+    background-color: ask($bg);
   }
 }
 
