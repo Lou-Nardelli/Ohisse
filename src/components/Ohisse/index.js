@@ -22,6 +22,7 @@ import SpotIn from '../Forms/SpotAddForm/SpotIn';
 import SpotOut from '../Forms/SpotAddForm/SpotOut';
 import RegisterForm from '../Forms/RegisterForm';
 import { fetchSpots } from '../../actions/spots';
+import TeamPage from '../TeamPage';
 
 // == Composant
 function Ohisse() {
@@ -64,7 +65,7 @@ function Ohisse() {
         <Route path="/connexion" element={<LogginForm />} />
         <Route path="/profil" element={<Profile />} />
         <Route path="/inscription" element={<RegisterForm />} />
-        <Route path="/equipe" element={<Home />} />
+        <Route path="/equipe" element={<TeamPage />} />
         <Route path="/mentions-legales" element={<Home />} />
         <Route path="*" element={<Error />} />
       </Routes>

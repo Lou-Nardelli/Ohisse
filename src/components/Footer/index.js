@@ -20,7 +20,7 @@ function Footer() {
         A propos de O'Hisse :
       </h3>
       <div className="footer__links">
-        <Link className="footer-link" to="">L'équipe</Link>
+        <Link className="footer-link" to="/equipe">L'équipe</Link>
         <Link className="footer-link" to="">Mentions légales</Link>
         <Link className="footer-link" to="">Plan du site</Link>
       </div>
