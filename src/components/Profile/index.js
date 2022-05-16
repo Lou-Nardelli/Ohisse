@@ -57,7 +57,7 @@ function Profile() {
                 <h1 className="profile__favorites--title">Mes favoris</h1>
                 <div className="profile__favorites--cards">
                   {listSpotFav.map((item) => (
-                    <Link key={item.id} to="">
+                    <Link key={item.id} to={`/fiche-spot/${item.name}`}>
                       <Card
                         name={item.name}
                         city={item.city}

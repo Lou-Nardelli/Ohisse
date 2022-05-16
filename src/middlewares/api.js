@@ -185,7 +185,7 @@ const apiMiddleWare = (store) => (next) => (action) => {
           // },
           {
             name: inputName,
-            number: 33,
+            number: inputNumber,
             street: inputAddress,
             zipcode: inputZipCode,
             city: inputCity,
