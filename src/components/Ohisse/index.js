@@ -14,6 +14,7 @@ import HomeMap from '../Map';
 import Error from '../Error';
 import Spots from '../Spots';
 import Profile from '../Profile';
+import LegalNotice from '../LegalNotice';
 
 import './ohisse.scss';
 import LogginForm from '../Forms/LogginForm';
@@ -65,7 +66,7 @@ function Ohisse() {
         <Route path="/profil" element={<Profile />} />
         <Route path="/inscription" element={<RegisterForm />} />
         <Route path="/equipe" element={<Home />} />
-        <Route path="/mentions-legales" element={<Home />} />
+        <Route path="/mentions-legales" element={<LegalNotice />} />
         <Route path="*" element={<Error />} />
       </Routes>
 
