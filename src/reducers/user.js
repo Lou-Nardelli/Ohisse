@@ -1,5 +1,6 @@
 import {
   CHANGE_FIELD,
+  IS_LOGGED,
   CONFIRM_PASSWORD,
   IS_REGISTER,
   LOGOUT,
@@ -70,6 +71,12 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         isDarkMode: action.isDarkMode,
+      };
+
+    case IS_LOGGED:
+      return {
+        ...state,
+        isLogged: true,
       };
 
     default:

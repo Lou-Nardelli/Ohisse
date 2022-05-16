@@ -15,21 +15,21 @@ import ohisseIcon from './icon';
 import './spotaddmap.scss';
 import { recoverLatLng } from '../../../../actions/spots';
 
-function SpotAddMap({ spots }) {
+function SpotAddMap() {
   const inputLat = useSelector((state) => state.spots.inputLat);
   const inputLng = useSelector((state) => state.spots.inputLng);
+  const dispatch = useDispatch();
   // Events
   function HandleClickMap() {
-    const dispatch = useDispatch();
-    const map = useMapEvents({
+    useMapEvents({
       click(event) {
         // console.log(event.latlng);
         dispatch(recoverLatLng(event.latlng));
       },
     });
-
     return null;
   }
+
   return (
     <>
       <label htmlFor="city">Latitude
@@ -40,6 +40,7 @@ function SpotAddMap({ spots }) {
           placeholder="Cliquez sur la carte"
           value={inputLat}
           readOnly
+          required
         />
       </label>
       <label htmlFor="city">Longitude
@@ -50,6 +51,7 @@ function SpotAddMap({ spots }) {
           placeholder="Cliquez sur la carte"
           value={inputLng}
           readOnly
+          required
         />
       </label>
       <MapContainer center={[46.7, 2]} zoom={5} scrollWheelZoom>
@@ -58,7 +60,10 @@ function SpotAddMap({ spots }) {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         <HandleClickMap />
-        <Marker position={[inputLat, inputLng]} icon={ohisseIcon} />
+        <Marker
+          position={[inputLat, inputLng]}
+          icon={ohisseIcon}
+        />
       </MapContainer>
     </>
   );

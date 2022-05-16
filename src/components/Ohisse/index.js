@@ -1,5 +1,5 @@
 // == Import : npm
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 
 // == Import : local
@@ -28,12 +28,19 @@ function Ohisse() {
   // hook useDispatch to dispatch actions
   const dispatch = useDispatch();
   // when mounting component Ohisse
+  useEffect(() => {
+    // load all spots from API
+    dispatch(fetchSpots());
+  }, []);
+
+  const location = useLocation();
+  // when url change
   useEffect(
     () => {
-      // load all spots from API
-      dispatch(fetchSpots());
+      // scroll up
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     },
-    [],
+    [location],
   );
   // calling boolean of dark-theme mode
   const theme = useSelector((state) => state.user.isDarkMode);
