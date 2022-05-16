@@ -79,7 +79,7 @@ function Ohisse() {
     <div className={`theme ${theme ? 'theme--dark' : 'theme--light'}`}>
       <div className="ohisse">
         <Header />
-        
+
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/fiche-spot/:slug" element={<SpotPage />} />

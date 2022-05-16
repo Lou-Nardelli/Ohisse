@@ -2,6 +2,10 @@
 @import 'src/styles/theme-colors.scss';
 
 .home {
+  @include themed() {
+    background-color: ask($bg);
+  }
+  
   &__description {
     margin: auto;
     max-width: 700px;
