@@ -1,12 +1,15 @@
 import axios from 'axios';
+import { array } from 'prop-types';
 
 import {
   FETCH_SPOTS, FETCH_SPOT_BY_ID, REGISTER_SPOT, saveSpotById, saveSpots, fetchSpots,
 } from '../actions/spots';
 import {
   ADD_FAV,
+  fetchFavoritesById,
+  FETCH_FAVORITES_BY_ID,
   FETCH_USER_BY_ID,
-  isLogged, isRegister, LOGGIN, LOGOUT, REGISTER_USER, saveUser,
+  isLogged, isRegister, LOGGIN, LOGOUT, REGISTER_USER, saveFavorites, saveUser, SAVE_FAVORITES,
 } from '../actions/user';
 
 const axiosInstance = axios.create({
@@ -130,7 +133,7 @@ const apiMiddleWare = (store) => (next) => (action) => {
           store.dispatch(saveUser(user));
 
           // we fetch all favorite spots
-          // store.dispatch(fetchFavorites());
+          store.dispatch(fetchFavoritesById());
         })
         .catch(() => {
           console.log('oups...');
@@ -226,6 +229,7 @@ const apiMiddleWare = (store) => (next) => (action) => {
         .then((response) => {
           console.log(response.data);
           store.dispatch(saveUser(response.data));
+          store.dispatch(fetchFavoritesById());
         })
         .catch((error) => {
           console.log(error);
@@ -236,6 +240,8 @@ const apiMiddleWare = (store) => (next) => (action) => {
     case LOGOUT: {
       // we delete token
       localStorage.removeItem('token');
+      // we delete fav
+      localStorage.removeItem('favorites');
       // we clean axioInstance
       delete axiosInstance.defaults.headers.common.Authorization;
       next(action);
@@ -243,7 +249,7 @@ const apiMiddleWare = (store) => (next) => (action) => {
     }
 
     case ADD_FAV: {
-      console.log(store.getState());
+      // console.log(store.getState());
       const {
         user: {
           currentUser: {
@@ -259,6 +265,61 @@ const apiMiddleWare = (store) => (next) => (action) => {
 
       console.log(idUser, idSpot);
 
+      axiosInstance
+        .post(
+          'api/user/bookmarks/add',
+          {
+            userId: idUser,
+            spotId: idSpot,
+          },
+          // {
+          //   headers: {
+          //     Authorization: `Bearer ${token}`,
+          //   },
+          // },
+        )
+        .then((response) => {
+          console.log(response.data);
+          // store.dispatch(saveUser(response.data));
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+
+      next(action);
+      break;
+    }
+
+    case FETCH_FAVORITES_BY_ID: {
+      const {
+        user: {
+          currentUser: {
+            id: idUser,
+          },
+        },
+      } = store.getState();
+
+      axiosInstance
+        .get(
+          `api/user/bookmarks/${idUser}`,
+          // {
+          //   headers: {
+          //     Authorization: `Bearer ${token}`,
+          //   },
+          // },
+        )
+        .then((response) => {
+          // console.log(response.data);
+          const arrayFav = response.data;
+          const favorites = arrayFav.map((item) => item.id_spot);
+          localStorage.setItem('favorites', JSON.stringify(favorites));
+          // console.log(favorites);
+          // console.log(JSON.parse(localStorage.getItem('favorites')));
+          store.dispatch(saveFavorites(favorites));
+        })
+        .catch((error) => {
+          console.log(error);
+        });
       next(action);
       break;
     }

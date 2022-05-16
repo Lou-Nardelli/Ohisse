@@ -104,3 +104,21 @@ export const addFav = () => ({
   type: ADD_FAV,
 
 });
+
+// ACTION TYPE FETCH_FAVORITES_BY_ID
+export const FETCH_FAVORITES_BY_ID = 'FETCH_FAVORITES_BY_ID';
+
+// ACTION CREATOR fetchFavoritesById
+export const fetchFavoritesById = () => ({
+  type: FETCH_FAVORITES_BY_ID,
+
+});
+
+// ACTION TYPE SAVE_FAVORITES
+export const SAVE_FAVORITES = 'SAVE_FAVORITES';
+
+// ACTION CREATOR saveFavorites
+export const saveFavorites = (fav) => ({
+  type: SAVE_FAVORITES,
+  fav,
+});

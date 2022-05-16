@@ -10,20 +10,29 @@ import Card from '../Card';
 import { popupContent, popupHead } from './popupStyles';
 import './profile.scss';
 import ohisseIcon from './icon';
-
 // == Composant
 function Profile() {
+  const { favorites } = useSelector((state) => state.user);
+  // console.log(favorites);
+
   const listSpots = useSelector((state) => state.spots.listSpots);
   const currentUser = useSelector((state) => state.user.currentUser);
   const isLogged = useSelector((state) => state.user.isLogged);
+
+  const listSpotFav = favorites.map((item) => {
+    const fav = listSpots.find((itemList) => itemList.id === item);
+    return fav;
+  });
+
+  console.log(listSpotFav);
 
   if (currentUser.description.length === 0) {
     currentUser.description = "Ma description n'est pas encore remplie, mais je procrastine encore un peu avant de m'y mettre !";
   }
 
-  if (!isLogged) {
-    return (<Navigate to="/connexion" replace />);
-  }
+  // if (!isLogged) {
+  //   return (<Navigate to="/connexion" replace />);
+  // }
 
   return (
     <div className="profile">
@@ -44,7 +53,7 @@ function Profile() {
           <div className="profile__favorites">
             <h1 className="profile__favorites--title">Mes favoris</h1>
             <div className="profile__favorites--cards">
-              {listSpots.map((item) => (
+              {listSpotFav.map((item) => (
                 <Link key={item.id} to="">
                   <Card
                     name={item.name}
