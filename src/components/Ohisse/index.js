@@ -31,6 +31,7 @@ function Ohisse() {
   useEffect(() => {
     // load all spots from API
     dispatch(fetchSpots());
+    // dispatch();
   }, []);
 
   const location = useLocation();

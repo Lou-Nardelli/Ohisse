@@ -58,3 +58,21 @@ export const LOGOUT = 'LOGOUT';
 export const logout = () => ({
   type: LOGOUT,
 });
+
+// ACTION TYPE IS_TOKEN
+export const IS_TOKEN = 'IS_TOKEN';
+
+// ACTION CREATOR isToken
+export const isToken = () => ({
+  type: IS_TOKEN,
+
+});
+
+// ACTION TYPE SAVE_USER
+export const SAVE_USER = 'SAVE_USER';
+
+// ACTION CREATOR saveUser
+export const saveUser = (user) => ({
+  type: SAVE_USER,
+  user,
+});

@@ -4,7 +4,7 @@ import {
   FETCH_SPOTS, FETCH_SPOT_BY_ID, REGISTER_SPOT, saveSpotById, saveSpots, fetchSpots,
 } from '../actions/spots';
 import {
-  isLogged, isRegister, LOGGIN, LOGOUT, REGISTER_USER,
+  isLogged, isRegister, LOGGIN, LOGOUT, REGISTER_USER, saveUser,
 } from '../actions/user';
 
 const axiosInstance = axios.create({
@@ -103,26 +103,29 @@ const apiMiddleWare = (store) => (next) => (action) => {
         // we recive information about user and token
         .then((response) => {
           console.log('connexion OK');
+          console.log(response.data);
+          console.log(response.data.token.original.access_token);
 
-          const tokenAPI = response.data.access_token;
+          const tokenAPI = response.data.token.original.access_token;
+          const { user } = response.data;
 
           // we save token to local storage
           localStorage.setItem('token', JSON.stringify(tokenAPI));
 
           // we retrieve token of the localStorage
-          const tokenStringigy = localStorage.getItem('token');
+          // const tokenStringify = localStorage.getItem('token');
           // we transform token into JSON
-          const token = JSON.parse(tokenStringigy);
-          console.log(token);
+          // const token = JSON.parse(tokenStringify);
+          // console.log(token);
 
           // we save token to axios
-          axiosInstance.defaults.headers.common.Authorization = `Bearer ${token}`;
+          axiosInstance.defaults.headers.common.Authorization = `Bearer ${tokenAPI}`;
 
           // we modify the state to inform that the use is connected
           store.dispatch(isLogged());
 
           // we save the user to the state user-> currentUser
-          // store.dispatch(saveUser(user));
+          store.dispatch(saveUser(user));
 
           // we fetch all favorite spots
           // store.dispatch(fetchFavorites());
@@ -209,7 +212,7 @@ const apiMiddleWare = (store) => (next) => (action) => {
       // we delete token
       localStorage.removeItem('token');
       // we clean axioInstance
-      // delete axiosInstance.defaults.headers.common.Authorization;
+      delete axiosInstance.defaults.headers.common.Authorization;
       next(action);
       break;
     }

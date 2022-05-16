@@ -4,6 +4,7 @@ import {
   CONFIRM_PASSWORD,
   IS_REGISTER,
   LOGOUT,
+  SAVE_USER,
 } from '../actions/user';
 
 export const initialState = {
@@ -70,6 +71,12 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         isLogged: true,
+      };
+
+    case SAVE_USER:
+      return {
+        ...state,
+        currentUser: action.user,
       };
 
     default:
