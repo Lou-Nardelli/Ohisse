@@ -43,6 +43,12 @@
       @include themed() {
         color: ask($text);
       }
+
+      &::placeholder {
+        @include themed() {
+          color: ask($text);
+        }
+      }
     }
 
     input::-webkit-outer-spin-button,
