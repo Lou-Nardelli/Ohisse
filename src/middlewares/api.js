@@ -4,7 +4,8 @@ import {
   FETCH_SPOTS, FETCH_SPOT_BY_ID, REGISTER_SPOT, saveSpotById, saveSpots, fetchSpots,
 } from '../actions/spots';
 import {
-  isLogged, isRegister, LOGGIN, REGISTER_USER,
+  FETCH_USER_BY_ID,
+  isLogged, isRegister, LOGGIN, LOGOUT, REGISTER_USER, saveUser,
 } from '../actions/user';
 
 const axiosInstance = axios.create({
@@ -102,18 +103,30 @@ const apiMiddleWare = (store) => (next) => (action) => {
         )
         // we recive information about user and token
         .then((response) => {
-          // const { data: accès_token } = response;
-          console.log(response.data.access_token);
-          const token = response.data.access_token;
+          console.log('connexion OK');
+          console.log(response.data);
+          console.log(response.data.token.original.access_token);
+
+          const tokenAPI = response.data.token.original.access_token;
+          const { user } = response.data;
+
+          // we save token to local storage
+          localStorage.setItem('token', JSON.stringify(tokenAPI));
+
+          // we retrieve token of the localStorage
+          // const tokenStringify = localStorage.getItem('token');
+          // we transform token into JSON
+          // const token = JSON.parse(tokenStringify);
+          // console.log(token);
 
           // we save token to axios
-          axiosInstance.defaults.headers.common.Authorization = `Bearer ${token}`;
+          axiosInstance.defaults.headers.common.Authorization = `Bearer ${tokenAPI}`;
 
           // we modify the state to inform that the use is connected
           store.dispatch(isLogged());
 
           // we save the user to the state user-> currentUser
-          // store.dispatch(saveUser(user));
+          store.dispatch(saveUser(user));
 
           // we fetch all favorite spots
           // store.dispatch(fetchFavorites());
@@ -148,9 +161,24 @@ const apiMiddleWare = (store) => (next) => (action) => {
         },
       } = store.getState();
 
+      // we retrieve token of the localStorage
+      // const tokenStringigy = localStorage.getItem('token');
+      // we transform token into JSON
+      // const token = JSON.parse(tokenStringigy);
+      // console.log(token);
+
+      // console.log(axiosInstance);
+      // const token = JSON.parse(localStorage.getItem('token'));
+
       axiosInstance
         .post(
           'api/spots/create',
+
+          // {
+          //   headers: {
+          //     Authorization: `Bearer ${token}`,
+          //   },
+          // },
           {
             name: inputName,
             number: 33,
@@ -169,14 +197,46 @@ const apiMiddleWare = (store) => (next) => (action) => {
             min_difficulty: inputMinDif,
             max_difficulty: inputMaxDif,
           },
+
         )
         .then((response) => {
           console.log(response.data);
           store.dispatch(fetchSpots());
         })
-        .catch(() => {
-          console.log('oups...');
+        .catch((error) => {
+          console.log(error);
         });
+      next(action);
+      break;
+    }
+    case FETCH_USER_BY_ID: {
+      const token = JSON.parse(localStorage.getItem('token'));
+      axiosInstance.defaults.headers.common.Authorization = `Bearer ${token}`;
+
+      axiosInstance
+        .get(
+          `api/user/${action.id}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          },
+        )
+        .then((response) => {
+          console.log(response.data);
+          store.dispatch(saveUser(response.data));
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      next(action);
+      break;
+    }
+    case LOGOUT: {
+      // we delete token
+      localStorage.removeItem('token');
+      // we clean axioInstance
+      delete axiosInstance.defaults.headers.common.Authorization;
       next(action);
       break;
     }
