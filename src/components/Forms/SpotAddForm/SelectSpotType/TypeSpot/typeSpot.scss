@@ -1,4 +1,5 @@
 @use 'src/styles/_vars';
+@import 'src/styles/theme-colors.scss';
 
 .typeSpot {
   max-width: 300px;
@@ -11,14 +12,12 @@
   margin-top: 2rem;
   border: solid 1px vars.$color-orange ;
 
-  &__img{
-
-  }
-
   &__title {
     letter-spacing: 1px;
     line-height: 1.2rem;
-    color: vars.$color-blue;
+    @include themed() {
+      color: ask($text);
+    }
     margin-bottom: 1rem;
     text-align: center;
     margin-top: 1rem;

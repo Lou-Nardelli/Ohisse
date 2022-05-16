@@ -59,6 +59,7 @@ export const logout = () => ({
   type: LOGOUT,
 });
 
+
 // ACTION TYPE IS_TOKEN
 export const IS_TOKEN = 'IS_TOKEN';
 
@@ -84,5 +85,14 @@ export const FETCH_USER_BY_ID = 'FETCH_USER_BY_ID';
 export const fetchUserById = (id) => ({
   type: FETCH_USER_BY_ID,
   id,
+});
+
+// ACTION TYPE DARKMODE
+export const DARKMODE = 'DARKMODE';
+
+// ACTION CREATOR darkMode
+export const darkMode = (isDarkMode) => ({
+  type: DARKMODE,
+  isDarkMode,
 
 });

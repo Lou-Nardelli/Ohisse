@@ -21,7 +21,7 @@ function Footer() {
       </h3>
       <div className="footer__links">
         <Link className="footer-link" to="">L'équipe</Link>
-        <Link className="footer-link" to="">Mentions légales</Link>
+        <Link className="footer-link" to="/mentions-legales">Mentions légales</Link>
         <Link className="footer-link" to="">Plan du site</Link>
       </div>
       <div className="footer__copyright">
