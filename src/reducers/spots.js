@@ -15,7 +15,7 @@ import {
 
 export const initialState = {
   isLoading: false,
-  listSpots: spots,
+  listSpots: [],
   // currentIndex for slider picture in home page
   currentIndexSliderPicture: 0,
   currentIndexSliderCard: 0,
