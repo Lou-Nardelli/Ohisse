@@ -23,15 +23,38 @@ import SpotIn from '../Forms/SpotAddForm/SpotIn';
 import SpotOut from '../Forms/SpotAddForm/SpotOut';
 import RegisterForm from '../Forms/RegisterForm';
 import { fetchSpots } from '../../actions/spots';
+import { fetchUserById, isLogged } from '../../actions/user';
 
 // == Composant
 function Ohisse() {
   // hook useDispatch to dispatch actions
   const dispatch = useDispatch();
+
+  // function decode token
+  function parseJwt(token) {
+    const base64Url = token.split('.')[1];
+    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    const jsonPayload = decodeURIComponent(atob(base64).split('').map((c) => `%${(`00${c.charCodeAt(0).toString(16)}`).slice(-2)}`).join(''));
+
+    return JSON.parse(jsonPayload);
+  }
+
   // when mounting component Ohisse
   useEffect(() => {
     // load all spots from API
     dispatch(fetchSpots());
+    // dispatch();
+    // console.log(localStorage.getItem('token'));
+    const token = localStorage.getItem('token');
+    // if token exist
+    if (token !== null) {
+      // isLogged = true
+      dispatch(isLogged());
+      // we find id's user
+      console.log(parseJwt(token).sub);
+      // we fetch information about user
+      dispatch(fetchUserById(parseJwt(token).sub));
+    }
   }, []);
 
   const location = useLocation();
