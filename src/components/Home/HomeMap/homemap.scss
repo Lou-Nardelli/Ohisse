@@ -1,4 +1,6 @@
 @use 'src/styles/_vars.scss';
+@import 'src/styles/theme-colors.scss';
+
 
 .leaflet-container {
   margin: auto;
@@ -8,11 +10,37 @@
   border-radius: 5px;
 }
 
+.leaflet-tile {
+  @include themed() {
+    filter: brightness(0.6) invert(1) contrast(3) hue-rotate(200deg) saturate(0.3) brightness(0.7);
+  }
+}
+
 .map-popup {
   img {
     max-width: 100%;
     max-height: 100%;
     border-radius: 5px;
+  }
+  @include themed() {
+    background-color: ask($bg);
+    color: ask($text);
+
+    h3 {
+      color: ask($title-brown);
+    }
+  }
+}
+
+.leaflet-popup-tip {
+  @include themed() {
+    background-color: ask($bg);
+  }
+}
+
+.leaflet-popup-content-wrapper {
+  @include themed() {
+    background-color: ask($bg);
   }
 }
 
