@@ -1,0 +1,51 @@
+@use 'src/styles/_vars';
+@import 'src/styles/theme-colors.scss';
+
+.legal-notice {
+  padding: 2em;
+  text-align: justify;
+  @include themed() {
+    background-color: ask($bg);
+  }
+
+  .parent-ul {
+    padding-left: 3em;
+    list-style-type: disc;
+    @include themed() {
+      color: ask($text);
+    }
+
+    li {
+      display: list-item;
+      margin-bottom:.5em;
+    }
+  }
+
+  .children-ul {
+    padding-left: 1em;
+    list-style-type: circle;
+  }
+
+  h1 {
+    font-size: 3em;
+    font-weight: 700;
+    font-family: 'Oleo Script';
+    color: #fca311;
+  }
+
+  h2 {
+    font-size: 1.5em;
+    font-weight: 700;
+    font-family: 'Oleo Script';
+    margin: 2em 0 1em;
+    @include themed() {
+      color: ask($title-blue);
+    }
+  }
+
+  p {
+    @include themed() {
+      color: ask($text);
+    }
+  }
+}

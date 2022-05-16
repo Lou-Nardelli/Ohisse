@@ -6,38 +6,44 @@ function LegalNotice() {
   return (
     <div className="legal-notice">
       <h1>Conditions d'utilisation</h1>
-      <ul>
-        <h2>SOMMAIRE</h2>
+      <h2>SOMMAIRE</h2>
+      <ul className="parent-ul">
         <li>Article 1 : Objet</li>
         <li>Article 2 : Mentions légales</li>
-        <li>Article 3 : Obligations
+        <li>Article 3 : Obligations</li>
+        <ul className="children-ul">
           <li>3.1 Obligations de l'utilisateur</li>
           <li>3.2 Règles principales</li>
           <li>3.3 Non respect des conditions générales d'utilisation</li>
-        </li>
-        <li>Article 4 : Confidentialité
+        </ul>
+        <li>Article 4 : Confidentialité</li>
+        <ul className="children-ul">
           <li>4.1 Protection des données personnelles</li>
           <li>4.2 Droit d'accès aux informations</li>
           <li>4.3 Cookies</li>
-        </li>
-        <li>Article 5 : Propriété intellectuelle
+        </ul>
+        <li>Article 5 : Propriété intellectuelle</li>
+        <ul className="children-ul">
           <li>5.1 Licences de nos contenus</li>
           <li>5.2 Violation du droit d'auteur</li>
           <li>5.3 Conditions découlant de l'interactivité du site</li>
-        </li>
-        <li>Article 6 : Responsabilités
+        </ul>
+        <li>Article 6 : Responsabilités</li>
+        <ul className="children-ul">
           <li>6.1 Dommages matériels et pertes de données</li>
           <li>6.2 Responsabilité lors de la pratique</li>
           <li>6.3 Recherche de partenaire d'escalade</li>
-        </li>
-        <li>Article 7 : Limitation de garanties
+        </ul>
+        <li>Article 7 : Limitation de garanties</li>
+        <ul className="children-ul">
           <li>7.1 Garanties</li>
           <li>7.2 Fermeture ou suspension du site</li>
-        </li>
-        <li>Article 8 : Liens hypertextes
+        </ul>
+        <li>Article 8 : Liens hypertextes</li>
+        <ul className="children-ul">
           <li>8.1 Liens vers le site O'Hisse.com</li>
           <li>8.2 Liens hypertextes en direction de sites tiers</li>
-        </li>
+        </ul>
         <li>Article 9 : Droit applicable</li>
       </ul>
 
