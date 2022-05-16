@@ -241,7 +241,7 @@ const apiMiddleWare = (store) => (next) => (action) => {
       // we delete token
       localStorage.removeItem('token');
       // we delete fav
-      localStorage.removeItem('favorites');
+      // localStorage.removeItem('favorites');
       // we clean axioInstance
       delete axiosInstance.defaults.headers.common.Authorization;
       next(action);
@@ -264,7 +264,7 @@ const apiMiddleWare = (store) => (next) => (action) => {
         },
       } = store.getState();
 
-      console.log(idUser, idSpot);
+      // console.log(idUser, idSpot);
 
       axiosInstance
         .post(
@@ -313,7 +313,7 @@ const apiMiddleWare = (store) => (next) => (action) => {
           // console.log(response.data);
           const arrayFav = response.data;
           const favorites = arrayFav.map((item) => item.id_spot);
-          localStorage.setItem('favorites', JSON.stringify(favorites));
+          // localStorage.setItem('favorites', JSON.stringify(favorites));
           // console.log(favorites);
           // console.log(JSON.parse(localStorage.getItem('favorites')));
           store.dispatch(saveFavorites(favorites));
