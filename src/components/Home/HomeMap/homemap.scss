@@ -22,6 +22,16 @@
     max-height: 100%;
     border-radius: 5px;
   }
+  @include themed() {
+    background-color: ask($bg);
+    color: ask($text);
+  }
+}
+
+.leaflet-popup-content-wrapper {
+  @include themed() {
+    background-color: ask($bg);
+  }
 }
 
 .leaflet-div-icon {
