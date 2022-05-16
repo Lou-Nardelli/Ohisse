@@ -1,4 +1,5 @@
 @use 'src/styles/vars';
+@import 'src/styles/theme-colors.scss';
 
 .sliderPicture {
     max-height: 200px;
@@ -15,8 +16,10 @@
 
     &__button--previous,
     &__button--next {
-    //   background-color: vars.$color-orange;
-      background-color: rgba(255, 255, 255, .7);
+      @include themed() {
+        background-color: ask($bg);
+      }
+      opacity: .7;
       border: 2px solid vars.$color-orange;
       border-radius: 50%;
       width: 3em;
@@ -24,7 +27,7 @@
       color: vars.$color-orange;
 
       &:hover {
-        background-color: rgb(255, 255, 255);
+        opacity: 1;
       }
     }
 

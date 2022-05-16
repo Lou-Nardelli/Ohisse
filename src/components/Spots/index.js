@@ -15,7 +15,7 @@ function Spots({ listSpots, title }) {
       <div className="spots__cards">
         {
           listSpots.map((item) => (
-            <Link key={item.id} to="">
+            <Link key={item.id} to={`/fiche-spot/${item.name}`}>
               <Card
                 key={item.id}
                 name={item.name}
