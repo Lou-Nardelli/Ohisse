@@ -4,6 +4,7 @@ import {
   FETCH_SPOTS, FETCH_SPOT_BY_ID, REGISTER_SPOT, saveSpotById, saveSpots, fetchSpots,
 } from '../actions/spots';
 import {
+  FETCH_USER_BY_ID,
   isLogged, isRegister, LOGGIN, LOGOUT, REGISTER_USER, saveUser,
 } from '../actions/user';
 
@@ -201,6 +202,28 @@ const apiMiddleWare = (store) => (next) => (action) => {
         .then((response) => {
           console.log(response.data);
           store.dispatch(fetchSpots());
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      next(action);
+      break;
+    }
+    case FETCH_USER_BY_ID: {
+      const token = JSON.parse(localStorage.getItem('token'));
+
+      axiosInstance
+        .get(
+          `api/user/${action.id}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          },
+        )
+        .then((response) => {
+          console.log(response.data);
+          store.dispatch(saveUser(response.data));
         })
         .catch((error) => {
           console.log(error);

@@ -76,3 +76,13 @@ export const saveUser = (user) => ({
   type: SAVE_USER,
   user,
 });
+
+// ACTION TYPE FETCH_USER_BY_ID
+export const FETCH_USER_BY_ID = 'FETCH_USER_BY_ID';
+
+// ACTION CREATOR fetchUserById
+export const fetchUserById = (id) => ({
+  type: FETCH_USER_BY_ID,
+  id,
+
+});
