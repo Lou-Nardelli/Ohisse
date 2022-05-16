@@ -4,6 +4,7 @@ import {
   FETCH_SPOTS, FETCH_SPOT_BY_ID, REGISTER_SPOT, saveSpotById, saveSpots, fetchSpots,
 } from '../actions/spots';
 import {
+  ADD_FAV,
   FETCH_USER_BY_ID,
   isLogged, isRegister, LOGGIN, LOGOUT, REGISTER_USER, saveUser,
 } from '../actions/user';
@@ -237,6 +238,27 @@ const apiMiddleWare = (store) => (next) => (action) => {
       localStorage.removeItem('token');
       // we clean axioInstance
       delete axiosInstance.defaults.headers.common.Authorization;
+      next(action);
+      break;
+    }
+
+    case ADD_FAV: {
+      console.log(store.getState());
+      const {
+        user: {
+          currentUser: {
+            id: idUser,
+          },
+        },
+        spots: {
+          currentSpot: [{
+            id: idSpot,
+          }],
+        },
+      } = store.getState();
+
+      console.log(idUser, idSpot);
+
       next(action);
       break;
     }

@@ -59,7 +59,6 @@ export const logout = () => ({
   type: LOGOUT,
 });
 
-
 // ACTION TYPE IS_TOKEN
 export const IS_TOKEN = 'IS_TOKEN';
 
@@ -94,5 +93,14 @@ export const DARKMODE = 'DARKMODE';
 export const darkMode = (isDarkMode) => ({
   type: DARKMODE,
   isDarkMode,
+
+});
+
+// ACTION TYPE ADD_FAV
+export const ADD_FAV = 'ADD_FAV';
+
+// ACTION CREATOR addFav
+export const addFav = () => ({
+  type: ADD_FAV,
 
 });

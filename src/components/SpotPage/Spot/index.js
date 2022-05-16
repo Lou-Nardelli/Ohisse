@@ -1,5 +1,7 @@
 // import ext
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+import { addFav } from '../../../actions/user';
 
 // styles
 import './spot.scss';
@@ -20,6 +22,11 @@ function Spot({
   minDifficulty,
   maxDifficulty,
 }) {
+  const dispatch = useDispatch();
+  const handleFavClick = () => {
+    console.log('fav');
+    dispatch(addFav());
+  };
   return (
     <div className="spot">
       <div className="spot__header">
@@ -28,7 +35,7 @@ function Spot({
         middleware= api (add fav on the table fav)
         classButton header__button to hearder__button--fav
         */}
-        <button className="header__button" type="button"> &#10084;</button>
+        <button className="header__button" type="button" onClick={handleFavClick}> &#10084;</button>
       </div>
       <img className="spot__picture" src={picture === null ? 'https://www.grimper.com/media/guide_salles/img_salles/the_roof_pays_basque2.jpg' : picture} alt={name} />
       <div className="spot__description">
