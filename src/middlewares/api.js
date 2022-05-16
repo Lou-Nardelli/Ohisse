@@ -168,17 +168,17 @@ const apiMiddleWare = (store) => (next) => (action) => {
       // console.log(token);
 
       // console.log(axiosInstance);
+      // const token = JSON.parse(localStorage.getItem('token'));
 
       axiosInstance
         .post(
           'api/spots/create',
-          /*
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          },
-          */
+
+          // {
+          //   headers: {
+          //     Authorization: `Bearer ${token}`,
+          //   },
+          // },
           {
             name: inputName,
             number: 33,
@@ -211,6 +211,7 @@ const apiMiddleWare = (store) => (next) => (action) => {
     }
     case FETCH_USER_BY_ID: {
       const token = JSON.parse(localStorage.getItem('token'));
+      axiosInstance.defaults.headers.common.Authorization = `Bearer ${token}`;
 
       axiosInstance
         .get(
