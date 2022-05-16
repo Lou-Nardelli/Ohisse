@@ -1,7 +1,7 @@
 // import ext
 import PropTypes from 'prop-types';
-import { useDispatch } from 'react-redux';
-import { addFav } from '../../../actions/user';
+import { useDispatch, useSelector } from 'react-redux';
+import { addFav, removeFav } from '../../../actions/user';
 
 // styles
 import './spot.scss';
@@ -21,11 +21,25 @@ function Spot({
   reputation,
   minDifficulty,
   maxDifficulty,
+  id,
 }) {
   const dispatch = useDispatch();
+  // we retrieve id of the user's favorite place
+  const favorites = useSelector((state) => state.user.favorites);
   const handleFavClick = () => {
-    console.log('fav');
-    dispatch(addFav());
+    // we check if the current spot (id) is part of the user's favorites
+    const isFav = favorites.find((item) => item === id);
+    console.log(isFav);
+    // if spot is not one of his favorites
+    if (isFav === undefined) {
+      // it is added to the favorites
+      console.log('i add fav');
+      dispatch(addFav());
+    }
+    else {
+      console.log('we remove fav');
+      dispatch(removeFav());
+    }
   };
   return (
     <div className="spot">
@@ -77,6 +91,7 @@ Spot.propTypes = {
   reputation: PropTypes.string,
   minDifficulty: PropTypes.string,
   maxDifficulty: PropTypes.string,
+  id: PropTypes.number.isRequired,
 };
 
 Spot.defaultProps = {

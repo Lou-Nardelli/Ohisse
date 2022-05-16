@@ -58,6 +58,7 @@ function SpotPage() {
     reputation,
     min_difficulty,
     max_difficulty,
+    id,
   } = currentSpot[0];
 
   return (
@@ -79,6 +80,7 @@ function SpotPage() {
             reputation={reputation}
             minDifficulty={min_difficulty}
             maxDifficulty={max_difficulty}
+            id={id}
           />
           <HomeMap spots={currentSpot} />
           <p>Composant ajout commentaire</p>

@@ -9,7 +9,7 @@ import {
   fetchFavoritesById,
   FETCH_FAVORITES_BY_ID,
   FETCH_USER_BY_ID,
-  isLogged, isRegister, LOGGIN, LOGOUT, REGISTER_USER, saveFavorites, saveUser, SAVE_FAVORITES,
+  isLogged, isRegister, LOGGIN, LOGOUT, REGISTER_USER, REMOVE_FAV, saveFavorites, saveUser, SAVE_FAVORITES,
 } from '../actions/user';
 
 const axiosInstance = axios.create({
@@ -241,7 +241,7 @@ const apiMiddleWare = (store) => (next) => (action) => {
       // we delete token
       localStorage.removeItem('token');
       // we delete fav
-      // localStorage.removeItem('favorites');
+      localStorage.removeItem('favorites');
       // we clean axioInstance
       delete axiosInstance.defaults.headers.common.Authorization;
       next(action);
@@ -313,10 +313,54 @@ const apiMiddleWare = (store) => (next) => (action) => {
           // console.log(response.data);
           const arrayFav = response.data;
           const favorites = arrayFav.map((item) => item.id_spot);
-          // localStorage.setItem('favorites', JSON.stringify(favorites));
+          localStorage.setItem('favorites', JSON.stringify(response.data));
           // console.log(favorites);
           // console.log(JSON.parse(localStorage.getItem('favorites')));
           store.dispatch(saveFavorites(favorites));
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      next(action);
+      break;
+    }
+
+    case REMOVE_FAV: {
+      // we retrieve the id of the current user
+      // and the id fo th current spot
+      const {
+        user: {
+          currentUser: {
+            id: idUser,
+          },
+        },
+        spots: {
+          currentSpot: [{
+            id: idSpot,
+          }],
+        },
+      } = store.getState();
+      // we look for the information of all the favorites
+      const arrayFavoritesAPI = JSON.parse(localStorage.getItem('favorites'));
+      // console.log(arrayFavoritesAPI);
+      // we find the id of the bookmark
+      const bookmark = arrayFavoritesAPI.find((item) => item.id_spot === idSpot && item.id_user === idUser);
+      // console.log(bookmark);
+      const idBookmark = bookmark.id;
+      // console.log(idBookmark);
+
+      axiosInstance
+        .delete(
+          `api/user/bookmarks/delete/${idBookmark}`,
+          // {
+          //   headers: {
+          //     Authorization: `Bearer ${token}`,
+          //   },
+          // },
+        )
+        .then((response) => {
+          console.log(response.data);
+          store.dispatch(fetchFavoritesById());
         })
         .catch((error) => {
           console.log(error);

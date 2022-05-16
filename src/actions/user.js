@@ -122,3 +122,11 @@ export const saveFavorites = (fav) => ({
   type: SAVE_FAVORITES,
   fav,
 });
+
+// ACTION TYPE REMOVE_FAV
+export const REMOVE_FAV = 'REMOVE_FAV';
+
+// ACTION CREATOR removeFav
+export const removeFav = () => ({
+  type: REMOVE_FAV,
+});
