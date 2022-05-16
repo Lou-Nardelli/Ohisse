@@ -248,6 +248,7 @@ const apiMiddleWare = (store) => (next) => (action) => {
       break;
     }
 
+    // add favorite spot with idUser and isSpot
     case ADD_FAV: {
       // console.log(store.getState());
       const {
@@ -280,7 +281,7 @@ const apiMiddleWare = (store) => (next) => (action) => {
         )
         .then((response) => {
           console.log(response.data);
-          // store.dispatch(saveUser(response.data));
+          store.dispatch(fetchFavoritesById());
         })
         .catch((error) => {
           console.log(error);

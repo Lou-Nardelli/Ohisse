@@ -74,7 +74,7 @@ function Profile() {
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
               />
-              {listSpots.map((item) => (
+              {listSpotFav.map((item) => (
                 <Marker key={item.id} position={[item.longitude, item.latitude]} icon={ohisseIcon}>
                   <Popup>
                     <div className="map-popup" style={popupContent}>
