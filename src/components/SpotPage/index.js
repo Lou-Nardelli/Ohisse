@@ -16,6 +16,7 @@ import AddMessage from './AddMessage/addMessage';
 // styles
 import './spotPage.scss';
 import { fetchSpotById } from '../../actions/spots';
+import Messages from './Messages';
 
 function SpotPage() {
   const dispatch = useDispatch();
@@ -85,7 +86,7 @@ function SpotPage() {
           />
           <HomeMap spots={currentSpot} />
           <AddMessage />
-          <p>Composant commentaires</p>
+          <Messages />
         </>
       )}
 

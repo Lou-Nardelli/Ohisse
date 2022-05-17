@@ -1,20 +1,18 @@
 import { useSelector } from 'react-redux';
-import Message from 'src/components/Message';
+import Message from './Message';
 
 // styles
 import './messages.scss';
 
 function Messages() {
-  const messages = useSelector((state) => state.messages);
+  const { currentComments } = useSelector((state) => state.comments);
 
-  console.log(messages);
+  console.log(currentComments);
 
   return (
     <div className="messages">
       {
-        messages.map(
-          // on déverse l'ensemble des propriétés de message
-          // en tant que props de Message
+        currentComments.map(
           (message) => <Message key={message.id} {...message} />,
         )
       }
