@@ -1,0 +1,29 @@
+@import 'src/styles/theme-colors.scss';
+
+.form {
+  width:100%;
+  max-width: 700px;
+  display: flex;
+
+  &__input {
+    width:100%;
+    background-color:#fca311;
+    padding:1em;
+    border: none;
+    border-radius: 0 0 0 5px;
+    color: #fff;
+
+    &::placeholder {
+      color: #fff;
+    }
+  }
+
+  &__button {
+    border: 2px solid #fca311;
+    background-color: #fff;
+    border-radius: 0 0 5px 0;
+    padding: 0 1em;
+    color: #fca311;
+    font-weight: 700;
+  }
+}

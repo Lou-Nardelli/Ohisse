@@ -6,6 +6,7 @@ import Spot from './Spot';
 import HomeMap from '../Home/HomeMap';
 import Loading from '../Loading';
 import AddMessage from './AddMessage/addMessage';
+import Messages from './Messages/messages';
 
 // datas
 // later data will be in the state (ex:currentSpot)
@@ -84,7 +85,10 @@ function SpotPage() {
             id={id}
           />
           <HomeMap spots={currentSpot} />
-          <AddMessage />
+          <div className="messages-form">
+            <Messages />
+            <AddMessage />
+          </div>
           <p>Composant commentaires</p>
         </>
       )}

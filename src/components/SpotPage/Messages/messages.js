@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import Message from 'src/components/Message';
+import Message from '../Message/message';
 
 // styles
 import './messages.scss';
