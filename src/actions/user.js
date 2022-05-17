@@ -59,7 +59,6 @@ export const logout = () => ({
   type: LOGOUT,
 });
 
-
 // ACTION TYPE IS_TOKEN
 export const IS_TOKEN = 'IS_TOKEN';
 
@@ -95,4 +94,39 @@ export const darkMode = (isDarkMode) => ({
   type: DARKMODE,
   isDarkMode,
 
+});
+
+// ACTION TYPE ADD_FAV
+export const ADD_FAV = 'ADD_FAV';
+
+// ACTION CREATOR addFav
+export const addFav = () => ({
+  type: ADD_FAV,
+
+});
+
+// ACTION TYPE FETCH_FAVORITES_BY_ID
+export const FETCH_FAVORITES_BY_ID = 'FETCH_FAVORITES_BY_ID';
+
+// ACTION CREATOR fetchFavoritesById
+export const fetchFavoritesById = () => ({
+  type: FETCH_FAVORITES_BY_ID,
+
+});
+
+// ACTION TYPE SAVE_FAVORITES
+export const SAVE_FAVORITES = 'SAVE_FAVORITES';
+
+// ACTION CREATOR saveFavorites
+export const saveFavorites = (fav) => ({
+  type: SAVE_FAVORITES,
+  fav,
+});
+
+// ACTION TYPE REMOVE_FAV
+export const REMOVE_FAV = 'REMOVE_FAV';
+
+// ACTION CREATOR removeFav
+export const removeFav = () => ({
+  type: REMOVE_FAV,
 });

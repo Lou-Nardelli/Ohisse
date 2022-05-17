@@ -6,6 +6,8 @@ import {
   LOGOUT,
   SAVE_USER,
   DARKMODE,
+  SAVE_FAVORITES,
+  FETCH_USER_BY_ID,
 } from '../actions/user';
 
 export const initialState = {
@@ -22,6 +24,8 @@ export const initialState = {
   isRegister: false,
   isLogged: false,
   isDarkMode: false,
+  isLoading: false,
+  favorites: [1, 2, 3],
   currentUser: {
     firstname: 'Thibault',
     lastname: 'Peronno',
@@ -66,6 +70,9 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         isLogged: false,
+        currentUser: [],
+        favorites: [],
+
       };
     case DARKMODE:
       return {
@@ -84,6 +91,21 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         currentUser: action.user,
       };
+
+    case SAVE_FAVORITES: {
+      return {
+        ...state,
+        favorites: action.fav,
+        isLoading: false,
+      };
+    }
+
+    case FETCH_USER_BY_ID: {
+      return {
+        ...state,
+        isLoading: true,
+      };
+    }
 
     default:
       return state;

@@ -81,6 +81,7 @@ function Ohisse() {
       <div className="ohisse">
         <Header />
 
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/fiche-spot/:slug" element={<SpotPage />} />
@@ -97,6 +98,7 @@ function Ohisse() {
         <Route path="/mentions-legales" element={<LegalNotice />} />
         <Route path="*" element={<Error />} />
       </Routes>
+
 
         <Footer />
       </div>
