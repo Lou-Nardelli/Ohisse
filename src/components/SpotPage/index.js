@@ -5,6 +5,7 @@ import { useParams, Navigate } from 'react-router-dom';
 import Spot from './Spot';
 import HomeMap from '../Home/HomeMap';
 import Loading from '../Loading';
+import AddMessage from './AddMessage/addMessage';
 
 // datas
 // later data will be in the state (ex:currentSpot)
@@ -83,7 +84,7 @@ function SpotPage() {
             id={id}
           />
           <HomeMap spots={currentSpot} />
-          <p>Composant ajout commentaire</p>
+          <AddMessage />
           <p>Composant commentaires</p>
         </>
       )}
