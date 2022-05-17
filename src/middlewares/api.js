@@ -173,6 +173,7 @@ const apiMiddleWare = (store) => (next) => (action) => {
 
       // console.log(axiosInstance);
       // const token = JSON.parse(localStorage.getItem('token'));
+      const name = inputName.replace('.', ' ');
 
       axiosInstance
         .post(
@@ -184,8 +185,8 @@ const apiMiddleWare = (store) => (next) => (action) => {
           //   },
           // },
           {
-            name: inputName,
             number: inputNumber,
+            name: name,
             street: inputAddress,
             zipcode: inputZipCode,
             city: inputCity,

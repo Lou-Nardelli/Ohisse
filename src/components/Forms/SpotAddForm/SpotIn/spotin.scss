@@ -5,6 +5,10 @@
   margin: auto;
   max-width: 700px;
   width: 100%;
+  @include themed() {
+    background-color: ask($bg);
+  }
+
   &__title {
     font-family: Oleo Script,cursive;
     @include themed() {
@@ -37,6 +41,12 @@
       }
       @include themed() {
         color: ask($text);
+      }
+
+      &::placeholder {
+        @include themed() {
+          color: ask($text);
+        }
       }
     }
 

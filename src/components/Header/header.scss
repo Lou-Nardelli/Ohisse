@@ -1,6 +1,10 @@
 @use 'src/styles/vars';
 @import 'src/styles/theme-colors.scss';
 
+header {
+  border-bottom: #fff 1px solid;
+}
+
 .header {
     max-width: 100% !important;
     @include themed() {

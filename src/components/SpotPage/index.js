@@ -20,12 +20,12 @@ function SpotPage() {
   const dispatch = useDispatch();
   // the slug of url
   const { slug } = useParams();
-  // console.log(slug);
+  console.log(slug);
   const spots = useSelector((state) => state.spots.listSpots);
   // console.log(spots);
   const spot = spots.find((element) => element.name === slug);
-  // console.log(spots);
-  // console.log(spot);
+  console.log(spots);
+  console.log(spot);
 
   if (!spot) {
     return <Navigate to="/" replace />;
