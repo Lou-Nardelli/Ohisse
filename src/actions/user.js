@@ -58,3 +58,41 @@ export const LOGOUT = 'LOGOUT';
 export const logout = () => ({
   type: LOGOUT,
 });
+
+
+// ACTION TYPE IS_TOKEN
+export const IS_TOKEN = 'IS_TOKEN';
+
+// ACTION CREATOR isToken
+export const isToken = () => ({
+  type: IS_TOKEN,
+
+});
+
+// ACTION TYPE SAVE_USER
+export const SAVE_USER = 'SAVE_USER';
+
+// ACTION CREATOR saveUser
+export const saveUser = (user) => ({
+  type: SAVE_USER,
+  user,
+});
+
+// ACTION TYPE FETCH_USER_BY_ID
+export const FETCH_USER_BY_ID = 'FETCH_USER_BY_ID';
+
+// ACTION CREATOR fetchUserById
+export const fetchUserById = (id) => ({
+  type: FETCH_USER_BY_ID,
+  id,
+});
+
+// ACTION TYPE DARKMODE
+export const DARKMODE = 'DARKMODE';
+
+// ACTION CREATOR darkMode
+export const darkMode = (isDarkMode) => ({
+  type: DARKMODE,
+  isDarkMode,
+
+});

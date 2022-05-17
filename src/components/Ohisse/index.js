@@ -14,6 +14,7 @@ import HomeMap from '../Map';
 import Error from '../Error';
 import Spots from '../Spots';
 import Profile from '../Profile';
+import LegalNotice from '../LegalNotice';
 
 import './ohisse.scss';
 import LogginForm from '../Forms/LogginForm';
@@ -23,15 +24,38 @@ import SpotOut from '../Forms/SpotAddForm/SpotOut';
 import RegisterForm from '../Forms/RegisterForm';
 import { fetchSpots } from '../../actions/spots';
 import TeamPage from '../TeamPage';
+import { fetchUserById, isLogged } from '../../actions/user';
 
 // == Composant
 function Ohisse() {
   // hook useDispatch to dispatch actions
   const dispatch = useDispatch();
+
+  // function decode token
+  function parseJwt(token) {
+    const base64Url = token.split('.')[1];
+    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    const jsonPayload = decodeURIComponent(atob(base64).split('').map((c) => `%${(`00${c.charCodeAt(0).toString(16)}`).slice(-2)}`).join(''));
+
+    return JSON.parse(jsonPayload);
+  }
+
   // when mounting component Ohisse
   useEffect(() => {
     // load all spots from API
     dispatch(fetchSpots());
+    // dispatch();
+    // console.log(localStorage.getItem('token'));
+    const token = localStorage.getItem('token');
+    // if token exist
+    if (token !== null) {
+      // isLogged = true
+      dispatch(isLogged());
+      // we find id's user
+      console.log(parseJwt(token).sub);
+      // we fetch information about user
+      dispatch(fetchUserById(parseJwt(token).sub));
+    }
   }, []);
 
   const location = useLocation();
@@ -43,6 +67,8 @@ function Ohisse() {
     },
     [location],
   );
+  // calling boolean of dark-theme mode
+  const theme = useSelector((state) => state.user.isDarkMode);
   // all spots (from state)
   const spots = useSelector((state) => state.spots.listSpots);
   // filter to get a array of interior spots
@@ -50,8 +76,10 @@ function Ohisse() {
   // filter to get a array of outdoor spots
   const spotsOutdoor = spots.filter((item) => item.type === 'Spot');
   return (
-    <div className="ohisse">
-      <Header />
+    // using a div that contains the dark/light theme class
+    <div className={`theme ${theme ? 'theme--dark' : 'theme--light'}`}>
+      <div className="ohisse">
+        <Header />
 
       <Routes>
         <Route path="/" element={<Home />} />
@@ -66,11 +94,12 @@ function Ohisse() {
         <Route path="/profil" element={<Profile />} />
         <Route path="/inscription" element={<RegisterForm />} />
         <Route path="/equipe" element={<TeamPage />} />
-        <Route path="/mentions-legales" element={<Home />} />
+        <Route path="/mentions-legales" element={<LegalNotice />} />
         <Route path="*" element={<Error />} />
       </Routes>
 
-      <Footer />
+        <Footer />
+      </div>
     </div>
   );
 }

@@ -1,4 +1,5 @@
 @use 'src/styles/_vars.scss';
+@import 'src/styles/theme-colors.scss';
 
 .full-map {
   width: 100%;
@@ -17,6 +18,11 @@
     max-width: 100%;
     max-height: 100%;
     border-radius: 5px;
+  }
+  @include themed() {
+    h3 {
+      color: ask($title-brown);
+    }
   }
 }
 

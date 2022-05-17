@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, NavLink } from 'react-router-dom';
-import { logout } from 'src/actions/user';
+import { logout, darkMode } from 'src/actions/user';
 import AppBar from '@mui/material/AppBar';
 import MenuIcon from '@material-ui/icons/Menu';
 import CloseIcon from '@material-ui/icons/Close';
@@ -28,6 +28,7 @@ import AccountConnect from './AccountConnect';
 // == Composant
 function Header() {
   const isLogged = useSelector((state) => state.user.isLogged);
+  const isDarkMode = useSelector((state) => state.user.isDarkMode);
   const dispatch = useDispatch();
 
   // Link's array
@@ -42,6 +43,10 @@ function Header() {
 
   const handleLogout = () => {
     dispatch(logout());
+  };
+
+  const handleDarkMode = () => {
+    dispatch(darkMode(!isDarkMode));
   };
 
   return (
@@ -62,7 +67,7 @@ function Header() {
                 {/* Dark mode/Connect links */}
                 <div className="burger__connect--dark-mode">
                   <WbSunnyIcon className="gutter-links" />
-                  <Switch />
+                  <Switch onClick={handleDarkMode} />
                   <Brightness2Icon />
                 </div>
                 {/* Menu component with connexion pop-up */}
@@ -134,7 +139,7 @@ function Header() {
               )}
               <div className="burger__connect--dark-mode">
                 <WbSunnyIcon />
-                <Switch />
+                <Switch onClick={handleDarkMode} />
                 <Brightness2Icon />
               </div>
             </ListItem>

@@ -4,6 +4,8 @@ import {
   CONFIRM_PASSWORD,
   IS_REGISTER,
   LOGOUT,
+  SAVE_USER,
+  DARKMODE,
 } from '../actions/user';
 
 export const initialState = {
@@ -18,8 +20,8 @@ export const initialState = {
   inputCountry: '',
   isError: false,
   isRegister: false,
-  isLogged: true,
-
+  isLogged: false,
+  isDarkMode: false,
   currentUser: {
     firstname: 'Thibault',
     lastname: 'Peronno',
@@ -65,11 +67,22 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         isLogged: false,
       };
+    case DARKMODE:
+      return {
+        ...state,
+        isDarkMode: action.isDarkMode,
+      };
 
     case IS_LOGGED:
       return {
         ...state,
         isLogged: true,
+      };
+
+    case SAVE_USER:
+      return {
+        ...state,
+        currentUser: action.user,
       };
 
     default:

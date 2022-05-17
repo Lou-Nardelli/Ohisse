@@ -1,11 +1,17 @@
+@import 'src/styles/theme-colors.scss';
+
 .profile {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  height:100%;
+  @include themed() {
+    background-color: ask($bg);
+  }
 
   hr {
-    border: 1px solid #14213d;
+    @include themed() {
+      border: 1px solid ask($text);
+    }
     width: 80%;
     border-radius: 3px;
     height:0px;
@@ -26,6 +32,9 @@
     &--informations {
       margin-left:2em;
       max-width:70%;
+      @include themed() {
+        color: ask($text);
+      }
 
       h1 {
         font-size: 2em;
@@ -35,14 +44,18 @@
     
       h2 {
         font-size: 1.2em;
-        color: #14213d;
+        @include themed() {
+          color: ask($title-blue);
+        }
         font-weight: 700;
         margin-bottom:1em;
       }
     
       h3 {
         font-size: 1em;
-        color: #14213d;
+        @include themed() {
+          color: ask($title-blue);
+        }
         font-weight: 700;
         margin-bottom: .5em;
       }
@@ -54,7 +67,9 @@
     text-align: center;
 
     &--title {
-      color: #14213d;
+      @include themed() {
+        color: ask($title-blue);
+      }
       font-size: 1.5em;
       font-weight: 700;
       margin: 1em auto;

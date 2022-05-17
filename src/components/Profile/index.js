@@ -22,7 +22,7 @@ function Profile() {
   }
 
   if (!isLogged) {
-    return (<Navigate to="/" replace />);
+    return (<Navigate to="/connexion" replace />);
   }
 
   return (
