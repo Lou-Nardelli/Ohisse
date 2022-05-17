@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { changeValue } from '../../../actions/comments';
+import { sendMessageToServer } from '../../../actions/comments';
 import './addMessage.scss';
 
 function AddMessage() {
@@ -10,18 +11,17 @@ function AddMessage() {
   };
 
   const stateValue = useSelector((state) => state.comments.newMessageContent);
-  console.log(stateValue);
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log('i submit');
 
-  // const handleSubmit = (event) => {
-  //   event.preventDefault();
-
-  // dispatch(sendMessageToServer());
-  // };
+    dispatch(sendMessageToServer());
+  };
 
   return (
     <form
       className="form"
-      // onSubmit={handleSubmit}
+      onSubmit={handleSubmit}
     >
       <input
         type="text"

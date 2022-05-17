@@ -4,6 +4,7 @@ import { array } from 'prop-types';
 import {
   FETCH_SPOTS, FETCH_SPOT_BY_ID, REGISTER_SPOT, saveSpotById, saveSpots, fetchSpots,
 } from '../actions/spots';
+import { SEND_MESSAGE_TO_SERVER } from '../actions/comments';
 import {
   ADD_FAV,
   fetchFavoritesById,
@@ -366,6 +367,47 @@ const apiMiddleWare = (store) => (next) => (action) => {
         .catch((error) => {
           console.log(error);
         });
+      next(action);
+      break;
+    }
+    case SEND_MESSAGE_TO_SERVER: {
+      const {
+        user: {
+          currentUser: {
+            id: idUser,
+            pseudo,
+          },
+        },
+        spots: {
+          currentSpot: [{
+            id: idSpot,
+          }],
+        },
+        comments: {
+          newMessageContent,
+        },
+      } = store.getState();
+
+      axiosInstance
+        .post(
+          'api/comments/add',
+          {
+            content: newMessageContent,
+            // pseudo: pseudo,
+            userId: idUser,
+            spotId: idSpot,
+          },
+        )
+        .then(
+          (response) => {
+            console.log(response.data);
+            // to save all spots in the state
+            // store.dispatch(saveSpotById(response.data));
+          },
+        )
+        .catch(
+          (error) => console.log(error),
+        );
       next(action);
       break;
     }
