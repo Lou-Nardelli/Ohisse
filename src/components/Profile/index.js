@@ -33,7 +33,7 @@ function Profile() {
   console.log(listSpotFav);
   if (listSpotFav[0] === undefined) {
     console.log('indéfini');
-    return (<Navigate to="/connexion" replace />);
+    return (<Navigate to="/" replace />);
   }
 
   return (
