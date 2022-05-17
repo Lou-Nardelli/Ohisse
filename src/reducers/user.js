@@ -21,6 +21,7 @@ export const initialState = {
   inputConfirmPassword: '',
   inputCity: '',
   inputCountry: '',
+  inputDescription: '',
   isError: false,
   isRegister: false,
   isLogged: false,

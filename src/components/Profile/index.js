@@ -14,18 +14,23 @@ import Loading from '../Loading';
 // == Composant
 function Profile() {
   const { favorites } = useSelector((state) => state.user);
-  console.log(favorites);
-
+  // console.log(favorites);
   const listSpots = useSelector((state) => state.spots.listSpots);
-  console.log(listSpots);
+  // console.log(listSpots);
   const currentUser = useSelector((state) => state.user.currentUser);
-  console.log(currentUser);
+  // console.log(currentUser);
   const isLoading = useSelector((state) => state.user.isLoading);
 
   const listSpotFav = favorites.map((item) => {
     const fav = listSpots.find((itemList) => itemList.id === item);
     return fav;
   });
+
+  const inputEmail = useSelector((state) => state.user.inputEmail);
+  const inputPseudo = useSelector((state) => state.user.inputPseudo);
+  const inputFirstname = useSelector((state) => state.user.inputFirstname);
+  const inputLastname = useSelector((state) => state.user.inputLastname);
+  const inputDescription = useSelector((state) => state.user.inputDescription);
 
   if (currentUser.description === null) {
     currentUser.description = "Ma description n'est pas encore remplie, mais je procrastine encore un peu avant de m'y mettre !";
@@ -38,6 +43,9 @@ function Profile() {
   //   return (<Navigate to="/" replace />);
   // }
 
+  function handleFieldClick() {
+  }
+
   return (
     <div className="profile">
       {/* Informations about the user */}
@@ -46,7 +54,10 @@ function Profile() {
           <div className="profile__header">
             <img className="profile__header--picture" src="https://media-exp1.licdn.com/dms/image/D5635AQHa2jqlhY57-Q/profile-framedphoto-shrink_800_800/0/1643542347773?e=1652364000&v=beta&t=sm9DmS8opoU9LcZtcwwcWUcH4vgj3U5hChQn3UTAtv4" alt="profile_picture" />
             <div className="profile__header--informations">
-              <h1>{currentUser.firstname} {currentUser.lastname} - alias {currentUser.pseudo}</h1>
+              <h1>
+                <input value={inputFirstname} />
+                {currentUser.lastname} - alias {currentUser.pseudo}
+              </h1>
               <h2>{currentUser.city}</h2>
               <h3>Description</h3>
               <p>{currentUser.description}</p>
