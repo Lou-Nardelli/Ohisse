@@ -18,6 +18,7 @@ function Profile() {
 
   const listSpots = useSelector((state) => state.spots.listSpots);
   const currentUser = useSelector((state) => state.user.currentUser);
+  console.log(currentUser);
   const isLoading = useSelector((state) => state.user.isLoading);
 
   const listSpotFav = favorites.map((item) => {
@@ -25,15 +26,15 @@ function Profile() {
     return fav;
   });
 
-  console.log(listSpotFav);
-
-  if (currentUser.description.length === 0) {
+  if (currentUser.description === null) {
     currentUser.description = "Ma description n'est pas encore remplie, mais je procrastine encore un peu avant de m'y mettre !";
   }
 
-  // if (!isLogged) {
-  //   return (<Navigate to="/connexion" replace />);
-  // }
+  console.log(listSpotFav);
+  if (listSpotFav[0] === undefined) {
+    console.log('indéfini');
+    return (<Navigate to="/connexion" replace />);
+  }
 
   return (
     <div className="profile">

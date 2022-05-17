@@ -8,6 +8,7 @@ import {
   DARKMODE,
   SAVE_FAVORITES,
   FETCH_USER_BY_ID,
+  SET_LOADING,
 } from '../actions/user';
 
 export const initialState = {
@@ -106,6 +107,13 @@ const reducer = (state = initialState, action = {}) => {
         isLoading: true,
       };
     }
+
+    // case SET_LOADING: {
+    //   return {
+    //     ...state,
+    //     isLoading: true,
+    //   };
+    // }
 
     default:
       return state;

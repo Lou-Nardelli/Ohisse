@@ -24,7 +24,7 @@ import SpotOut from '../Forms/SpotAddForm/SpotOut';
 import RegisterForm from '../Forms/RegisterForm';
 import { fetchSpots } from '../../actions/spots';
 import TeamPage from '../TeamPage';
-import { fetchUserById, isLogged } from '../../actions/user';
+import { fetchUserById, isLogged, setLoading } from '../../actions/user';
 
 // == Composant
 function Ohisse() {
@@ -42,9 +42,10 @@ function Ohisse() {
 
   // when mounting component Ohisse
   useEffect(() => {
+    // dispatch(setLoading());
     // load all spots from API
     dispatch(fetchSpots());
-    // dispatch();
+
     // console.log(localStorage.getItem('token'));
     const token = localStorage.getItem('token');
     // if token exist
@@ -81,24 +82,22 @@ function Ohisse() {
       <div className="ohisse">
         <Header />
 
-
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/fiche-spot/:slug" element={<SpotPage />} />
-        <Route path="/fiches-interieur" element={<Spots listSpots={spotsIndoor} title="Salles intérieures" />} />
-        <Route path="/fiches-exterieur" element={<Spots listSpots={spotsOutdoor} title="Spots extérieurs" />} />
-        <Route path="/map" element={<HomeMap />} />
-        <Route path="/ajout-spot" element={<SelectSpotType />} />
-        <Route path="/ajout-spot-interieur" element={<SpotIn />} />
-        <Route path="/ajout-spot-exterieur" element={<SpotOut />} />
-        <Route path="/connexion" element={<LogginForm />} />
-        <Route path="/profil" element={<Profile />} />
-        <Route path="/inscription" element={<RegisterForm />} />
-        <Route path="/equipe" element={<TeamPage />} />
-        <Route path="/mentions-legales" element={<LegalNotice />} />
-        <Route path="*" element={<Error />} />
-      </Routes>
-
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/fiche-spot/:slug" element={<SpotPage />} />
+          <Route path="/fiches-interieur" element={<Spots listSpots={spotsIndoor} title="Salles intérieures" />} />
+          <Route path="/fiches-exterieur" element={<Spots listSpots={spotsOutdoor} title="Spots extérieurs" />} />
+          <Route path="/map" element={<HomeMap />} />
+          <Route path="/ajout-spot" element={<SelectSpotType />} />
+          <Route path="/ajout-spot-interieur" element={<SpotIn />} />
+          <Route path="/ajout-spot-exterieur" element={<SpotOut />} />
+          <Route path="/connexion" element={<LogginForm />} />
+          <Route path="/profil" element={<Profile />} />
+          <Route path="/inscription" element={<RegisterForm />} />
+          <Route path="/equipe" element={<TeamPage />} />
+          <Route path="/mentions-legales" element={<LegalNotice />} />
+          <Route path="*" element={<Error />} />
+        </Routes>
 
         <Footer />
       </div>

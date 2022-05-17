@@ -130,3 +130,12 @@ export const REMOVE_FAV = 'REMOVE_FAV';
 export const removeFav = () => ({
   type: REMOVE_FAV,
 });
+
+// ACTION TYPE SET_LOADING
+export const SET_LOADING = 'SET_LOADING';
+
+// ACTION CREATOR setLoading
+export const setLoading = () => ({
+  type: SET_LOADING,
+
+});
