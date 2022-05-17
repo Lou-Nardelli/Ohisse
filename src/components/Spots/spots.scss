@@ -1,8 +1,13 @@
 @use 'src/styles/_vars';
+@import 'src/styles/theme-colors.scss';
 
 .spots{
+  height: 100%;
   &__title {
-    color: vars.$color-brown;
+    margin: 3rem 0;
+    @include themed() {
+      color: ask($title-brown);
+    }
     font-family: Oleo Script,cursive;
     font-size: 1.3rem;
     text-align: center;

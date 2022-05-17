@@ -1,0 +1,7 @@
+@import 'src/styles/theme-colors.scss';
+
+.spotPage {
+  @include themed() {
+    background-color: ask($bg);
+  }
+}

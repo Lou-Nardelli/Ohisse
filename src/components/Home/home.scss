@@ -1,31 +1,42 @@
 @use 'src/styles/_vars';
+@import 'src/styles/theme-colors.scss';
 
 .home {
+  @include themed() {
+    background-color: ask($bg);
+  }
+  
   &__description {
     margin: auto;
-  max-width: 700px;
+    max-width: 700px;
 
     &--title {
       font-family: Oleo Script,cursive;
       font-weight: bold;
       font-size: 2rem;
       padding: 1rem;
-      color: vars.$color-brown;
       text-align: center;
+      @include themed() {
+        color: ask($title-brown);
+      }
     }
 
     &--text {
       letter-spacing: 1px;
       line-height: 1.2rem;
-      color: vars.$color-blue;
       margin-bottom: 1rem;
       text-align: justify;
+      @include themed() {
+        color: ask($text);
+      }
       span {
         display: block;
         font-size: 1.3rem;
         text-align: center;
         font-family: Oleo Script,cursive;
-        color: vars.$color-brown;
+        @include themed() {
+          color: ask($title-brown);
+        }
       }
     }
   }

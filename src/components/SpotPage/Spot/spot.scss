@@ -1,6 +1,7 @@
 @use 'src/styles/vars';
-.spot {
+@import 'src/styles/theme-colors.scss';
 
+.spot {
   overflow: hidden;
   padding-bottom: 1em;
 
@@ -14,12 +15,17 @@
       font-family: Oleo Script,cursive;
       font-weight: bold;
       font-size: 2rem;
-      color: vars.$color-brown;
+      @include themed() {
+        color: ask($title-brown);
+      }
     }
 
     .header__button {
       border: none;
-      background-color: white;
+      @include themed() {
+        color: ask($title-brown);
+      }
+      background:none;
       font-size: 1.5em;
       color: vars.$color-brown;
 
@@ -47,7 +53,9 @@
     display: flex;
     align-items: center;
     margin: 1em;
-    background-color: vars.$color-grey;
+    @include themed() {
+      background-color: ask($bg);
+    }
     border-radius: 10px;
     border: solid, 2px, vars.$color-orange;
     padding: 0.5em;
@@ -55,6 +63,9 @@
     margin: auto;
     margin-top: 1em;
     margin-bottom: 1em;
+    @include themed() {
+      color: ask($text);
+    }
 
     .description__address {
         text-align: left;
@@ -73,7 +84,12 @@
   }
 
   &__various {
-    background-color: vars.$color-grey;
+    @include themed() {
+      background-color: ask($bg);
+    }
+    @include themed() {
+      color: ask($text);
+    }
     border-radius: 10px;
     border: solid, 2px, vars.$color-orange;
     padding: 0.5em;
@@ -85,7 +101,9 @@
 
   &__strong {
     font-weight: bold;
-    color: vars.$color-brown;
+    @include themed() {
+      color: ask($title-brown);
+    }
   }
 }
 

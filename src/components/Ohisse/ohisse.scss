@@ -1,3 +1,5 @@
+@import 'src/styles/theme-colors.scss';
+
 .ohisse {
   font-family: 'Catamaran', sans-serif;
   margin: auto;
@@ -5,4 +7,8 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
+
+  @include themed() {
+    background-color: ask($bg);
+  }
 }

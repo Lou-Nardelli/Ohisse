@@ -11,11 +11,11 @@ import './spots.scss';
 function Spots({ listSpots, title }) {
   return (
     <div className="spots">
-      <h2 className="spots__title">{title}</h2>
+      <h1 className="spots__title">{title}</h1>
       <div className="spots__cards">
         {
           listSpots.map((item) => (
-            <Link key={item.id} to="">
+            <Link key={item.id} to={`/fiche-spot/${item.name}`}>
               <Card
                 key={item.id}
                 name={item.name}

@@ -1,4 +1,5 @@
 @use 'src/styles/vars';
+@import 'src/styles/theme-colors.scss';
 
 .sliderCards {
     overflow: hidden;
@@ -6,26 +7,14 @@
     justify-content: center;
     align-items: center;
     position: relative;
+    @include themed() {
+      background-color: ask($bg);
+    }
 
 
     &__picture {
         width: 100vw;
     }
-
-    // &__button--previous,
-    // &__button--next {
-    //   background-color: rgba(255, 255, 255, .7);
-    //   border: 2px solid vars.$color-orange;
-    //   border-radius: 50%;
-    //   width: 3em;
-    //   height: 3em;
-    //   color: vars.$color-orange;
-    //   z-index:1;
-
-    //   &:hover {
-    //     background-color: rgb(255, 255, 255);
-    //   }
-    // }
 
     &__button--previous {
       position: absolute;
@@ -40,8 +29,9 @@
 
 // CSS classes of the <Carousel /> component's slider button 
 .control-arrow {
-  background-color: #fff !important;
-  opacity: .7 !important;
+  @include themed() {
+    background-color: ask($bg) !important;
+  }
   border: 2px solid #fca311 !important;
   border-radius: 50% !important;
   color: #fca311 !important;
@@ -53,7 +43,7 @@
   height: 2em !important;
 
   &:hover {
-    background-color: rgb(255, 255, 255) !important;
+    opacity: 1 !important;
   }
 }
 

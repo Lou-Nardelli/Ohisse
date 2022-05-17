@@ -1,4 +1,15 @@
-import { CHANGE_FIELD, CONFIRM_PASSWORD } from '../actions/user';
+import {
+  CHANGE_FIELD,
+  IS_LOGGED,
+  CONFIRM_PASSWORD,
+  IS_REGISTER,
+  LOGOUT,
+  SAVE_USER,
+  DARKMODE,
+  SAVE_FAVORITES,
+  FETCH_USER_BY_ID,
+  SET_LOADING,
+} from '../actions/user';
 
 export const initialState = {
   list: [],
@@ -11,7 +22,11 @@ export const initialState = {
   inputCity: '',
   inputCountry: '',
   isError: false,
-
+  isRegister: false,
+  isLogged: false,
+  isDarkMode: false,
+  isLoading: false,
+  favorites: [1, 2],
   currentUser: {
     firstname: 'Thibault',
     lastname: 'Peronno',
@@ -20,7 +35,6 @@ export const initialState = {
     city: 'Vernouillet',
     country: 'France',
     description: '',
-    password: 123456789,
     updated_at: '2022-05-11T07:51:33.000000Z',
     created_at: '2022-05-11T07:51:33.000000Z',
     id: 3,
@@ -47,6 +61,58 @@ const reducer = (state = initialState, action = {}) => {
         isError: false,
       };
     }
+    case IS_REGISTER:
+      return {
+        ...state,
+        isRegister: true,
+      };
+    case LOGOUT:
+      return {
+        ...state,
+        isLogged: false,
+        currentUser: [],
+        favorites: [],
+
+      };
+    case DARKMODE:
+      return {
+        ...state,
+        isDarkMode: action.isDarkMode,
+      };
+
+    case IS_LOGGED:
+      return {
+        ...state,
+        isLogged: true,
+      };
+
+    case SAVE_USER:
+      return {
+        ...state,
+        currentUser: action.user,
+      };
+
+    case SAVE_FAVORITES: {
+      return {
+        ...state,
+        favorites: action.fav,
+        isLoading: false,
+      };
+    }
+
+    case FETCH_USER_BY_ID: {
+      return {
+        ...state,
+        isLoading: true,
+      };
+    }
+
+    // case SET_LOADING: {
+    //   return {
+    //     ...state,
+    //     isLoading: true,
+    //   };
+    // }
 
     default:
       return state;
