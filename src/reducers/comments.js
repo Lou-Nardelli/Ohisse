@@ -20,7 +20,7 @@ const initialState = {
     },
   ],
 
-  newMessageContent: '',
+  newMessageContent: 'cool',
 };
 
 function reducer(state = initialState, action = {}) {

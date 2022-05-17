@@ -1,4 +1,5 @@
 import { useDispatch } from 'react-redux';
+import { sendMessageToServer } from '../../../actions/comments';
 import './addMessage.scss';
 
 function AddMessage() {
@@ -10,14 +11,15 @@ function AddMessage() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    console.log('i submit');
 
-    // dispatch(sendMessageToServer());
+    dispatch(sendMessageToServer());
   };
 
   return (
     <form
       className="form"
-      // onSubmit={handleSubmit}
+      onSubmit={handleSubmit}
     >
       <input
         type="text"
