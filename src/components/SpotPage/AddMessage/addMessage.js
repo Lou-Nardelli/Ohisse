@@ -1,18 +1,22 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { changeValue } from '../../../actions/comments';
 import './addMessage.scss';
 
 function AddMessage() {
   const dispatch = useDispatch();
+
   const handleChange = (evt) => {
-    // onChange(evt.currentTarget.value);
-    console.log(evt.currentTarget.value);
+    dispatch(changeValue(evt.currentTarget.value));
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const stateValue = useSelector((state) => state.comments.newMessageContent);
+  console.log(stateValue);
 
-    // dispatch(sendMessageToServer());
-  };
+  // const handleSubmit = (event) => {
+  //   event.preventDefault();
+
+  // dispatch(sendMessageToServer());
+  // };
 
   return (
     <form
