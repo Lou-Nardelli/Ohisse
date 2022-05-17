@@ -1,6 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { changeValue } from '../../../actions/comments';
-import { sendMessageToServer } from '../../../actions/comments';
+import { changeValue, sendMessageToServer } from '../../../actions/comments';
 import './addMessage.scss';
 
 function AddMessage() {
@@ -10,7 +9,6 @@ function AddMessage() {
     dispatch(changeValue(evt.currentTarget.value));
   };
 
-  const stateValue = useSelector((state) => state.comments.newMessageContent);
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log('i submit');
