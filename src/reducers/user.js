@@ -26,7 +26,7 @@ export const initialState = {
   isLogged: false,
   isDarkMode: false,
   isLoading: false,
-  favorites: [1, 2, 3],
+  favorites: [1, 2],
   currentUser: {
     firstname: 'Thibault',
     lastname: 'Peronno',
@@ -35,7 +35,6 @@ export const initialState = {
     city: 'Vernouillet',
     country: 'France',
     description: '',
-    password: 123456789,
     updated_at: '2022-05-11T07:51:33.000000Z',
     created_at: '2022-05-11T07:51:33.000000Z',
     id: 3,

@@ -24,7 +24,7 @@ import SpotOut from '../Forms/SpotAddForm/SpotOut';
 import RegisterForm from '../Forms/RegisterForm';
 import { fetchSpots } from '../../actions/spots';
 import TeamPage from '../TeamPage';
-import { fetchUserById, isLogged, setLoading } from '../../actions/user';
+import { fetchUserById, isLogged } from '../../actions/user';
 
 // == Composant
 function Ohisse() {
@@ -46,7 +46,7 @@ function Ohisse() {
     // load all spots from API
     dispatch(fetchSpots());
 
-    // console.log(localStorage.getItem('token'));
+    console.log(localStorage.getItem('token'));
     const token = localStorage.getItem('token');
     // if token exist
     if (token !== null) {

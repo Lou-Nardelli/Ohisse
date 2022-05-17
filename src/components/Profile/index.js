@@ -14,9 +14,10 @@ import Loading from '../Loading';
 // == Composant
 function Profile() {
   const { favorites } = useSelector((state) => state.user);
-  // console.log(favorites);
+  console.log(favorites);
 
   const listSpots = useSelector((state) => state.spots.listSpots);
+  console.log(listSpots);
   const currentUser = useSelector((state) => state.user.currentUser);
   console.log(currentUser);
   const isLoading = useSelector((state) => state.user.isLoading);
@@ -31,10 +32,11 @@ function Profile() {
   }
 
   console.log(listSpotFav);
-  if (listSpotFav[0] === undefined) {
-    console.log('indéfini');
-    return (<Navigate to="/" replace />);
-  }
+
+  // if (listSpotFav[0] === undefined) {
+  //   console.log('indéfini');
+  //   return (<Navigate to="/" replace />);
+  // }
 
   return (
     <div className="profile">
