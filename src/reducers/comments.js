@@ -1,3 +1,7 @@
+import {
+  CHANGE_VALUE,
+} from '../actions/comments';
+
 const initialState = {
   currentComments: [
     {
@@ -25,6 +29,11 @@ const initialState = {
 
 function reducer(state = initialState, action = {}) {
   switch (action.type) {
+    case CHANGE_VALUE:
+      return {
+        ...state,
+        newMessageContent: action.value,
+      };
     default:
       return state;
   }
