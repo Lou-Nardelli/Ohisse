@@ -13,3 +13,12 @@ export const SEND_MESSAGE_TO_SERVER = 'SEND_MESSAGE_TO_SERVER';
 export const sendMessageToServer = () => ({
   type: SEND_MESSAGE_TO_SERVER,
 });
+
+// ACTION TYPE SAVE_NEW_MESSAGE
+export const SAVE_NEW_MESSAGE = 'SAVE_NEW_MESSAGE';
+
+// ACTION CREATOR saveNewMessage
+export const saveNewMessage = (message) => ({
+  type: SAVE_NEW_MESSAGE,
+  message,
+});
