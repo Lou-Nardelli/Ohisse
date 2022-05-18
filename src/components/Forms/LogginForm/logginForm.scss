@@ -52,6 +52,12 @@
     margin-bottom: 1rem;
   }
 
+  p {
+    @include themed() {
+      color: ask($text);
+    }
+  }
+
 
   .inscription__message {
     padding-top: 1rem;

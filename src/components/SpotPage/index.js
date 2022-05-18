@@ -1,12 +1,12 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-import { useParams, Navigate } from 'react-router-dom';
+import { useParams, Navigate, Link } from 'react-router-dom';
 // Componants
 import Spot from './Spot';
 import HomeMap from '../Home/HomeMap';
 import Loading from '../Loading';
-import AddMessage from './AddMessage/addMessage';
-import Messages from './Messages/messages';
+import AddMessage from './AddMessage';
+import Messages from './Messages';
 
 // datas
 // later data will be in the state (ex:currentSpot)
@@ -17,6 +17,7 @@ import Messages from './Messages/messages';
 // styles
 import './spotPage.scss';
 import { fetchSpotById } from '../../actions/spots';
+import { fetchAllCommentsBySpot } from '../../actions/comments';
 
 function SpotPage() {
   const dispatch = useDispatch();
@@ -37,12 +38,15 @@ function SpotPage() {
     () => {
       // i want fetch one spot
       dispatch(fetchSpotById(spot.id));
+      // i want all comments of this place
+      dispatch(fetchAllCommentsBySpot(spot.id));
     },
     [],
   );
   const isLoading = useSelector((state) => state.spots.isLoading);
   // use state of currentSpot
   const currentSpot = useSelector((state) => state.spots.currentSpot);
+  const { isLogged } = useSelector((state) => state.user);
   // console.log(currentSpot);
   // destructuring
   const {
@@ -85,11 +89,19 @@ function SpotPage() {
             id={id}
           />
           <HomeMap spots={currentSpot} />
+
           <div className="messages-form">
             <Messages />
-            <AddMessage />
+            {isLogged && (
+              <AddMessage />
+            )}
+            {!isLogged && (
+              <div className="form">
+                <p className="form__text">Vous devez être connecté pour commenter ! <Link className="form__text--connexion" to="/connexion">Se connecter</Link></p>
+                <Link className="form__link" to="/connexion"><button type="button" className="form__link--button">Connexion</button></Link>
+              </div>
+            )}
           </div>
-          <p>Composant commentaires</p>
         </>
       )}
 

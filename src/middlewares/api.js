@@ -5,6 +5,10 @@ import {
   FETCH_SPOTS, FETCH_SPOT_BY_ID, REGISTER_SPOT, saveSpotById, saveSpots, fetchSpots,
 } from '../actions/spots';
 import {
+  fetchAllCommentsBySpot,
+  FETCH_ALL_COMMENTS_BY_SPOT, saveCurrentComments, saveNewMessage, SEND_MESSAGE_TO_SERVER,
+} from '../actions/comments';
+import {
   ADD_FAV,
   fetchFavoritesById,
   FETCH_FAVORITES_BY_ID,
@@ -362,6 +366,63 @@ const apiMiddleWare = (store) => (next) => (action) => {
         .then((response) => {
           console.log(response.data);
           store.dispatch(fetchFavoritesById());
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      next(action);
+      break;
+    }
+    case SEND_MESSAGE_TO_SERVER: {
+      const {
+        user: {
+          currentUser: {
+            id: idUser,
+            pseudo,
+          },
+        },
+        spots: {
+          currentSpot: [{
+            id: idSpot,
+          }],
+        },
+        comments: {
+          newMessageContent,
+        },
+      } = store.getState();
+
+      axiosInstance
+        .post(
+          'api/comments/add',
+          {
+            content: newMessageContent,
+            pseudo: pseudo,
+            userId: idUser,
+            spotId: idSpot,
+          },
+        )
+        .then(
+          (response) => {
+            console.log(response.data);
+            // save the new message into the state
+            store.dispatch(saveNewMessage(response.data));
+          },
+        )
+        .catch(
+          (error) => console.log(error),
+        );
+      next(action);
+      break;
+    }
+    case FETCH_ALL_COMMENTS_BY_SPOT: {
+      axiosInstance
+        .get(
+          `api/comment/${action.id}`,
+        )
+        .then((response) => {
+          console.log(response.data);
+          // we put these comments in the state
+          store.dispatch(saveCurrentComments(response.data));
         })
         .catch((error) => {
           console.log(error);
