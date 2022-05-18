@@ -6,6 +6,7 @@ import Spot from './Spot';
 import HomeMap from '../Home/HomeMap';
 import Loading from '../Loading';
 import AddMessage from './AddMessage/addMessage';
+import Messages from './Messages';
 
 // datas
 // later data will be in the state (ex:currentSpot)
@@ -16,7 +17,6 @@ import AddMessage from './AddMessage/addMessage';
 // styles
 import './spotPage.scss';
 import { fetchSpotById } from '../../actions/spots';
-import Messages from './Messages';
 
 function SpotPage() {
   const dispatch = useDispatch();
@@ -85,8 +85,12 @@ function SpotPage() {
             id={id}
           />
           <HomeMap spots={currentSpot} />
-          <AddMessage />
-          <Messages />
+
+          <div className="messages-form">
+            <Messages />
+            <AddMessage />
+          </div>
+          <p>Composant commentaires</p>
         </>
       )}
 
