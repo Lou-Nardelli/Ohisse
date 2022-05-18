@@ -24,7 +24,7 @@ const initialState = {
     },
   ],
 
-  newMessageContent: 'cool',
+  newMessageContent: '',
 };
 
 function reducer(state = initialState, action = {}) {
@@ -37,17 +37,17 @@ function reducer(state = initialState, action = {}) {
     case SAVE_NEW_MESSAGE:
       return {
         ...state,
+        newMessageContent: '',
         currentComments: [
-          ...state.currentComments,
           action.message,
+          ...state.currentComments,
         ],
       };
 
     case SAVE_CURRENT_COMMENTS:
       return {
         ...state,
-        currentComments:
-          action.comments,
+        currentComments: [...action.comments],
       };
     default:
       return state;

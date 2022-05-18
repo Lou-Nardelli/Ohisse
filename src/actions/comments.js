@@ -27,8 +27,9 @@ export const saveNewMessage = (message) => ({
 export const FETCH_ALL_COMMENTS_BY_SPOT = 'FETCH_ALL_COMMENTS_BY_SPOT';
 
 // ACTION CREATOR fetchAllCommentsBySpot
-export const fetchAllCommentsBySpot = () => ({
+export const fetchAllCommentsBySpot = (id) => ({
   type: FETCH_ALL_COMMENTS_BY_SPOT,
+  id,
 
 });
 

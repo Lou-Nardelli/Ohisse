@@ -39,7 +39,7 @@ function SpotPage() {
       // i want fetch one spot
       dispatch(fetchSpotById(spot.id));
       // i want all comments of this place
-      dispatch(fetchAllCommentsBySpot());
+      dispatch(fetchAllCommentsBySpot(spot.id));
     },
     [],
   );
@@ -93,7 +93,6 @@ function SpotPage() {
             <Messages />
             <AddMessage />
           </div>
-          <p>Composant commentaires</p>
         </>
       )}
 

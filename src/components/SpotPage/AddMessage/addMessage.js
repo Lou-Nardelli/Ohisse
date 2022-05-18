@@ -5,6 +5,11 @@ import './addMessage.scss';
 function AddMessage() {
   const dispatch = useDispatch();
   const messageValue = useSelector((state) => state.comments.newMessageContent);
+  // const currentComments = useSelector((state) => state.comments.currentComments);
+  // console.log(currentComments);
+  // if (currentComments.length === 0) {
+  //   console.log('message');
+  // }
 
   const handleChange = (evt) => {
     dispatch(changeValue(evt.currentTarget.value));

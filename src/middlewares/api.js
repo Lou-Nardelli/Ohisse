@@ -5,6 +5,7 @@ import {
   FETCH_SPOTS, FETCH_SPOT_BY_ID, REGISTER_SPOT, saveSpotById, saveSpots, fetchSpots,
 } from '../actions/spots';
 import {
+  fetchAllCommentsBySpot,
   FETCH_ALL_COMMENTS_BY_SPOT, saveCurrentComments, saveNewMessage, SEND_MESSAGE_TO_SERVER,
 } from '../actions/comments';
 import {
@@ -395,7 +396,7 @@ const apiMiddleWare = (store) => (next) => (action) => {
           'api/comments/add',
           {
             content: newMessageContent,
-            // pseudo: pseudo,
+            pseudo: pseudo,
             userId: idUser,
             spotId: idSpot,
           },
@@ -414,18 +415,9 @@ const apiMiddleWare = (store) => (next) => (action) => {
       break;
     }
     case FETCH_ALL_COMMENTS_BY_SPOT: {
-      // we are looking for the id of the current spot
-      const {
-        spots: {
-          currentSpot: [{
-            id: idSpot,
-          }],
-        },
-      } = store.getState();
-
       axiosInstance
         .get(
-          `api/comment/${idSpot}`,
+          `api/comment/${action.id}`,
         )
         .then((response) => {
           console.log(response.data);
