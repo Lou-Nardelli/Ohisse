@@ -7,7 +7,13 @@ import './messages.scss';
 function Messages() {
   const { currentComments } = useSelector((state) => state.comments);
 
-  console.log(currentComments);
+  if (currentComments.length === 0) {
+    return (
+      <div className="empty-messages">
+        <p>Aucun message n'a été posté pour le moment. Soyez le premier !</p>
+      </div>
+    );
+  }
 
   return (
     <div className="messages">
