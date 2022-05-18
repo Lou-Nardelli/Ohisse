@@ -54,6 +54,15 @@ const reducer = (state = initialState, action = {}) => {
       };
     }
 
+    case CHANGE_CURRENTUSER_FIELD:
+      return {
+        ...state,
+        currentUser: {
+          ...state.currentUser,
+          [action.name]: action.value,
+        },
+      };
+
     case CONFIRM_PASSWORD: {
       if (state.inputConfirmPassword !== state.inputPassword) {
         return {

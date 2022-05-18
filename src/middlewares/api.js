@@ -9,7 +9,7 @@ import {
   fetchFavoritesById,
   FETCH_FAVORITES_BY_ID,
   FETCH_USER_BY_ID,
-  isLogged, isRegister, LOGGIN, LOGOUT, REGISTER_USER, REMOVE_FAV, saveFavorites, saveUser, SAVE_FAVORITES,
+  isLogged, isRegister, LOGGIN, LOGOUT, REGISTER_USER, REMOVE_FAV, saveFavorites, saveUser, SAVE_FAVORITES, UPDATE_USER,
 } from '../actions/user';
 
 const axiosInstance = axios.create({
@@ -366,6 +366,50 @@ const apiMiddleWare = (store) => (next) => (action) => {
         .catch((error) => {
           console.log(error);
         });
+      next(action);
+      break;
+    }
+
+    // Update user profile on profile page
+    case UPDATE_USER: {
+      // console.log(store.getState());
+      const {
+        user: {
+          currentUser: {
+            id,
+            firstname,
+            lastname,
+            pseudo,
+            city,
+            country,
+            description,
+            email,
+          },
+        },
+      } = store.getState();
+
+      // console.log(idUser, idSpot);
+
+      axiosInstance
+        .patch(
+          `api/user/edit/${id}`,
+          {
+            firstname,
+            lastname,
+            pseudo,
+            city,
+            country,
+            description,
+            email,
+          },
+        )
+        .then((response) => {
+          console.log(response.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+
       next(action);
       break;
     }

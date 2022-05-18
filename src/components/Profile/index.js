@@ -11,7 +11,9 @@ import { popupContent, popupHead } from './popupStyles';
 import './profile.scss';
 import ohisseIcon from './icon';
 import Loading from '../Loading';
-import { changeCurrentuserField, changeEditStatus, changeField } from '../../actions/user';
+import {
+  changeCurrentuserField, changeEditStatus, changeField, updateUser,
+} from '../../actions/user';
 // == Composant
 function Profile() {
   const { favorites } = useSelector((state) => state.user);
@@ -47,17 +49,21 @@ function Profile() {
   // }
 
   function handleKeyDown(event, type) {
-    dispatch(changeField(event, type));
+    dispatch(changeCurrentuserField(event, type));
     // console.log(`on tape ${event} dans ${type}`);
     // console.log(event);
   }
 
   function handleEditSwitch() {
     dispatch(changeEditStatus(!isEditing));
+    console.log('i switch');
   }
 
   function handleSubmit(event) {
     event.preventDefault();
+    console.log('i submit');
+    handleEditSwitch();
+    dispatch(updateUser());
   }
 
   return (
@@ -79,17 +85,14 @@ function Profile() {
                       name="pseudo"
                       id="pseudo"
                       placeholder="Votre pseudo"
-                      value={inputFirstname === '' ? currentUser.firstname : inputFirstname}
+                      value={currentUser.firstname}
                       required
-                      onBlur={handleEditSwitch}
                       onChange={
-                          (event) => handleKeyDown(event.currentTarget.value, 'inputFirstname')
+                          (event) => handleKeyDown(event.currentTarget.value, 'firstname')
                         }
                     />
                   ) : (
-                    <span
-                      onClick={handleEditSwitch}
-                    >
+                    <span>
                       {currentUser.firstname}
                     </span>
                   )
@@ -100,7 +103,17 @@ function Profile() {
                 <h3>Description</h3>
                 <p>{currentUser.description}</p>
               </div>
-              <button type={isEditing ? 'submit' : 'button'} onSubmit={handleEditSwitch} onClick={handleEditSwitch}>{isEditing ? 'Valider les modifications' : 'Modifier mon profil'}</button>
+              {
+                isEditing && (
+                  <button type="submit"> Valider les modifications</button>
+                )
+              }
+              {
+                !isEditing && (
+                  <button type="button" onClick={handleEditSwitch}>Modifier mon profil</button>
+                )
+              }
+
             </form>
           </div>
           <hr />

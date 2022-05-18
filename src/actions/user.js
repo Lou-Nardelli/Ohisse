@@ -8,6 +8,16 @@ export const changeField = (value, name) => ({
   name,
 });
 
+// ACTION TYPE CHANGE_CURRENTUSER_FIELD
+export const CHANGE_CURRENTUSER_FIELD = 'CHANGE_CURRENTUSER_FIELD';
+
+// ACTION CREATOR changeCurrentuserField
+export const changeCurrentuserField = (value, name) => ({
+  type: CHANGE_CURRENTUSER_FIELD,
+  value,
+  name,
+});
+
 // ACTION TYPE CONFIRM_PASSWORD
 export const CONFIRM_PASSWORD = 'CONFIRM_PASSWORD';
 
@@ -147,4 +157,12 @@ export const CHANGE_EDIT_STATUS = 'CHANGE_EDIT_STATUS';
 export const changeEditStatus = (isEditing) => ({
   type: CHANGE_EDIT_STATUS,
   isEditing,
+});
+
+// ACTION TYPE UPDATE_USER
+export const UPDATE_USER = 'UPDATE_USER';
+
+// ACTION CREATOR updateUser
+export const updateUser = () => ({
+  type: UPDATE_USER,
 });
