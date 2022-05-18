@@ -18,9 +18,14 @@ function Message({ pseudo, content, updated_at }) {
     day: '2-digit',
   });
 
+  const hourFormat = Intl.DateTimeFormat('fr-FR', {
+    hour: 'numeric',
+    minute: 'numeric',
+  });
+
   return (
     <div className="message">
-      <div className="message__author">{pseudo} - {dateFormat.format(Date.parse(updated_at))}</div>
+      <div className="message__author">{pseudo} - {dateFormat.format(Date.parse(updated_at))} à {hourFormat.format(Date.parse(updated_at))}</div>
       <div className="message__content">{content}</div>
     </div>
   );
