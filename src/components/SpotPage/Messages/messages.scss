@@ -1,21 +1,36 @@
-.empty-messages {
-  border: 2px solid #fca311;
-  border-bottom: none;
-  border-radius: 5px 5px 0 0;
-  max-height: 20em;
-  max-width: 700px;
-  width: 100%;
-  padding: 1em;
-  overflow-y: auto;
-}
+@import 'src/styles/theme-colors.scss';
 
 .messages {
-  border: 2px solid #fca311;
-  border-bottom: none;
-  border-radius: 5px 5px 0 0;
-  max-height: 20em;
-  max-width: 700px;
   width: 100%;
-  padding: 1em;
-  overflow-y: auto;
+
+  &__empty {
+    border: 2px solid #fca311;
+    border-bottom: none;
+    border-radius: 5px 5px 0 0;
+    max-height: 20em;
+    max-width: 700px;
+    padding: 1em;
+    overflow-y: auto;
+    @include themed() {
+      color: ask($text);
+    }
+
+    &--connexion {
+      font-weight: 700;
+      color: #fca311;
+    }
+  }
+
+  &__form {
+    border: 2px solid #fca311;
+    border-bottom: none;
+    border-radius: 5px 5px 0 0;
+    max-height: 20em;
+    max-width: 700px;
+    padding: 1em;
+    overflow-y: auto;
+    @include themed() {
+      color: ask($text);
+    }
+  }
 }

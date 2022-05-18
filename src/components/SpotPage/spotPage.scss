@@ -13,3 +13,19 @@
   margin: 2em auto;
   max-width: 700px;
 }
+
+.form__link {
+  border: 2px solid #fca311;
+  border-radius: 0 0 5px 0;
+  color: #fff;
+  padding: 1em;
+  background-color: #fff;
+
+  &--button {
+    border: none;
+    background-color: #fff;
+    border-radius: 0 0 5px 0;
+    color: #fca311;
+    font-weight: 700;
+  }
+}

@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-import { useParams, Navigate } from 'react-router-dom';
+import { useParams, Navigate, Link } from 'react-router-dom';
 // Componants
 import Spot from './Spot';
 import HomeMap from '../Home/HomeMap';
@@ -46,6 +46,7 @@ function SpotPage() {
   const isLoading = useSelector((state) => state.spots.isLoading);
   // use state of currentSpot
   const currentSpot = useSelector((state) => state.spots.currentSpot);
+  const { isLogged } = useSelector((state) => state.user);
   // console.log(currentSpot);
   // destructuring
   const {
@@ -91,7 +92,20 @@ function SpotPage() {
 
           <div className="messages-form">
             <Messages />
-            <AddMessage />
+            {isLogged && (
+              <AddMessage />
+            )}
+            {!isLogged && (
+              <div className="form">
+                <input
+                  type="text"
+                  className="form__input"
+                  placeholder="Connectez vous pour publier un commentaire !"
+                  disabled
+                />
+                <Link className="form__link" to="/connexion"><button type="button" className="form__link--button">Connexion</button></Link>
+              </div>
+            )}
           </div>
         </>
       )}
