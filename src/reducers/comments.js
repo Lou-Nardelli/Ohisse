@@ -1,5 +1,5 @@
 import {
-  CHANGE_VALUE, SAVE_NEW_MESSAGE,
+  CHANGE_VALUE, SAVE_CURRENT_COMMENTS, SAVE_NEW_MESSAGE,
 } from '../actions/comments';
 
 const initialState = {
@@ -41,6 +41,13 @@ function reducer(state = initialState, action = {}) {
           ...state.currentComments,
           action.message,
         ],
+      };
+
+    case SAVE_CURRENT_COMMENTS:
+      return {
+        ...state,
+        currentComments:
+          action.comments,
       };
     default:
       return state;

@@ -17,6 +17,7 @@ import Messages from './Messages';
 // styles
 import './spotPage.scss';
 import { fetchSpotById } from '../../actions/spots';
+import { fetchAllCommentsBySpot } from '../../actions/comments';
 
 function SpotPage() {
   const dispatch = useDispatch();
@@ -37,6 +38,8 @@ function SpotPage() {
     () => {
       // i want fetch one spot
       dispatch(fetchSpotById(spot.id));
+      // i want all comments of this place
+      dispatch(fetchAllCommentsBySpot());
     },
     [],
   );
