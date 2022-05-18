@@ -4,6 +4,7 @@ import './addMessage.scss';
 
 function AddMessage() {
   const dispatch = useDispatch();
+  const messageValue = useSelector((state) => state.comments.newMessageContent);
 
   const handleChange = (evt) => {
     dispatch(changeValue(evt.currentTarget.value));
@@ -25,7 +26,7 @@ function AddMessage() {
         type="text"
         className="form__input"
         placeholder="Saisissez votre message..."
-        // value={newMessageContent}
+        value={messageValue}
         onChange={handleChange}
         // ref={inputRef}
       />

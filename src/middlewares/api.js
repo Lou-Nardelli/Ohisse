@@ -4,7 +4,9 @@ import { array } from 'prop-types';
 import {
   FETCH_SPOTS, FETCH_SPOT_BY_ID, REGISTER_SPOT, saveSpotById, saveSpots, fetchSpots,
 } from '../actions/spots';
-import { SEND_MESSAGE_TO_SERVER } from '../actions/comments';
+import {
+  FETCH_ALL_COMMENTS_BY_SPOT, saveCurrentComments, saveNewMessage, SEND_MESSAGE_TO_SERVER,
+} from '../actions/comments';
 import {
   ADD_FAV,
   fetchFavoritesById,
@@ -401,13 +403,38 @@ const apiMiddleWare = (store) => (next) => (action) => {
         .then(
           (response) => {
             console.log(response.data);
-            // to save all spots in the state
-            // store.dispatch(saveSpotById(response.data));
+            // save the new message into the state
+            store.dispatch(saveNewMessage(response.data));
           },
         )
         .catch(
           (error) => console.log(error),
         );
+      next(action);
+      break;
+    }
+    case FETCH_ALL_COMMENTS_BY_SPOT: {
+      // we are looking for the id of the current spot
+      const {
+        spots: {
+          currentSpot: [{
+            id: idSpot,
+          }],
+        },
+      } = store.getState();
+
+      axiosInstance
+        .get(
+          `api/comment/${idSpot}`,
+        )
+        .then((response) => {
+          console.log(response.data);
+          // we put these comments in the state
+          store.dispatch(saveCurrentComments(response.data));
+        })
+        .catch((error) => {
+          console.log(error);
+        });
       next(action);
       break;
     }
