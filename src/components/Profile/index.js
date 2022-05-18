@@ -2,7 +2,7 @@
 import {
   MapContainer, TileLayer, Marker, Popup,
 } from 'react-leaflet';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, Navigate } from 'react-router-dom';
 import Card from '../Card';
 
@@ -11,6 +11,7 @@ import { popupContent, popupHead } from './popupStyles';
 import './profile.scss';
 import ohisseIcon from './icon';
 import Loading from '../Loading';
+import { changeCurrentuserField, changeEditStatus, changeField } from '../../actions/user';
 // == Composant
 function Profile() {
   const { favorites } = useSelector((state) => state.user);
@@ -26,24 +27,37 @@ function Profile() {
     return fav;
   });
 
+  const dispatch = useDispatch();
   const inputEmail = useSelector((state) => state.user.inputEmail);
   const inputPseudo = useSelector((state) => state.user.inputPseudo);
   const inputFirstname = useSelector((state) => state.user.inputFirstname);
   const inputLastname = useSelector((state) => state.user.inputLastname);
   const inputDescription = useSelector((state) => state.user.inputDescription);
+  const isEditing = useSelector((state) => state.user.isEditing);
 
   if (currentUser.description === null) {
     currentUser.description = "Ma description n'est pas encore remplie, mais je procrastine encore un peu avant de m'y mettre !";
   }
 
-  console.log(listSpotFav);
+  // console.log(listSpotFav);
 
   // if (listSpotFav[0] === undefined) {
   //   console.log('indéfini');
   //   return (<Navigate to="/" replace />);
   // }
 
-  function handleFieldClick() {
+  function handleKeyDown(event, type) {
+    dispatch(changeField(event, type));
+    // console.log(`on tape ${event} dans ${type}`);
+    // console.log(event);
+  }
+
+  function handleEditSwitch() {
+    dispatch(changeEditStatus(!isEditing));
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
   }
 
   return (
@@ -53,15 +67,41 @@ function Profile() {
         <>
           <div className="profile__header">
             <img className="profile__header--picture" src="https://media-exp1.licdn.com/dms/image/D5635AQHa2jqlhY57-Q/profile-framedphoto-shrink_800_800/0/1643542347773?e=1652364000&v=beta&t=sm9DmS8opoU9LcZtcwwcWUcH4vgj3U5hChQn3UTAtv4" alt="profile_picture" />
-            <div className="profile__header--informations">
-              <h1>
-                <input value={inputFirstname} />
-                {currentUser.lastname} - alias {currentUser.pseudo}
-              </h1>
-              <h2>{currentUser.city}</h2>
-              <h3>Description</h3>
-              <p>{currentUser.description}</p>
-            </div>
+            {/* FORM to edit user's informations */}
+            <form onSubmit={handleSubmit}>
+              <div className="profile__header--informations">
+                <h1>
+                  {
+                  isEditing ? (
+                    <input
+                      className="registerForm__input"
+                      type="text"
+                      name="pseudo"
+                      id="pseudo"
+                      placeholder="Votre pseudo"
+                      value={inputFirstname === '' ? currentUser.firstname : inputFirstname}
+                      required
+                      onBlur={handleEditSwitch}
+                      onChange={
+                          (event) => handleKeyDown(event.currentTarget.value, 'inputFirstname')
+                        }
+                    />
+                  ) : (
+                    <span
+                      onClick={handleEditSwitch}
+                    >
+                      {currentUser.firstname}
+                    </span>
+                  )
+                }
+                  {currentUser.lastname} - alias {currentUser.pseudo}
+                </h1>
+                <h2>{currentUser.city}</h2>
+                <h3>Description</h3>
+                <p>{currentUser.description}</p>
+              </div>
+              <button type={isEditing ? 'submit' : 'button'} onSubmit={handleEditSwitch} onClick={handleEditSwitch}>{isEditing ? 'Valider les modifications' : 'Modifier mon profil'}</button>
+            </form>
           </div>
           <hr />
           {/* List of favorites spots */}

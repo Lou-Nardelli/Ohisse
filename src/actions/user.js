@@ -139,3 +139,12 @@ export const setLoading = () => ({
   type: SET_LOADING,
 
 });
+
+// ACTION TYPE CHANGE_EDIT_STATUS
+export const CHANGE_EDIT_STATUS = 'CHANGE_EDIT_STATUS';
+
+// ACTION CREATOR changeEditStatus
+export const changeEditStatus = (isEditing) => ({
+  type: CHANGE_EDIT_STATUS,
+  isEditing,
+});
