@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 // styles
 import './logginForm.scss';
-import { changeField, loggin } from '../../../actions/user';
+import { changeField, loggin, logout } from '../../../actions/user';
 
 function LogginForm() {
   // to modify the state
@@ -25,7 +25,20 @@ function LogginForm() {
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log('i call api to connect');
+    // user login
     dispatch(loggin());
+    // console.log(Date.now());
+    // the api token has a lifetime of one hour
+    // i calculate the expiration date of the token based on Date.now function
+    const expirationTime = ((Date.now())) + 3600000;
+    // console.log(expirationTime);
+    // i keep this expoiration date in localStorage
+    localStorage.setItem('expired_token', JSON.stringify(expirationTime));
+    // i put a timer that will disconnect the user after an hour
+    setTimeout(() => {
+      console.log('deconnexion');
+      dispatch(logout());
+    }, 3600000);
   };
 
   return (

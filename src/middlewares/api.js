@@ -247,6 +247,8 @@ const apiMiddleWare = (store) => (next) => (action) => {
       localStorage.removeItem('token');
       // we delete fav
       localStorage.removeItem('favorites');
+      // we delete expired time
+      localStorage.removeItem('expired_token');
       // we clean axioInstance
       delete axiosInstance.defaults.headers.common.Authorization;
       next(action);
