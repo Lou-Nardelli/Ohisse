@@ -11,6 +11,7 @@ function Message({ pseudo, content, updated_at }) {
   // et la classe message-mine seulement si isMine vaut vrai
   // const className = classNames('message', { 'message--mine': isMine });
 
+  // formatting datetime as DD/MM/YYY
   const dateFormat = Intl.DateTimeFormat('fr-FR', {
     year: 'numeric',
     month: '2-digit',

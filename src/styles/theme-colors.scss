@@ -10,6 +10,7 @@ $title-orange: 'title-orange';
 $title-brown: 'title-brown';
 $title-blue: 'title-blue';
 $button: 'button';
+$border: 'border';
 
 $themes: (
         light: (
@@ -24,6 +25,7 @@ $themes: (
                 title-brown: vars.$color-brown,
                 title-blue: vars.$color-blue,
                 button: vars.$color-blue,
+                border: vars.$color-blue,
         ),
         dark: (
                 logo: url("src/assets/img/logo-complet-jaune.png"),
@@ -37,6 +39,7 @@ $themes: (
                 title-brown: vars.$color-orange,
                 title-blue: vars.$color-white,
                 button: vars.$color-orange,
+                border: vars.$color-white,
         ),
 );
 
