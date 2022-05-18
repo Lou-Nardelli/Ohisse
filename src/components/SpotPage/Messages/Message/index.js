@@ -13,7 +13,7 @@ function Message({ pseudo, content }) {
 
   return (
     <div className="message">
-      <div className="message__author">{pseudo}</div>
+      <div className="message__author">{pseudo} - le 24/09/1996</div>
       <div className="message__content">{content}</div>
     </div>
   );
