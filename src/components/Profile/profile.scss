@@ -1,3 +1,4 @@
+@use 'src/styles/vars';
 @import 'src/styles/theme-colors.scss';
 
 .profile {
@@ -18,20 +19,72 @@
   }
 
   &__header {
-    padding:3em;
-    display:flex;
+    display: -webkit-box;
+    padding: 1rem;
     
     &--picture {
       border-radius: 50%;
-      max-width: 10rem;
-      max-height:10rem;
+      width: 10rem;
+      height: 10rem;
       border: 5px solid #fca311;
       padding: .3em;
+      object-fit: cover;
+      margin: 0.5rem 0;
+    }
+
+    &--form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+
+    label {
+      font-family: Oleo Script,cursive;
+      font-size: 1rem;
+      display: flex;
+      flex-direction: column;
+      align-self: center;
+      margin-bottom: 0.3rem;
+      @include themed() {
+        color: ask($title-brown);
+      }
+    }
+
+    &--input,
+    &--textarea {
+      width: 100%;
+      text-align: center;
+      border: 1px solid vars.$color-orange;
+      border-radius: 5px;
+      @include themed() {
+        background-color: ask($bg);
+      }
+      @include themed() {
+        color: ask($text);
+      }
+    }
+
+    &--textarea {
+      height: 80px;
+    }
+
+    button {
+      margin: 1rem 0;
+      background-color: vars.$color-orange;
+      border: solid 1px vars.$color-blue;
+      @include themed() {
+        color: ask($text);
+      }
+      margin-bottom: 1rem;
+      padding: 0.5rem;
+      width: 50%;
+      align-self: center;
     }
 
     &--informations {
       margin-left:2em;
-      max-width:70%;
+      width:100%;
       @include themed() {
         color: ask($text);
       }
@@ -40,6 +93,7 @@
         font-size: 2em;
         font-family: 'Oleo Script';
         color: #fca311;
+        margin: 0.5rem 0;
       }
     
       h2 {
@@ -48,7 +102,7 @@
           color: ask($title-blue);
         }
         font-weight: 700;
-        margin-bottom:1em;
+        margin-bottom:0.5rem;
       }
     
       h3 {
@@ -57,7 +111,7 @@
           color: ask($title-blue);
         }
         font-weight: 700;
-        margin-bottom: .5em;
+        margin: 0.5rem 0;
       }
     }
   }
@@ -99,7 +153,7 @@
 }
 
 .section {
-
+  width: 100%;
   &-map {
     display: flex;
     justify-content: center;
@@ -110,7 +164,7 @@
   .profile {
 
     &__header {
-      padding:3em;
+      padding: 1rem 0;
       display:flex;
       flex-wrap:wrap;
       justify-content: center;
@@ -129,6 +183,10 @@
         width: 50%;
         display: flex;
         justify-content: center;
+      }
+
+      &--cards {
+        width:100%;
       }
     }
   }

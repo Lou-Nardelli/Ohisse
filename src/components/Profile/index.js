@@ -3,16 +3,17 @@ import {
   MapContainer, TileLayer, Marker, Popup,
 } from 'react-leaflet';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, Navigate } from 'react-router-dom';
-import Card from '../Card';
+import { Link } from 'react-router-dom';
 
 // styles
+import ohisseLogo from 'src/assets/img/logo-simple-bicolor.png';
 import { popupContent, popupHead } from './popupStyles';
 import './profile.scss';
 import ohisseIcon from './icon';
 import Loading from '../Loading';
+import Card from '../Card';
 import {
-  changeCurrentuserField, changeEditStatus, changeField, updateUser, saveUser,
+  changeCurrentuserField, changeEditStatus, updateUser,
 } from '../../actions/user';
 // == Composant
 function Profile() {
@@ -72,64 +73,74 @@ function Profile() {
       {isLoading === false && (
         <>
           <div className="profile__header">
-            <img className="profile__header--picture" src="https://media-exp1.licdn.com/dms/image/D5635AQHa2jqlhY57-Q/profile-framedphoto-shrink_800_800/0/1643542347773?e=1652364000&v=beta&t=sm9DmS8opoU9LcZtcwwcWUcH4vgj3U5hChQn3UTAtv4" alt="profile_picture" />
+            <img className="profile__header--picture" src={ohisseLogo} alt="profile_picture" />
             {/* FORM to edit user's informations */}
-            <form onSubmit={handleSubmit}>
+            <form className="profile__header--form" onSubmit={handleSubmit}>
               <div className="profile__header--informations">
                 <h1>
-                  {/* Condition part managing user's firstname */}
-                  {
+                  <section>
+                    {/* Condition part managing user's firstname */}
+                    {
                   isEditing ? (
-                    <input
-                      className="profile__header--input"
-                      type="text"
-                      name="firstname"
-                      id="firstname"
-                      placeholder="Votre prénom"
-                      value={currentUser.firstname}
-                      required
-                      onChange={
+                    <label htmlFor="firstname">Prénom
+                      <input
+                        className="profile__header--input"
+                        type="text"
+                        name="firstname"
+                        id="firstname"
+                        placeholder="Votre prénom"
+                        value={currentUser.firstname}
+                        required
+                        onChange={
                           (event) => handleKeyDown(event.currentTarget.value, 'firstname')
                         }
-                    />
+                      />
+                    </label>
                   ) : (
                     <span>
                       {currentUser.firstname}
                     </span>
                   )
-                } {/* Condition part managing user's lastname */}{
+                }{' '}{/* Condition part managing user's lastname */}{
                   isEditing ? (
-                    <input
-                      className="profile__header--input"
-                      type="text"
-                      name="lastname"
-                      id="lastname"
-                      placeholder="Votre nom"
-                      value={currentUser.lastname}
-                      required
-                      onChange={
+                    <label htmlFor="lastname">Nom
+                      <input
+                        className="profile__header--input"
+                        type="text"
+                        name="lastname"
+                        id="lastname"
+                        placeholder="Votre nom"
+                        value={currentUser.lastname}
+                        required
+                        onChange={
                           (event) => handleKeyDown(event.currentTarget.value, 'lastname')
                         }
-                    />
+                      />
+                    </label>
                   ) : (
                     <span>
                       {currentUser.lastname}
                     </span>
                   )
-                } - alias {/* Condition part managing user's nickname */}{
+                }
+                  </section>
+                  {isEditing ? '' : ' - alias '}
+                  {/* Condition part managing user's nickname */}{
                   isEditing ? (
-                    <input
-                      className="profile__header--input"
-                      type="text"
-                      name="pseudo"
-                      id="pseudo"
-                      placeholder="Votre pseudo"
-                      value={currentUser.pseudo}
-                      required
-                      onChange={
+                    <label htmlFor="pseudo">Pseudo
+                      <input
+                        className="profile__header--input"
+                        type="text"
+                        name="pseudo"
+                        id="pseudo"
+                        placeholder="Votre pseudo"
+                        value={currentUser.pseudo}
+                        required
+                        onChange={
                           (event) => handleKeyDown(event.currentTarget.value, 'pseudo')
                         }
-                    />
+                      />
+                    </label>
                   ) : (
                     <span>
                       {currentUser.pseudo}
@@ -141,37 +152,41 @@ function Profile() {
                   {/* Condition part managing user's city */}
                   {
                   isEditing ? (
-                    <input
-                      className="profile__header--input"
-                      type="text"
-                      name="city"
-                      id="city"
-                      placeholder="Votre ville"
-                      value={currentUser.city}
-                      required
-                      onChange={
+                    <label htmlFor="city">Ville
+                      <input
+                        className="profile__header--input"
+                        type="text"
+                        name="city"
+                        id="city"
+                        placeholder="Votre ville"
+                        value={currentUser.city}
+                        required
+                        onChange={
                           (event) => handleKeyDown(event.currentTarget.value, 'city')
                         }
-                    />
+                      />
+                    </label>
                   ) : (
                     <span>
                       {currentUser.city}
                     </span>
                   )
-                } - {/* Condition part managing user's country */}{
+                }{isEditing ? '' : ' - '}{/* Condition part managing user's country */}{
                   isEditing ? (
-                    <input
-                      className="profile__header--input"
-                      type="text"
-                      name="country"
-                      id="country"
-                      placeholder="Votre pays"
-                      value={currentUser.country}
-                      required
-                      onChange={
+                    <label htmlFor="country">Pays
+                      <input
+                        className="profile__header--input"
+                        type="text"
+                        name="country"
+                        id="country"
+                        placeholder="Votre pays"
+                        value={currentUser.country}
+                        required
+                        onChange={
                           (event) => handleKeyDown(event.currentTarget.value, 'country')
                         }
-                    />
+                      />
+                    </label>
                   ) : (
                     <span>
                       {currentUser.country}
@@ -183,18 +198,20 @@ function Profile() {
                 {/* Condition part managing user's email */}
                 {
                   isEditing ? (
-                    <input
-                      className="profile__header--input"
-                      type="email"
-                      name="email"
-                      id="email"
-                      placeholder="Votre adresse email"
-                      value={currentUser.email}
-                      required
-                      onChange={
+                    <label htmlFor="email">Email
+                      <input
+                        className="profile__header--input"
+                        type="email"
+                        name="email"
+                        id="email"
+                        placeholder="Votre adresse email"
+                        value={currentUser.email}
+                        required
+                        onChange={
                           (event) => handleKeyDown(event.currentTarget.value, 'email')
                         }
-                    />
+                      />
+                    </label>
                   ) : (
                     <span>
                       {currentUser.email}
@@ -203,21 +220,23 @@ function Profile() {
                 }
 
                 {/* Condition part managing user's description */}
-                <h3>Description</h3>
+                <h3>{isEditing ? '' : 'Description'}</h3>
                 {
                   isEditing ? (
-                    <textarea
-                      className="profile__header--textarea"
-                      type="text"
-                      name="description"
-                      id="description"
-                      placeholder="Décrivez vous en quelques mots !"
-                      value={currentUser.description}
-                      required
-                      onChange={
+                    <label htmlFor="description">Description
+                      <textarea
+                        className="profile__header--textarea"
+                        type="text"
+                        name="description"
+                        id="description"
+                        placeholder="Décrivez vous en quelques mots !"
+                        value={currentUser.description}
+                        required
+                        onChange={
                           (event) => handleKeyDown(event.currentTarget.value, 'description')
                         }
-                    />
+                      />
+                    </label>
                   ) : (
                     <span>
                       {currentUser.description}
@@ -261,7 +280,7 @@ function Profile() {
             {/* Map of the profile page */}
             <section className="section-map">
               <div className="profile__map">
-                <MapContainer center={[46.7, 2]} zoom={6} scrollWheelZoom>
+                <MapContainer center={[46.7, 2]} zoom={5} scrollWheelZoom>
                   <TileLayer
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
