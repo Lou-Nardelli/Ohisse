@@ -24,13 +24,13 @@ import SpotOut from '../Forms/SpotAddForm/SpotOut';
 import RegisterForm from '../Forms/RegisterForm';
 import { fetchSpots } from '../../actions/spots';
 import TeamPage from '../TeamPage';
-import { fetchUserById, logout } from '../../actions/user';
+import { fetchUserById, logout, isLogged } from '../../actions/user';
 
 // == Composant
 function Ohisse() {
   // hook useDispatch to dispatch actions
   const dispatch = useDispatch();
-  const isLogged = useSelector((state) => state.user.isLogged);
+  const isLog = useSelector((state) => state.user.isLogged);
 
   // function decode token
   function parseJwt(token) {
@@ -110,16 +110,16 @@ function Ohisse() {
           <Route path="/fiches-interieur" element={<Spots listSpots={spotsIndoor} title="Salles intérieures" />} />
           <Route path="/fiches-exterieur" element={<Spots listSpots={spotsOutdoor} title="Spots extérieurs" />} />
           <Route path="/map" element={<HomeMap />} />
-          {isLogged && (<Route path="/ajout-spot" element={<SelectSpotType />} />)}
-          {!isLogged && (<Route path="/ajout-spot" element={<LogginForm />} />)}
-          {isLogged && (<Route path="/ajout-spot-interieur" element={<SpotIn />} />)}
-          {!isLogged && (<Route path="/ajout-spot-interieur" element={<LogginForm />} />)}
-          {isLogged && (<Route path="/ajout-spot-exterieur" element={<SpotOut />} />)}
-          {!isLogged && (<Route path="/ajout-spot-exterieur" element={<LogginForm />} />)}
+          {isLog && (<Route path="/ajout-spot" element={<SelectSpotType />} />)}
+          {!isLog && (<Route path="/ajout-spot" element={<LogginForm />} />)}
+          {isLog && (<Route path="/ajout-spot-interieur" element={<SpotIn />} />)}
+          {!isLog && (<Route path="/ajout-spot-interieur" element={<LogginForm />} />)}
+          {isLog && (<Route path="/ajout-spot-exterieur" element={<SpotOut />} />)}
+          {!isLog && (<Route path="/ajout-spot-exterieur" element={<LogginForm />} />)}
 
           <Route path="/connexion" element={<LogginForm />} />
-          {isLogged && (<Route path="/profil" element={<Profile />} />)}
-          {!isLogged && (<Route path="/profil" element={<LogginForm />} />)}
+          {isLog && (<Route path="/profil" element={<Profile />} />)}
+          {!isLog && (<Route path="/profil" element={<LogginForm />} />)}
           <Route path="/inscription" element={<RegisterForm />} />
           <Route path="/equipe" element={<TeamPage />} />
           <Route path="/mentions-legales" element={<LegalNotice />} />
