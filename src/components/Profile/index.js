@@ -12,7 +12,7 @@ import './profile.scss';
 import ohisseIcon from './icon';
 import Loading from '../Loading';
 import {
-  changeCurrentuserField, changeEditStatus, changeField, updateUser,
+  changeCurrentuserField, changeEditStatus, changeField, updateUser, saveUser,
 } from '../../actions/user';
 // == Composant
 function Profile() {
@@ -30,11 +30,11 @@ function Profile() {
   });
 
   const dispatch = useDispatch();
-  const inputEmail = useSelector((state) => state.user.inputEmail);
-  const inputPseudo = useSelector((state) => state.user.inputPseudo);
-  const inputFirstname = useSelector((state) => state.user.inputFirstname);
-  const inputLastname = useSelector((state) => state.user.inputLastname);
-  const inputDescription = useSelector((state) => state.user.inputDescription);
+  // const inputEmail = useSelector((state) => state.user.inputEmail);
+  // const inputPseudo = useSelector((state) => state.user.inputPseudo);
+  // const inputFirstname = useSelector((state) => state.user.inputFirstname);
+  // const inputLastname = useSelector((state) => state.user.inputLastname);
+  // const inputDescription = useSelector((state) => state.user.inputDescription);
   const isEditing = useSelector((state) => state.user.isEditing);
 
   if (currentUser.description === null) {
@@ -56,12 +56,12 @@ function Profile() {
 
   function handleEditSwitch() {
     dispatch(changeEditStatus(!isEditing));
-    console.log('i switch');
+    // console.log('i switch');
   }
 
   function handleSubmit(event) {
     event.preventDefault();
-    console.log('i submit');
+    // console.log('i submit');
     handleEditSwitch();
     dispatch(updateUser());
   }
@@ -77,14 +77,15 @@ function Profile() {
             <form onSubmit={handleSubmit}>
               <div className="profile__header--informations">
                 <h1>
+                  {/* Condition part managing user's firstname */}
                   {
                   isEditing ? (
                     <input
-                      className="registerForm__input"
+                      className="profile__header--input"
                       type="text"
-                      name="pseudo"
-                      id="pseudo"
-                      placeholder="Votre pseudo"
+                      name="firstname"
+                      id="firstname"
+                      placeholder="Votre prénom"
                       value={currentUser.firstname}
                       required
                       onChange={
@@ -96,16 +97,137 @@ function Profile() {
                       {currentUser.firstname}
                     </span>
                   )
+                } {/* Condition part managing user's lastname */}{
+                  isEditing ? (
+                    <input
+                      className="profile__header--input"
+                      type="text"
+                      name="lastname"
+                      id="lastname"
+                      placeholder="Votre nom"
+                      value={currentUser.lastname}
+                      required
+                      onChange={
+                          (event) => handleKeyDown(event.currentTarget.value, 'lastname')
+                        }
+                    />
+                  ) : (
+                    <span>
+                      {currentUser.lastname}
+                    </span>
+                  )
+                } - alias {/* Condition part managing user's nickname */}{
+                  isEditing ? (
+                    <input
+                      className="profile__header--input"
+                      type="text"
+                      name="pseudo"
+                      id="pseudo"
+                      placeholder="Votre pseudo"
+                      value={currentUser.pseudo}
+                      required
+                      onChange={
+                          (event) => handleKeyDown(event.currentTarget.value, 'pseudo')
+                        }
+                    />
+                  ) : (
+                    <span>
+                      {currentUser.pseudo}
+                    </span>
+                  )
                 }
-                  {currentUser.lastname} - alias {currentUser.pseudo}
                 </h1>
-                <h2>{currentUser.city}</h2>
+                <h2>
+                  {/* Condition part managing user's city */}
+                  {
+                  isEditing ? (
+                    <input
+                      className="profile__header--input"
+                      type="text"
+                      name="city"
+                      id="city"
+                      placeholder="Votre ville"
+                      value={currentUser.city}
+                      required
+                      onChange={
+                          (event) => handleKeyDown(event.currentTarget.value, 'city')
+                        }
+                    />
+                  ) : (
+                    <span>
+                      {currentUser.city}
+                    </span>
+                  )
+                } - {/* Condition part managing user's country */}{
+                  isEditing ? (
+                    <input
+                      className="profile__header--input"
+                      type="text"
+                      name="country"
+                      id="country"
+                      placeholder="Votre pays"
+                      value={currentUser.country}
+                      required
+                      onChange={
+                          (event) => handleKeyDown(event.currentTarget.value, 'country')
+                        }
+                    />
+                  ) : (
+                    <span>
+                      {currentUser.country}
+                    </span>
+                  )
+                }
+                </h2>
+
+                {/* Condition part managing user's email */}
+                {
+                  isEditing ? (
+                    <input
+                      className="profile__header--input"
+                      type="email"
+                      name="email"
+                      id="email"
+                      placeholder="Votre adresse email"
+                      value={currentUser.email}
+                      required
+                      onChange={
+                          (event) => handleKeyDown(event.currentTarget.value, 'email')
+                        }
+                    />
+                  ) : (
+                    <span>
+                      {currentUser.email}
+                    </span>
+                  )
+                }
+
+                {/* Condition part managing user's description */}
                 <h3>Description</h3>
-                <p>{currentUser.description}</p>
+                {
+                  isEditing ? (
+                    <textarea
+                      className="profile__header--textarea"
+                      type="text"
+                      name="description"
+                      id="description"
+                      placeholder="Décrivez vous en quelques mots !"
+                      value={currentUser.description}
+                      required
+                      onChange={
+                          (event) => handleKeyDown(event.currentTarget.value, 'description')
+                        }
+                    />
+                  ) : (
+                    <span>
+                      {currentUser.description}
+                    </span>
+                  )
+                }
               </div>
               {
                 isEditing && (
-                  <button type="submit"> Valider les modifications</button>
+                <button type="submit" className="profile__header--subbutton">Valider les modifications</button>
                 )
               }
               {
