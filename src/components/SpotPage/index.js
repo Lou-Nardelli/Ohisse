@@ -97,12 +97,7 @@ function SpotPage() {
             )}
             {!isLogged && (
               <div className="form">
-                <input
-                  type="text"
-                  className="form__input"
-                  placeholder="Connectez vous pour publier un commentaire !"
-                  disabled
-                />
+                <p className="form__text">Vous devez être connecté pour commenter ! <Link className="form__text--connexion" to="/connexion">Se connecter</Link></p>
                 <Link className="form__link" to="/connexion"><button type="button" className="form__link--button">Connexion</button></Link>
               </div>
             )}
