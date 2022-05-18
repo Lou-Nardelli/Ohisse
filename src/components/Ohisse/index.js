@@ -24,12 +24,13 @@ import SpotOut from '../Forms/SpotAddForm/SpotOut';
 import RegisterForm from '../Forms/RegisterForm';
 import { fetchSpots } from '../../actions/spots';
 import TeamPage from '../TeamPage';
-import { fetchUserById, isLogged } from '../../actions/user';
+import { fetchUserById, logout, isLogged } from '../../actions/user';
 
 // == Composant
 function Ohisse() {
   // hook useDispatch to dispatch actions
   const dispatch = useDispatch();
+  const isLog = useSelector((state) => state.user.isLogged);
 
   // function decode token
   function parseJwt(token) {
@@ -56,6 +57,27 @@ function Ohisse() {
       console.log(parseJwt(token).sub);
       // we fetch information about user
       dispatch(fetchUserById(parseJwt(token).sub));
+      // we retrieve the expiration date of the token
+      const time = JSON.parse(localStorage.getItem('expired_token'));
+      // console.log(time);
+      // console.log(Date.now());
+      // if the current date has passed the expiration date
+      if (Date.now() > time) {
+        console.log('deconnexion');
+        // user is logged out
+        dispatch(logout());
+      }
+      else {
+        // calculate the time remaining before the expiration date
+        const timeBeforeTokenExpires = (time - Date.now());
+        // console.log(timeBeforeTokenExpires);
+        // when the time is up
+        setTimeout(() => {
+          console.log('deconnexion');
+          // user is logged out
+          dispatch(logout());
+        }, timeBeforeTokenExpires);
+      }
     }
   }, []);
 
@@ -88,11 +110,16 @@ function Ohisse() {
           <Route path="/fiches-interieur" element={<Spots listSpots={spotsIndoor} title="Salles intérieures" />} />
           <Route path="/fiches-exterieur" element={<Spots listSpots={spotsOutdoor} title="Spots extérieurs" />} />
           <Route path="/map" element={<HomeMap />} />
-          <Route path="/ajout-spot" element={<SelectSpotType />} />
-          <Route path="/ajout-spot-interieur" element={<SpotIn />} />
-          <Route path="/ajout-spot-exterieur" element={<SpotOut />} />
+          {isLog && (<Route path="/ajout-spot" element={<SelectSpotType />} />)}
+          {!isLog && (<Route path="/ajout-spot" element={<LogginForm />} />)}
+          {isLog && (<Route path="/ajout-spot-interieur" element={<SpotIn />} />)}
+          {!isLog && (<Route path="/ajout-spot-interieur" element={<LogginForm />} />)}
+          {isLog && (<Route path="/ajout-spot-exterieur" element={<SpotOut />} />)}
+          {!isLog && (<Route path="/ajout-spot-exterieur" element={<LogginForm />} />)}
+
           <Route path="/connexion" element={<LogginForm />} />
-          <Route path="/profil" element={<Profile />} />
+          {isLog && (<Route path="/profil" element={<Profile />} />)}
+          {!isLog && (<Route path="/profil" element={<LogginForm />} />)}
           <Route path="/inscription" element={<RegisterForm />} />
           <Route path="/equipe" element={<TeamPage />} />
           <Route path="/mentions-legales" element={<LegalNotice />} />
