@@ -29,7 +29,7 @@ function AddMessage() {
         onChange={handleChange}
         // ref={inputRef}
       />
-      <button type="submit" className="form__button">&gt;</button>
+      <button type="submit" className="form__button">Publier</button>
     </form>
   );
 }

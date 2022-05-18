@@ -7,7 +7,7 @@ import './messages.scss';
 function Messages() {
   const { currentComments } = useSelector((state) => state.comments);
 
-  console.log(currentComments);
+  // console.log(currentComments);
 
   return (
     <div className="messages">
