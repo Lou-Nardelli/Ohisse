@@ -94,7 +94,7 @@ function Spot({
           <p className="features__p"><strong className="spot__strong">Type:</strong>  {type}</p>
           <p className="features__p"><strong className="spot__strong"> Discipline:</strong> {discipline}</p>
           { // if type 'interieur' we display reputation
-            type === 'Salle' && (<p className="features__p"><strong className="spot__strong">La réputation:</strong> {reputation}</p>)
+            (type === 'Salle' && reputation !== null) && (<p className="features__p"><strong className="spot__strong">La réputation:</strong> {reputation}</p>)
           }
           { // if type 'exterieur' we display min difficulty and max difficulty
             (type === 'Spot' && minDifficulty !== null) && (<p className="features__p"><strong className="spot__strong">Difficulté minimun:</strong> {minDifficulty}</p>)
