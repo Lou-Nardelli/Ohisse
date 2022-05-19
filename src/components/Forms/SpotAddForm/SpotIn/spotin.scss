@@ -26,6 +26,15 @@
     flex-direction: column;
     text-align: center;
     padding: 0 1rem;
+    
+    &--required {
+      color: vars.$color-orange;
+    }
+
+    &--message {
+      color: vars.$color-orange;
+      margin-bottom: 1rem;
+    }
 
     input,
     select,

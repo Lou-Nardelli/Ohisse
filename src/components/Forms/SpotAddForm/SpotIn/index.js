@@ -57,7 +57,7 @@ function SpotIn() {
         onSubmit={handleSubmit}
       >
         <div className="spotin__form--label-name">
-          <label htmlFor="name">Nom de la salle
+          <label htmlFor="name"> <span> Nom de la salle <span className="spotin__form--required">*</span></span>
             <input
               type="text"
               name="name"
@@ -72,7 +72,7 @@ function SpotIn() {
         <div className="spotin__form--label-address">
           <label htmlFor="number">Numéro
             <input
-              type="number"
+              type="text"
               name="number"
               className="spotin__form-input"
               placeholder="Numéro"
@@ -102,7 +102,7 @@ function SpotIn() {
               onChange={(event) => handleChangeField(event.target.value, 'inputZipCode')}
             />
           </label>
-          <label htmlFor="city">Ville
+          <label htmlFor="city"><span> Ville <span className="spotin__form--required">*</span></span>
             <input
               type="text"
               name="city"
@@ -113,7 +113,7 @@ function SpotIn() {
               required
             />
           </label>
-          <label htmlFor="country">Pays
+          <label htmlFor="country"><span> Pays <span className="spotin__form--required">*</span></span>
             <select
               name="country"
               value={inputCountryValue}
@@ -129,7 +129,7 @@ function SpotIn() {
           </label>
         </div>
         <div className="spotin__form--label-spot">
-          <label htmlFor="discipline">Discipline
+          <label htmlFor="discipline"><span> Discipline <span className="spotin__form--required">*</span></span>
             <select
               name="discipline"
               value={inputDisciplineValue}
@@ -154,7 +154,7 @@ function SpotIn() {
               <option value="hard">Putôt costaud</option>
             </select>
           </label>
-          <label htmlFor="description">Description
+          <label htmlFor="description"><span> Description <span className="spotin__form--required">*</span></span>
             <textarea
               type="text"
               name="description"
@@ -183,6 +183,7 @@ function SpotIn() {
           <SpotAddMap spots={currentSpot} />
           <button type="submit" className="spotin__form-button">J'ajoute ce spot !</button>
         </div>
+        <div className="spotin__form--message"><p> * champs obligatoires pour ajouter un lieu</p></div>
       </form>
     </div>
   );
