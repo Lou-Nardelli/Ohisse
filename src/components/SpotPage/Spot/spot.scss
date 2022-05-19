@@ -29,10 +29,13 @@
   }
 
   &__picture {
-    position: relative;
-    max-width: 700px;
-    width: 100%;
     margin: 0 auto;
+    max-width: 700px;
+    position: relative;
+    width: 100%;
+    max-height: 500px;
+    overflow: hidden;
+    border-radius: 10px 10px 0 0;
 
     &--button {
       height: 4em;
@@ -52,43 +55,49 @@
     }
 
     &--image {
-      max-height: 500px;
       max-width: 700px;
-      border-radius: 10px;
       display: block;
       margin: auto;
     }
   }
 
   &__description {
-    display: flex;
-    align-items: center;
-    margin: 1em;
     @include themed() {
       background-color: ask($bg);
     }
-    border-radius: 10px;
-    border: solid, 2px, vars.$color-orange;
-    padding: 0.5em;
+    align-items: center;
+    border: 2px solid #fca311;
+    border-top: none;
+    border-bottom: none;
+    display: flex;
+    margin: 0 auto;
     max-width: 700px;
-    margin: auto;
-    margin-top: 1em;
-    margin-bottom: 1em;
+    padding: 1em 0;
     @include themed() {
       color: ask($text);
     }
 
     .description__address {
-        text-align: left;
-        line-height: 1.3em;
-        padding-right: 1em;
+      line-height: 1.3em;
+      padding: 1em;
+      margin-right: 1em;
+      text-align: left;
+      font-weight: 700;
+      @include themed() {
+        color: ask($text);
+      }
+      @include themed() {
+        border-right: 5px solid ask($border);
+      }
     }
 
     .description__features {
-      text-align: left;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
 
       .features__p {
-        margin-top: 0.3em;
+        margin: 0.5em;
       }
   }
 
@@ -101,14 +110,11 @@
     @include themed() {
       color: ask($text);
     }
-    border-radius: 10px;
-    border: solid, 2px, vars.$color-orange;
-    padding: 0.5em;
+    border: 2px solid #fca311;
+    border-radius: 0 0 5px 5px;
+    margin: 0 auto 1em;
     max-width: 700px;
-    margin: auto;
-    margin-top: 1em;
-    margin-bottom: 1em;
-    text-align: center;
+    padding: 1em;
   }
 
   &__strong {
@@ -124,15 +130,7 @@
   .spot {
   
     &__description {
-      display: flex;
-      flex-direction: column;
-  
-      .description__address {
-
-        margin-bottom: 1em;
-
-      }
-  
+      display: flex;  
     }
   }
 
