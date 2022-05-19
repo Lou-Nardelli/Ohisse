@@ -1,3 +1,4 @@
+@use 'src/styles/vars';
 @import 'src/styles/theme-colors.scss';
 
 .message {
@@ -17,9 +18,14 @@
     margin-bottom: 1em;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 
     .trash {
+      border: none;
+      background-color: transparent;
       color: red;
+      font-size: .9em;
+      padding: none;
     }
   }
 
