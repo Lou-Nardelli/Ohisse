@@ -1,13 +1,14 @@
 // == Import : npm
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
+import { Navigate } from 'react-router-dom';
 
 // == Import : local
 // import { changeField } from '../../../../actions/user';
 import logoOhisse from 'src/assets/img/logo-simple-bicolor.png';
 import SpotAddMap from '../SpotAddMap';
 import {
-  changeField, purgeSpotaddForm, registerSpot,
+  changeField, registerSpot,
 } from '../../../../actions/spots';
 
 // styles
@@ -36,6 +37,7 @@ function SpotIn() {
   useEffect(() => {
     dispatch(changeField('Salle', 'type'));
   }, []);
+  const inputName = useSelector((state) => state.spots.inputName);
 
   const handleChangeField = (value, name) => {
     dispatch(changeField(value, name));
@@ -45,9 +47,11 @@ function SpotIn() {
     event.preventDefault();
     console.log('i submit');
     dispatch(registerSpot());
+    console.log(inputName);
   };
 
   return (
+
     <div className="spotin">
       <h2 className="spotin__title">
         A l'abri, à l'intérieur<br />☕

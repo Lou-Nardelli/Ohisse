@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { array } from 'prop-types';
 
 import {
   FETCH_SPOTS, FETCH_SPOT_BY_ID, REGISTER_SPOT, saveSpotById, saveSpots, fetchSpots,
@@ -25,7 +24,6 @@ import {
   REMOVE_FAV,
   saveFavorites,
   saveUser,
-  SAVE_FAVORITES,
   UPDATE_USER,
 } from '../actions/user';
 

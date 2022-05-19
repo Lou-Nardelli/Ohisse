@@ -11,6 +11,8 @@ import {
   SAVE_SPOT_BY_ID,
   FETCH_SPOT_BY_ID,
   PURGE_SPOTADD_FORM,
+  REDIRECTING,
+  NOT_REDIRECTING,
 } from '../actions/spots';
 
 export const initialState = {
@@ -96,6 +98,7 @@ export const initialState = {
   inputLat: '',
   inputLng: '',
   type: '',
+  redirect: false,
 
 };
 
