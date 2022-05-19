@@ -9,6 +9,8 @@ import {
   SAVE_FAVORITES,
   FETCH_USER_BY_ID,
   SET_LOADING,
+  CHANGE_EDIT_STATUS,
+  CHANGE_CURRENTUSER_FIELD,
 } from '../actions/user';
 
 export const initialState = {
@@ -21,10 +23,12 @@ export const initialState = {
   inputConfirmPassword: '',
   inputCity: '',
   inputCountry: '',
+  inputDescription: '',
   isError: false,
   isRegister: false,
   isLogged: false,
   isDarkMode: false,
+  isEditing: false,
   isLoading: false,
   favorites: [1, 2],
   currentUser: {
@@ -49,6 +53,16 @@ const reducer = (state = initialState, action = {}) => {
         [action.name]: action.value,
       };
     }
+
+    case CHANGE_CURRENTUSER_FIELD:
+      return {
+        ...state,
+        currentUser: {
+          ...state.currentUser,
+          [action.name]: action.value,
+        },
+      };
+
     case CONFIRM_PASSWORD: {
       if (state.inputConfirmPassword !== state.inputPassword) {
         return {
@@ -104,6 +118,13 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         isLoading: true,
+      };
+    }
+
+    case CHANGE_EDIT_STATUS: {
+      return {
+        ...state,
+        isEditing: action.isEditing,
       };
     }
 
