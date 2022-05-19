@@ -27,6 +27,7 @@ function Spot({
 }) {
   const dispatch = useDispatch();
   // we retrieve id of the user's favorite place
+  const isLogged = useSelector((state) => state.user.isLogged);
   const favorites = useSelector((state) => state.user.favorites);
   const isFavoriteSpot = useSelector((state) => state.spots.currentSpot[0].id);
 
@@ -44,10 +45,18 @@ function Spot({
     favIcon = fav;
   }
 
+  const isLoggedStyle = {
+    display: 'none',
+  };
+  const isNotLoggedStyle = {
+    display: 'block',
+  };
+  const isLoggedFavorite = isLogged ? isLoggedStyle : isNotLoggedStyle;
+
   const handleFavClick = () => {
     // we check if the current spot (id) is part of the user's favorites
     const isFav = favorites.find((item) => item === id);
-    console.log(isFav);
+    // console.log(isFav);
     // if spot is not one of his favorites
 
     if (isFav === undefined) {
@@ -73,6 +82,9 @@ function Spot({
       <div className="spot__picture">
         <img className="spot__picture--image" src={picture === null ? 'https://www.montagnes-magazine.com/media/actu/2020/05/jef-willemyns-mluUYXoTotY-unsplash.jpg' : picture} alt={name} />
         <button className="spot__picture--button" type="button" onClick={handleFavClick}><img className="spot__picture--icon" alt="favorites-icon" src={favIcon} /></button>
+        {!isLogged && (
+          <div style={isLoggedFavorite} className="spot__picture--islogged">Vous devez être connecté pour ajouter un favori</div>
+        )}
       </div>
       <div className="spot__description">
         <div className="description__address">

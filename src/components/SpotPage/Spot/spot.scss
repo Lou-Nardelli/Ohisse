@@ -59,6 +59,16 @@
       display: block;
       margin: auto;
     }
+
+    &--islogged {
+      position: absolute;
+      top: 5em;
+      right: 1em;
+      background-color: rgb(255 255 255 / 70%);
+      padding: .3em;
+      border-radius: 1px;
+      color: #14213d;
+    }
   }
 
   &__description {
