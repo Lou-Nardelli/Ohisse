@@ -41,3 +41,12 @@ export const saveCurrentComments = (comments) => ({
   type: SAVE_CURRENT_COMMENTS,
   comments,
 });
+
+// ACTION TYPE DELETE_COMMENT
+export const DELETE_COMMENT = 'DELETE_COMMENT';
+
+// ACTION CREATOR deleteComment
+export const deleteComment = (id) => ({
+  type: DELETE_COMMENT,
+  id,
+});

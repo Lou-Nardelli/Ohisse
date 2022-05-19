@@ -15,6 +15,12 @@
     }
     padding-bottom: .2em;
     margin-bottom: 1em;
+    display: flex;
+    justify-content: space-between;
+
+    .trash {
+      color: red;
+    }
   }
 
   &__content {
