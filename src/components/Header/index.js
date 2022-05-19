@@ -34,7 +34,6 @@ function Header() {
   // Link's array
   const navLinks = [
     { name: 'Carte', href: '/map' },
-    { name: 'Ajout de spot', href: '/ajout-spot' },
     { name: 'Salles intérieures', href: '/fiches-interieur' },
     { name: 'Spots extérieurs', href: '/fiches-exterieur' },
   ];
@@ -64,6 +63,9 @@ function Header() {
                 {navLinks.map((item) => (
                   <NavLink key={item.name} to={item.href} className="gutter-links">{item.name}</NavLink>
                 ))}
+                {isLogged && (
+                  <NavLink key="ajout de Spot" to="/ajout-spot" className="gutter-links">Ajout de spot</NavLink>
+                )}
                 {/* Dark mode/Connect links */}
                 <div className="burger__connect--dark-mode">
                   <WbSunnyIcon className="gutter-links" />

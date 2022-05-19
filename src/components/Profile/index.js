@@ -246,12 +246,12 @@ function Profile() {
               </div>
               {
                 isEditing && (
-                <button type="submit" className="profile__header--subbutton">Valider les modifications</button>
+                <button type="submit" className="profile__header--subbutton" id="fav">Valider les modifications</button>
                 )
               }
               {
                 !isEditing && (
-                  <button type="button" onClick={handleEditSwitch}>Modifier mon profil</button>
+                  <button type="button" onClick={handleEditSwitch} id="fav">Modifier mon profil</button>
                 )
               }
 

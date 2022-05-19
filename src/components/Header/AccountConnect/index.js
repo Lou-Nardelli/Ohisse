@@ -6,6 +6,7 @@ import { useState } from 'react';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import StarIcon from '@material-ui/icons/Star';
 import PersonIcon from '@material-ui/icons/Person';
+import { HashLink } from 'react-router-hash-link';
 import {
   Tooltip,
   Avatar,
@@ -94,12 +95,13 @@ function AccountConnect({ handleLogout }) {
                 <PersonIcon /> Mon compte
               </MenuItem>
             </Link>
-            <Link to="/profil">
+            <HashLink to="/profil#fav">
               <MenuItem>
                 <StarIcon /> Mes favoris
               </MenuItem>
               <Divider />
-            </Link>
+            </HashLink>
+
             <Link to="/">
               <MenuItem onClick={handleLogout}>
                 <ListItemIcon>
