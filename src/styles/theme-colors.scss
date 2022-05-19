@@ -11,6 +11,7 @@ $title-brown: 'title-brown';
 $title-blue: 'title-blue';
 $button: 'button';
 $border: 'border';
+$map-filter: 'map-filter';
 
 $themes: (
         light: (
@@ -26,6 +27,7 @@ $themes: (
                 title-blue: vars.$color-blue,
                 button: vars.$color-blue,
                 border: vars.$color-blue,
+                map-filter: none,
         ),
         dark: (
                 logo: url("src/assets/img/logo-complet-jaune.png"),
@@ -40,6 +42,7 @@ $themes: (
                 title-blue: vars.$color-white,
                 button: vars.$color-orange,
                 border: vars.$color-white,
+                map-filter: brightness(0.6) invert(1) contrast(3) hue-rotate(200deg) saturate(0.3) brightness(0.7),
         ),
 );
 
