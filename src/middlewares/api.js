@@ -6,14 +6,27 @@ import {
 } from '../actions/spots';
 import {
   fetchAllCommentsBySpot,
-  FETCH_ALL_COMMENTS_BY_SPOT, saveCurrentComments, saveNewMessage, SEND_MESSAGE_TO_SERVER,
+  FETCH_ALL_COMMENTS_BY_SPOT,
+  saveCurrentComments,
+  saveNewMessage,
+  SEND_MESSAGE_TO_SERVER,
+  DELETE_COMMENT,
 } from '../actions/comments';
 import {
   ADD_FAV,
   fetchFavoritesById,
   FETCH_FAVORITES_BY_ID,
   FETCH_USER_BY_ID,
-  isLogged, isRegister, LOGGIN, LOGOUT, REGISTER_USER, REMOVE_FAV, saveFavorites, saveUser, SAVE_FAVORITES, UPDATE_USER,
+  isLogged,
+  isRegister,
+  LOGGIN,
+  LOGOUT,
+  REGISTER_USER,
+  REMOVE_FAV,
+  saveFavorites,
+  saveUser,
+  SAVE_FAVORITES,
+  UPDATE_USER,
 } from '../actions/user';
 
 const axiosInstance = axios.create({
@@ -473,6 +486,45 @@ const apiMiddleWare = (store) => (next) => (action) => {
           console.log(error);
         });
 
+      next(action);
+      break;
+    }
+
+    case DELETE_COMMENT: {
+      // we retrieve the id of the current comment
+      const {
+        spots: {
+          currentSpot: [{
+            id: idSpot,
+          }],
+        },
+        comments: {
+          currentComments,
+        },
+      } = store.getState();
+      // we look for the information of all the favorites
+      // const arrayFavoritesAPI = JSON.parse(localStorage.getItem('favorites'));
+      // console.log(arrayFavoritesAPI);
+      // we find the id of the bookmark
+      const comment = currentComments.find((item) => item.id === action.id);
+      const idComment = comment.id;
+
+      axiosInstance
+        .delete(
+          `api/comments/delete/${idComment}`,
+          // {
+          //   headers: {
+          //     Authorization: `Bearer ${token}`,
+          //   },
+          // },
+        )
+        .then((response) => {
+          // console.log(response.data);
+          store.dispatch(fetchAllCommentsBySpot(idSpot));
+        })
+        .catch((error) => {
+          console.log(error);
+        });
       next(action);
       break;
     }
