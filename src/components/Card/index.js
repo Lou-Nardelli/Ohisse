@@ -10,6 +10,10 @@ function Card({
   picture,
   className,
 }) {
+  if (picture === null) {
+    // console.log('the picture is null');
+    picture = 'https://www.montagnes-magazine.com/media/actu/2020/05/jef-willemyns-mluUYXoTotY-unsplash.jpg';
+  }
   return (
     <div className={className}>
       <img className="card__image" src={picture} alt={name} />

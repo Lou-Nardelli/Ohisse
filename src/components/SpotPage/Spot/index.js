@@ -71,7 +71,7 @@ function Spot({
         */}
       </div>
       <div className="spot__picture">
-        <img className="spot__picture--image" src={picture === null ? 'https://www.grimper.com/media/guide_salles/img_salles/the_roof_pays_basque2.jpg' : picture} alt={name} />
+        <img className="spot__picture--image" src={picture === null ? 'https://www.montagnes-magazine.com/media/actu/2020/05/jef-willemyns-mluUYXoTotY-unsplash.jpg' : picture} alt={name} />
         <button className="spot__picture--button" type="button" onClick={handleFavClick}><img className="spot__picture--icon" alt="favorites-icon" src={favIcon} /></button>
       </div>
       <div className="spot__description">
@@ -82,13 +82,13 @@ function Spot({
           <p className="features__p"><strong className="spot__strong">Type:</strong>  {type}</p>
           <p className="features__p"><strong className="spot__strong"> Discipline:</strong> {discipline}</p>
           { // if type 'interieur' we display reputation
-            type === 'interieur' && (<p className="features__p"><strong className="spot__strong">La réputation:</strong> {reputation}</p>)
-            }
-          { // if type 'exterieur' we display min difficulty and max difficulty
-            type === 'exterieur' && (<p className="features__p"><strong className="spot__strong">Difficulté minimun:</strong> {minDifficulty}</p>)
+            type === 'Salle' && (<p className="features__p"><strong className="spot__strong">La réputation:</strong> {reputation}</p>)
           }
-          {type === 'exterieur' && (<p className="features__p"><strong className="spot__strong">Difficulté maximun:</strong> {maxDifficulty}</p>)}
-          <p className="features__p"><strong className="spot__strong"> Le type de roche:</strong> {rockType}</p>
+          { // if type 'exterieur' we display min difficulty and max difficulty
+            (type === 'Spot' && minDifficulty !== null) && (<p className="features__p"><strong className="spot__strong">Difficulté minimun:</strong> {minDifficulty}</p>)
+          }
+          {(type === 'Spot' && maxDifficulty !== null) && (<p className="features__p"><strong className="spot__strong">Difficulté maximun:</strong> {maxDifficulty}</p>)}
+          {rockType !== null && <p className="features__p"><strong className="spot__strong"> Le type de roche:</strong> {rockType}</p>}
         </div>
       </div>
       { // if there is no description, this paragraph is not displayed

@@ -86,7 +86,7 @@ function SpotOut() {
         onSubmit={handleSubmit}
       >
         <div className="spotout__form--label-name">
-          <label htmlFor="name">Nom du spot
+          <label htmlFor="name"><span> Nom du spot <span className="spotin__form--required">*</span></span>
             <input
               type="text"
               name="name"
@@ -109,7 +109,7 @@ function SpotOut() {
               onChange={(event) => handleChangeField(event.target.value, 'inputZipCode')}
             />
           </label>
-          <label htmlFor="city">Ville
+          <label htmlFor="city"><span> Ville <span className="spotin__form--required">*</span></span>
             <input
               type="text"
               name="city"
@@ -120,7 +120,7 @@ function SpotOut() {
               required
             />
           </label>
-          <label htmlFor="country">Pays
+          <label htmlFor="country"><span> Pays <span className="spotin__form--required">*</span></span>
             <select
               name="country"
               value={inputCountryValue}
@@ -136,7 +136,7 @@ function SpotOut() {
           </label>
         </div>
         <div className="spotout__form--label-spot">
-          <label htmlFor="discipline">Discipline
+          <label htmlFor="discipline"><span> Discipline <span className="spotin__form--required">*</span></span>
             <select
               name="discipline"
               value={inputDisciplineValue}
@@ -194,7 +194,7 @@ function SpotOut() {
               }
             </select>
           </label>
-          <label htmlFor="description">Description
+          <label htmlFor="description"><span> Description <span className="spotin__form--required">*</span></span>
             <textarea
               type="text"
               name="description"
@@ -222,6 +222,7 @@ function SpotOut() {
           <SpotAddMap spots={currentSpot} />
           <button type="submit" className="spotout__form-button">J'ajoute ce spot !</button>
         </div>
+        <div className="spotin__form--message"><p> * champs obligatoires pour ajouter un lieu</p></div>
       </form>
     </div>
   );

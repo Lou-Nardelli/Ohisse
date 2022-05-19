@@ -32,7 +32,7 @@ function SpotAddMap() {
 
   return (
     <>
-      <label htmlFor="city">Latitude
+      <label htmlFor="city"><span> Latitude <span className="spotin__form--required">*</span></span>
         <input
           type="text"
           name="city"
@@ -43,7 +43,7 @@ function SpotAddMap() {
           required
         />
       </label>
-      <label htmlFor="city">Longitude
+      <label htmlFor="city"><span> Longitude <span className="spotin__form--required">*</span></span>
         <input
           type="text"
           name="city"

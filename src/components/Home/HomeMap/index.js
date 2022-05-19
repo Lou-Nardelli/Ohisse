@@ -25,7 +25,7 @@ function HomeMap({ spots }) {
           <Popup>
             <div className="map-popup" style={popupContent}>
               <Link to={`/fiche-spot/${item.name}`}>
-                <img src={item.picture ? item.picture : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShhshYwTK1ZujWFb4UJzeLDzywVv6UgWowhA&usqp=CAU'} alt={`${item.name}`} />
+                <img src={item.picture ? item.picture : 'https://www.montagnes-magazine.com/media/actu/2020/05/jef-willemyns-mluUYXoTotY-unsplash.jpg'} alt={`${item.name}`} />
                 <h3 style={popupHead}>{item.name}</h3>
               </Link>
               {item.type} <br />
