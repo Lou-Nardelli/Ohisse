@@ -7,10 +7,10 @@ import { deleteComment } from 'src/actions/comments';
 import './message.scss';
 
 function Message({
-  pseudo, content, updated_at, id,
+  pseudo, content, updated_at, id, id_user,
 }) {
   const dispatch = useDispatch();
-  // const isMine = useSelector((state) => state.currentAuthor === author);
+  const currentUserId = useSelector((state) => state.user.currentUser.id);
 
   // on applique toujours la classe message
   // et la classe message-mine seulement si isMine vaut vrai
@@ -36,7 +36,7 @@ function Message({
 
   return (
     <div className="message">
-      <div className="message__author"><span>{pseudo} - {dateFormat.format(Date.parse(updated_at))} à {hourFormat.format(Date.parse(updated_at))}</span> <button className="trash" onClick={handleDeleteMessage} type="button">Supprimer mon commentaire 🗑</button></div>
+      <div className="message__author"><span>{pseudo} - {dateFormat.format(Date.parse(updated_at))} à {hourFormat.format(Date.parse(updated_at))}</span> {currentUserId === id_user ? <button className="trash" onClick={handleDeleteMessage} type="button">Supprimer mon commentaire 🗑</button> : ''}</div>
       <div className="message__content">{content}</div>
     </div>
   );
@@ -47,6 +47,7 @@ Message.propTypes = {
   content: PropTypes.string.isRequired,
   updated_at: PropTypes.string.isRequired,
   id: PropTypes.number.isRequired,
+  id_user: PropTypes.number.isRequired,
 };
 
 export default Message;
