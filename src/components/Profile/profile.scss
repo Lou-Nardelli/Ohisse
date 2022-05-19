@@ -19,8 +19,10 @@
   }
 
   &__header {
-    display: -webkit-box;
     padding: 1rem;
+    display:flex;
+    justify-content: space-evenly;
+    width: 70%;
     
     &--picture {
       border-radius: 50%;
@@ -36,7 +38,6 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      width: 100%;
     }
 
     label {
@@ -83,8 +84,7 @@
     }
 
     &--informations {
-      margin-left:2em;
-      width:100%;
+      margin-top: 0.5rem;
       @include themed() {
         color: ask($text);
       }
@@ -93,7 +93,6 @@
         font-size: 2em;
         font-family: 'Oleo Script';
         color: #fca311;
-        margin: 0.5rem 0;
       }
     
       h2 {
@@ -102,7 +101,7 @@
           color: ask($title-blue);
         }
         font-weight: 700;
-        margin-bottom:0.5rem;
+        margin-bottom:1em;
       }
     
       h3 {
@@ -111,7 +110,7 @@
           color: ask($title-blue);
         }
         font-weight: 700;
-        margin: 0.5rem 0;
+        margin-bottom: .5em;
       }
     }
   }
@@ -153,18 +152,22 @@
 }
 
 .section {
-  width: 100%;
+  max-width: 80%;
+
   &-map {
     display: flex;
     justify-content: center;
   }
 }
 
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 768px) {
+  .section {
+    width: 100%;
+  }
   .profile {
 
     &__header {
-      padding: 1rem 0;
+      padding:3em;
       display:flex;
       flex-wrap:wrap;
       justify-content: center;
@@ -183,10 +186,6 @@
         width: 50%;
         display: flex;
         justify-content: center;
-      }
-
-      &--cards {
-        width:100%;
       }
     }
   }
