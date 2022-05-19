@@ -115,6 +115,11 @@ function Header() {
                 </ListItem>
               ))}
               {isLogged && (
+                <ListItem key="ajout de Spot" className="burger__links">
+                  <NavLink to="/ajout-spot" onClick={() => setOpen(false)}>Ajout de spot</NavLink>
+                </ListItem>
+              )}
+              {isLogged && (
                 <ListItem className="burger__links burger__account">
                   <NavLink to="/profil" onClick={() => setOpen(false)}><img className="burger__account--image" src={userLogo} alt="user logo" />Mon Compte</NavLink>
                 </ListItem>
