@@ -1,6 +1,8 @@
 // import ext
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
+import fav from 'src/assets/img/fav.png';
+import unfav from 'src/assets/img/unfav.png';
 import { addFav, removeFav } from '../../../actions/user';
 
 // styles
@@ -26,21 +28,39 @@ function Spot({
   const dispatch = useDispatch();
   // we retrieve id of the user's favorite place
   const favorites = useSelector((state) => state.user.favorites);
+  const isFavoriteSpot = useSelector((state) => state.spots.currentSpot[0].id);
+
+  const isFavorites = favorites.find((item) => item === isFavoriteSpot);
+
+  let favIcon = unfav;
+
+  if (isFavorites === undefined) {
+    // it is added to the favorites
+    // console.log('i add fav');
+    favIcon = unfav;
+  }
+  else {
+    // console.log('we remove fav');
+    favIcon = fav;
+  }
+
   const handleFavClick = () => {
     // we check if the current spot (id) is part of the user's favorites
     const isFav = favorites.find((item) => item === id);
     console.log(isFav);
     // if spot is not one of his favorites
+
     if (isFav === undefined) {
       // it is added to the favorites
-      console.log('i add fav');
+      // console.log('i add fav');
       dispatch(addFav());
     }
     else {
-      console.log('we remove fav');
+      // console.log('we remove fav');
       dispatch(removeFav());
     }
   };
+
   return (
     <div className="spot">
       <div className="spot__header">
@@ -49,9 +69,11 @@ function Spot({
         middleware= api (add fav on the table fav)
         classButton header__button to hearder__button--fav
         */}
-        <button className="header__button" type="button" onClick={handleFavClick}> &#10084;</button>
       </div>
-      <img className="spot__picture" src={picture === null ? 'https://www.grimper.com/media/guide_salles/img_salles/the_roof_pays_basque2.jpg' : picture} alt={name} />
+      <div className="spot__picture">
+        <img className="spot__picture--image" src={picture === null ? 'https://www.grimper.com/media/guide_salles/img_salles/the_roof_pays_basque2.jpg' : picture} alt={name} />
+        <button className="spot__picture--button" type="button" onClick={handleFavClick}><img className="spot__picture--icon" alt="favorites-icon" src={favIcon} /></button>
+      </div>
       <div className="spot__description">
         <div className="description__address">
           {number} {street} {zipcode} {city}, {country}
