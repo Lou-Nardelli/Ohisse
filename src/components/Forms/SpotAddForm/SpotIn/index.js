@@ -7,7 +7,7 @@ import { useEffect } from 'react';
 import logoOhisse from 'src/assets/img/logo-simple-bicolor.png';
 import SpotAddMap from '../SpotAddMap';
 import {
-  changeField, purgeSpotaddForm, registerSpot,
+  changeField, registerSpot,
 } from '../../../../actions/spots';
 
 // styles
@@ -80,8 +80,6 @@ function SpotIn() {
               onChange={(event) => handleChangeField(event.target.value, 'inputNumber')}
             />
           </label>
-        </div>
-        <div className="spotin__form--label-address">
           <label htmlFor="address">Adresse
             <input
               type="text"

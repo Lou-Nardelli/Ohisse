@@ -53,9 +53,7 @@
       }
 
       &::placeholder {
-        @include themed() {
-          color: ask($text);
-        }
+        color: lightslategray;
       }
     }
 
@@ -161,6 +159,8 @@
       &--label-address {
         display: flex;
         flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
       }
 
       &--label-spot {
