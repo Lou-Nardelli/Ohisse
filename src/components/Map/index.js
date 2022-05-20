@@ -19,7 +19,7 @@ function Map() {
   // console.log(spots);
   return (
     <div className="full-map">
-      <MapContainer center={[46.7, 2]} zoom={6} scrollWheelZoom>
+      <MapContainer center={[46.7, 2]} zoom={5.5} scrollWheelZoom>
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
