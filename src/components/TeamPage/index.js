@@ -4,6 +4,8 @@ import louDetour from '../../assets/img/team/lou-detour.png';
 import romainDetour from '../../assets/img/team/romain-detour.png';
 import thibaultDetour from '../../assets/img/team/thibault-detour.png';
 import fredericDetour from '../../assets/img/team/frederic-detour.png';
+import linkedinLogo from '../../assets/img/socials/LI-In-Bug.png';
+import githubLogo from '../../assets/img/socials/GitHub-Mark-32px.png';
 
 // styles
 import './teampage.scss';
@@ -16,6 +18,10 @@ function TeamPage() {
         <div className="teampage__member">
           <img src={gillenDetour} alt="Team member" className="teampage__member--picture" />
           <h4 className="teampage__member--name">Gillen LAXALT</h4>
+          <div className="teampage__member--socials">
+            <img src={linkedinLogo} alt="Logo Linkedin" />
+            <img src={githubLogo} alt="Logo GitHub" />
+          </div>
           <h5 className="teampage__member--job">Product Owner</h5>
           <p className="teampage__member--description">Gardien de Leaflet, grimpeur à Bayonne et alentours</p>
         </div>
