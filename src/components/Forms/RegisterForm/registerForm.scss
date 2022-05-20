@@ -1,9 +1,14 @@
 @use 'src/styles/_vars';
 
+@import 'src/styles/theme-colors.scss';
+
 .registerForm {
   padding: 4rem;
   margin: auto;
   max-width: 600px;
+  @include themed() {
+    background-color: ask($bg);
+  }
 
   label {
     display: flex;
@@ -17,7 +22,9 @@
     font-weight: bold;
     font-size: 2rem;
     padding: 1rem;
-    color: vars.$color-brown;
+    @include themed() {
+      color: ask($title-brown)
+    }
     text-align: center;
   }
   &__form {
