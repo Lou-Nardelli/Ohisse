@@ -6,7 +6,7 @@
   border-radius: 3px;
   background-color: vars.$color-orange;
   &__socials {
-    padding: 1rem 0 0.5rem 0;
+    padding: 0.5rem 0;
     img {
       filter: invert(9%) sepia(14%) saturate(6017%) hue-rotate(197deg) brightness(98%) contrast(91%);
       max-height: 25px;
@@ -16,11 +16,11 @@
 
   &__about {
     color: vars.$color-blue;
-    padding: 0.5rem 0;
+    padding: 0 0 0.5rem 0;
   }
 
   &__links {
-    padding: 0.5rem 0;
+    padding: 0 0 0.5rem 0;
   }
 
   &-link {
@@ -50,6 +50,6 @@
     color: vars.$color-blue;
     padding: 0.5rem 0;
     font-size: small;
-    padding: 0.5rem;
+    padding: 0 0 0.5rem 0;
   }
 }

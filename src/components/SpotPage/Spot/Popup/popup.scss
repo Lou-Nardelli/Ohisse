@@ -1,0 +1,21 @@
+@use 'src/styles/vars';
+@import 'src/styles/theme-colors.scss';
+
+.popup {
+
+  position: absolute;
+  top: 5em;
+  right: 1em;
+  background-color: rgb(255 255 255 / 70%);
+  padding: .3em;
+  border-radius: 2px;
+  color: #14213d;
+
+  button {
+    background-color: #14213d;
+    border: none;
+    border-radius: 2px;
+    margin-left: .5em;
+    color: #fff;
+  }
+}

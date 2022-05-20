@@ -2,8 +2,11 @@
 @import 'src/styles/theme-colors.scss';
 
 .selectSpotType {
-  margin-bottom:  2rem;
   height: 100%;
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
   
   &__question {
     font-family: Oleo Script,cursive;

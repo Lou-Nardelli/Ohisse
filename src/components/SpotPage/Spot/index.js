@@ -1,9 +1,11 @@
 // import ext
 import PropTypes from 'prop-types';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import fav from 'src/assets/img/fav.png';
 import unfav from 'src/assets/img/unfav.png';
 import { addFav, removeFav } from '../../../actions/user';
+import Popup from './Popup';
 
 // styles
 import './spot.scss';
@@ -26,10 +28,11 @@ function Spot({
   id,
 }) {
   const dispatch = useDispatch();
+  const [buttonPopup, setButtonPopup] = useState(false);
   // we retrieve id of the user's favorite place
-  const isLogged = useSelector((state) => state.user.isLogged);
   const favorites = useSelector((state) => state.user.favorites);
   const isFavoriteSpot = useSelector((state) => state.spots.currentSpot[0].id);
+  const isLogged = useSelector((state) => state.user.isLogged);
 
   const isFavorites = favorites.find((item) => item === isFavoriteSpot);
 
@@ -44,14 +47,6 @@ function Spot({
     // console.log('we remove fav');
     favIcon = fav;
   }
-
-  const isLoggedStyle = {
-    display: 'none',
-  };
-  const isNotLoggedStyle = {
-    display: 'block',
-  };
-  const isLoggedFavorite = isLogged ? isLoggedStyle : isNotLoggedStyle;
 
   const handleFavClick = () => {
     // we check if the current spot (id) is part of the user's favorites
@@ -81,8 +76,14 @@ function Spot({
       </div>
       <div className="spot__picture">
         <img className="spot__picture--image" src={picture === null ? 'https://www.montagnes-magazine.com/media/actu/2020/05/jef-willemyns-mluUYXoTotY-unsplash.jpg' : picture} alt={name} />
-        <button className="spot__picture--button" type="button" onClick={handleFavClick}><img className="spot__picture--icon" alt="favorites-icon" src={favIcon} /></button>
-        <div style={isLoggedFavorite} className="spot__picture--islogged">Vous devez être connecté pour ajouter un favori</div>
+        {isLogged && (
+          <button className="spot__picture--button" type="button" onClick={handleFavClick}><img className="spot__picture--icon" alt="favorites-icon" src={favIcon} /></button>
+        )}
+        {!isLogged && (
+          <button className="spot__picture--button" type="button" onClick={() => setButtonPopup(true)}><img className="spot__picture--icon" alt="favorites-icon" src={favIcon} /></button>
+        )}
+        {/* Warning message popup */}
+        <Popup trigger={buttonPopup} setTrigger={setButtonPopup} />
       </div>
       <div className="spot__description">
         <div className="description__address">

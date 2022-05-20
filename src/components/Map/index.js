@@ -19,14 +19,14 @@ function Map() {
   // console.log(spots);
   return (
     <div className="full-map">
-      <MapContainer center={[46.7, 2]} zoom={6} scrollWheelZoom>
+      <MapContainer center={[46.7, 2]} zoom={5.5} scrollWheelZoom>
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         {spots.map((item) => (
           <Marker key={item.id} position={[item.longitude, item.latitude]} icon={ohisseIcon}>
-            <Popup>
+            <Popup minWidth={170} maxWidth={170} maxHeight={170}>
               <div className="map-popup" style={popupContent}>
                 <Link to={`/fiche-spot/${item.name}`}>
                   <img src={item.picture ? item.picture : 'https://www.montagnes-magazine.com/media/actu/2020/05/jef-willemyns-mluUYXoTotY-unsplash.jpg'} alt={`${item.name}`} />
