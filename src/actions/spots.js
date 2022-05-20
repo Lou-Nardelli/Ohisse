@@ -108,3 +108,21 @@ export const REGISTER_SPOT = 'REGISTER_SPOT';
 export const registerSpot = () => ({
   type: REGISTER_SPOT,
 });
+
+// ACTION TYPE REDIRECT
+export const REDIRECT = 'REDIRECT';
+
+// ACTION CREATOR redirect
+export const redirect = () => ({
+  type: REDIRECT,
+
+});
+
+// ACTION TYPE DO_NOT_REDIRECT
+export const DO_NOT_REDIRECT = 'DO_NOT_REDIRECT';
+
+// ACTION CREATOR doNotRedirect
+export const doNotRedirect = () => ({
+  type: DO_NOT_REDIRECT,
+
+});

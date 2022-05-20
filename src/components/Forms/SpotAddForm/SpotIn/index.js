@@ -1,6 +1,7 @@
 // == Import : npm
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
+import { Navigate } from 'react-router-dom';
 
 // == Import : local
 // import { changeField } from '../../../../actions/user';
@@ -37,6 +38,8 @@ function SpotIn() {
     dispatch(changeField('Salle', 'type'));
   }, []);
 
+  const redirect = useSelector((state) => state.spots.redirect);
+
   const handleChangeField = (value, name) => {
     dispatch(changeField(value, name));
   };
@@ -47,7 +50,12 @@ function SpotIn() {
     dispatch(registerSpot());
   };
 
+  if (redirect === true) {
+    return <Navigate to="/fiches-interieur" replace />;
+  }
+
   return (
+
     <div className="spotin">
       <h2 className="spotin__title">
         A l'abri, à l'intérieur<br />☕

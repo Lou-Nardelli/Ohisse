@@ -9,6 +9,8 @@ import './spots.scss';
 
 // componant receives a title and a filtered array
 function Spots({ listSpots, title }) {
+  listSpots.reverse();
+
   return (
     <div className="spots">
       <h1 className="spots__title">{title}</h1>
