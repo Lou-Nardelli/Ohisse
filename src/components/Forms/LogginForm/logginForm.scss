@@ -4,19 +4,21 @@
 .logginForm {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   height: 100%;
   text-align: center;
 
 
   &__title {
-    font-family: Oleo Script,cursive;
-    font-weight: bold;
-    font-size: 2rem;
-    padding: 1rem;
     @include themed() {
       color: ask($title-brown);
     }
+    font-family: Oleo Script;
+    font-size: 5em;
+    font-weight: 300;
+    z-index: 1;
+    padding:.5em;
   }
 
   &__message {

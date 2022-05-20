@@ -15,6 +15,7 @@ import {
 
 export const initialState = {
   isLoading: false,
+  isLoggedFavorite: false,
   listSpots: [{
     id: 1,
     name: 'Arkose-Lille',
