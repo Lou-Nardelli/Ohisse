@@ -15,6 +15,7 @@ import {
   NOT_REDIRECTING,
   REDIRECT,
   DO_NOT_REDIRECT,
+  FETCH_SPOTS,
 } from '../actions/spots';
 
 export const initialState = {
