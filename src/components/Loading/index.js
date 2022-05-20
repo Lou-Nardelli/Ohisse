@@ -1,4 +1,4 @@
-import ohisseLogo from 'src/assets/img/logo-simple-bicolor.png';
+import ohisseLogo from 'src/assets/img/logo-loading.png';
 // styles
 import './loading.scss';
 

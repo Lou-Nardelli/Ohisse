@@ -1,4 +1,6 @@
 @use 'src/styles/vars';
+@import 'src/styles/theme-colors.scss';
+
 .loading {
 
   display: flex;
@@ -14,6 +16,9 @@
     font-family: Oleo Script,cursive;
     font-weight: bold;
     font-size: 2rem;
+    @include themed() {
+      color: ask($title-brown);
+    }
     color: vars.$color-brown;
     margin-bottom: 3rem;
     margin-top: 3rem;

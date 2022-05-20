@@ -82,9 +82,7 @@ function Spot({
       <div className="spot__picture">
         <img className="spot__picture--image" src={picture === null ? 'https://www.montagnes-magazine.com/media/actu/2020/05/jef-willemyns-mluUYXoTotY-unsplash.jpg' : picture} alt={name} />
         <button className="spot__picture--button" type="button" onClick={handleFavClick}><img className="spot__picture--icon" alt="favorites-icon" src={favIcon} /></button>
-        {!isLogged && (
-          <div style={isLoggedFavorite} className="spot__picture--islogged">Vous devez être connecté pour ajouter un favori</div>
-        )}
+        <div style={isLoggedFavorite} className="spot__picture--islogged">Vous devez être connecté pour ajouter un favori</div>
       </div>
       <div className="spot__description">
         <div className="description__address">
