@@ -195,15 +195,21 @@ const reducer = (state = initialState, action = {}) => {
         inputNumber: null,
         inputCity: '',
         inputCountry: '',
-        inputDiscipline: null,
+        inputDiscipline: '',
         inputRockType: null,
         inputReputation: null,
         inputMinDif: null,
         inputMaxDif: null,
-        inputDescription: null,
+        inputDescription: '',
         inputPicture: null,
         inputLat: '',
         inputLng: '',
+      };
+    }
+    case FETCH_SPOTS: {
+      return {
+        ...state,
+        isLoading: true,
       };
     }
 

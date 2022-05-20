@@ -166,3 +166,21 @@ export const UPDATE_USER = 'UPDATE_USER';
 export const updateUser = () => ({
   type: UPDATE_USER,
 });
+
+// ACTION TYPE CLEAR_FIELDS
+export const CLEAR_FIELDS = 'CLEAR_FIELDS';
+
+// ACTION CREATOR clearFields
+export const clearFields = () => ({
+  type: CLEAR_FIELDS,
+
+});
+
+// ACTION TYPE CLEAR_FIELDS_INSCRIPTION
+export const CLEAR_FIELDS_INSCRIPTION = 'CLEAR_FIELDS_INSCRIPTION';
+
+// ACTION CREATOR clearFieldsInscription
+export const clearFieldsInscription = () => ({
+  type: CLEAR_FIELDS_INSCRIPTION,
+
+});

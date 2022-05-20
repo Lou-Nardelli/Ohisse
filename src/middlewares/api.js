@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 import {
-  FETCH_SPOTS, FETCH_SPOT_BY_ID, REGISTER_SPOT, saveSpotById, saveSpots, fetchSpots, redirect,
+  FETCH_SPOTS, FETCH_SPOT_BY_ID, REGISTER_SPOT, saveSpotById, saveSpots, fetchSpots, redirect, purgeSpotaddForm,
 } from '../actions/spots';
 import {
   fetchAllCommentsBySpot,
@@ -13,6 +13,8 @@ import {
 } from '../actions/comments';
 import {
   ADD_FAV,
+  clearFields,
+  clearFieldsInscription,
   fetchFavoritesById,
   FETCH_FAVORITES_BY_ID,
   FETCH_USER_BY_ID,
@@ -98,6 +100,8 @@ const apiMiddleWare = (store) => (next) => (action) => {
         .then((response) => {
           console.log(response.data);
           store.dispatch(isRegister());
+          // we clear fields
+          store.dispatch(clearFieldsInscription());
         })
         .catch(() => {
           console.log('oups...');
@@ -140,6 +144,9 @@ const apiMiddleWare = (store) => (next) => (action) => {
 
           // we save token to axios
           axiosInstance.defaults.headers.common.Authorization = `Bearer ${tokenAPI}`;
+
+          // we empty the fiels
+          store.dispatch(clearFields());
 
           // we modify the state to inform that the use is connected
           store.dispatch(isLogged());
@@ -223,6 +230,7 @@ const apiMiddleWare = (store) => (next) => (action) => {
           console.log(response.data);
           store.dispatch(fetchSpots());
           store.dispatch(redirect());
+          store.dispatch(purgeSpotaddForm());
         })
         .catch((error) => {
           console.log(error);
