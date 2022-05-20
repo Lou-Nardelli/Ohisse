@@ -1,12 +1,13 @@
 // == Import : npm
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
+import { Navigate } from 'react-router-dom';
 
 // == Import : local
 // import { changeField } from '../../../../actions/user';
 import logoOhisse from 'src/assets/img/logo-simple-bicolor.png';
 import SpotAddMap from '../SpotAddMap';
-import { changeField, purgeSpotaddForm, registerSpot } from '../../../../actions/spots';
+import { changeField, registerSpot } from '../../../../actions/spots';
 
 // styles
 import './spotout.scss';
@@ -68,6 +69,8 @@ function SpotOut() {
     dispatch(changeField('Spot', 'type'));
   }, []);
 
+  const redirect = useSelector((state) => state.spots.redirect);
+
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log('i submit');
@@ -75,6 +78,10 @@ function SpotOut() {
   };
 
   const value = (element) => element === inputMinDifValue;
+
+  if (redirect === true) {
+    return <Navigate to="/fiches-exterieur" replace />;
+  }
 
   return (
     <div className="spotout">

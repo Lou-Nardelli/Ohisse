@@ -13,6 +13,8 @@ import {
   PURGE_SPOTADD_FORM,
   REDIRECTING,
   NOT_REDIRECTING,
+  REDIRECT,
+  DO_NOT_REDIRECT,
 } from '../actions/spots';
 
 export const initialState = {
@@ -202,6 +204,18 @@ const reducer = (state = initialState, action = {}) => {
         inputLng: '',
       };
     }
+
+    case REDIRECT:
+      return {
+        ...state,
+        redirect: true,
+      };
+
+    case DO_NOT_REDIRECT:
+      return {
+        ...state,
+        redirect: false,
+      };
 
     default:
       return state;

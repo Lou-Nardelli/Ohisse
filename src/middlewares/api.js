@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 import {
-  FETCH_SPOTS, FETCH_SPOT_BY_ID, REGISTER_SPOT, saveSpotById, saveSpots, fetchSpots,
+  FETCH_SPOTS, FETCH_SPOT_BY_ID, REGISTER_SPOT, saveSpotById, saveSpots, fetchSpots, redirect,
 } from '../actions/spots';
 import {
   fetchAllCommentsBySpot,
@@ -222,6 +222,7 @@ const apiMiddleWare = (store) => (next) => (action) => {
         .then((response) => {
           console.log(response.data);
           store.dispatch(fetchSpots());
+          store.dispatch(redirect());
         })
         .catch((error) => {
           console.log(error);

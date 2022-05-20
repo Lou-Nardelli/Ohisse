@@ -37,7 +37,8 @@ function SpotIn() {
   useEffect(() => {
     dispatch(changeField('Salle', 'type'));
   }, []);
-  const inputName = useSelector((state) => state.spots.inputName);
+
+  const redirect = useSelector((state) => state.spots.redirect);
 
   const handleChangeField = (value, name) => {
     dispatch(changeField(value, name));
@@ -47,8 +48,11 @@ function SpotIn() {
     event.preventDefault();
     console.log('i submit');
     dispatch(registerSpot());
-    console.log(inputName);
   };
+
+  if (redirect === true) {
+    return <Navigate to="/fiches-interieur" replace />;
+  }
 
   return (
 

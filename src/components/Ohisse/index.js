@@ -22,7 +22,7 @@ import SelectSpotType from '../Forms/SpotAddForm/SelectSpotType';
 import SpotIn from '../Forms/SpotAddForm/SpotIn';
 import SpotOut from '../Forms/SpotAddForm/SpotOut';
 import RegisterForm from '../Forms/RegisterForm';
-import { fetchSpots } from '../../actions/spots';
+import { doNotRedirect, fetchSpots } from '../../actions/spots';
 import TeamPage from '../TeamPage';
 import { fetchUserById, logout, isLogged } from '../../actions/user';
 
@@ -87,6 +87,7 @@ function Ohisse() {
     () => {
       // scroll up
       window.scrollTo({ top: 0, behavior: 'smooth' });
+      dispatch(doNotRedirect());
     },
     [location],
   );
