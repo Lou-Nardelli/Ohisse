@@ -2,7 +2,7 @@
 @import 'src/styles/theme-colors.scss';
 
 .teampage {
-  margin: 0 auto;
+  margin: 1em auto;
   color: vars.$color-blue;
   @include themed() {
     background-color: ask($bg);
@@ -95,7 +95,8 @@
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    overflow: auto;
+    // overflow: auto;
+    margin: 1em auto;
     
     &__members {
       display: flex;
