@@ -1,4 +1,5 @@
 // == Import : npm
+import PropTypes from 'prop-types';
 import './popup.scss';
 
 // == Composant
@@ -8,11 +9,15 @@ function Popup(props) {
       <div className="popup__message">
         Vous devez être connecté pour ajouter un favori
         <button type="button" onClick={() => props.setTrigger(false)}>x</button>
-        { props.children }
       </div>
     </div>
   ) : '';
 }
+
+Popup.propTypes = {
+  trigger: PropTypes.bool.isRequired,
+  setTrigger: PropTypes.func.isRequired,
+};
 
 // == Export
 export default Popup;
