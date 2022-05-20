@@ -5,6 +5,9 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  align-content: flex-start;
+  overflow: auto;
+  height: 100%;
   @include themed() {
     background-color: ask($bg);
   }
