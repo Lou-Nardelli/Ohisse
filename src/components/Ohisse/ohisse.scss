@@ -4,6 +4,18 @@
   font-family: 'Catamaran', sans-serif;
   margin: auto;
   position: relative;
+  display: flex;
+  flex-direction: column;
+
+  @include themed() {
+    background-color: ask($bg);
+  }
+}
+
+.ohisse--map {
+  font-family: 'Catamaran', sans-serif;
+  margin: auto;
+  position: relative;
   height: 100vh;
   display: flex;
   flex-direction: column;
