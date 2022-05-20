@@ -2,7 +2,11 @@
 @import 'src/styles/theme-colors.scss';
 
 .spots{
-  // height: 100%;
+  @include themed() {
+    background-color: ask($bg);
+  }
+  overflow: auto;
+  height: 100%;
   &__title {
     margin: 3rem 0;
     @include themed() {

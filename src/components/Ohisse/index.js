@@ -82,6 +82,8 @@ function Ohisse() {
   }, []);
 
   const location = useLocation();
+  // console.log(location.pathname);
+
   // when url change
   useEffect(
     () => {
@@ -99,10 +101,11 @@ function Ohisse() {
   const spotsIndoor = spots.filter((item) => item.type === 'Salle');
   // filter to get a array of outdoor spots
   const spotsOutdoor = spots.filter((item) => item.type === 'Spot');
+
   return (
     // using a div that contains the dark/light theme class
     <div className={`theme ${theme ? 'theme--dark' : 'theme--light'}`}>
-      <div className="ohisse">
+      <div className={location.pathname === '/map' ? 'ohisse--map' : 'ohisse'}>
         <Header />
 
         <Routes>
