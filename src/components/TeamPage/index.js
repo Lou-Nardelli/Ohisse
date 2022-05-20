@@ -2,6 +2,7 @@
 import { useSelector } from 'react-redux';
 
 // == Import : local
+import ohisDetour from '../../assets/img/team/ohis.png';
 import gillenDetour from '../../assets/img/team/gillen-detour.png';
 import louDetour from '../../assets/img/team/lou-detour.png';
 import romainDetour from '../../assets/img/team/romain-detour.png';
@@ -23,7 +24,16 @@ function TeamPage() {
       <h3 className="teampage__title">L'équipe de O'Hisse</h3>
       <div className="teampage__members">
         <div className="teampage__member">
-          <img src={gillenDetour} alt="Team member" className="teampage__member--picture" />
+          <div className="flip-box">
+            <div className="flip-box-inner">
+              <div className="flip-box-front">
+                <img src={gillenDetour} alt="Team member" />
+              </div>
+              <div className="flip-box-back">
+                <img src={ohisDetour} alt="Ohis" />
+              </div>
+            </div>
+          </div>
           <h4 className="teampage__member--name">Gillen LAXALT</h4>
           <div className="teampage__member--socials">
             <a
@@ -45,7 +55,16 @@ function TeamPage() {
           <p className="teampage__member--description">Cartographe de Leaflet, grimpeur à Bayonne et alentours</p>
         </div>
         <div className="teampage__member">
-          <img src={louDetour} alt="Team member" className="teampage__member--picture" />
+          <div className="flip-box">
+            <div className="flip-box-inner">
+              <div className="flip-box-front">
+                <img src={louDetour} alt="Team member" />
+              </div>
+              <div className="flip-box-back">
+                <img src={ohisDetour} alt="Ohis" />
+              </div>
+            </div>
+          </div>
           <h4 className="teampage__member--name">Lou NARDELLI</h4>
           <div className="teampage__member--socials">
             <a
@@ -67,7 +86,16 @@ function TeamPage() {
           <p className="teampage__member--description">Grande ministre du state et de l'API, randonneuse sans frontières</p>
         </div>
         <div className="teampage__member">
-          <img src={romainDetour} alt="Team member" className="teampage__member--picture" />
+          <div className="flip-box">
+            <div className="flip-box-inner">
+              <div className="flip-box-front">
+                <img src={romainDetour} alt="Team member" />
+              </div>
+              <div className="flip-box-back">
+                <img src={ohisDetour} alt="Ohis" />
+              </div>
+            </div>
+          </div>
           <h4 className="teampage__member--name">Romain BODIGUEL</h4>
           <div className="teampage__member--socials">
             <a
@@ -89,7 +117,16 @@ function TeamPage() {
           <p className="teampage__member--description">Porteur de nos visuels, garant de notre bon goût graphique</p>
         </div>
         <div className="teampage__member">
-          <img src={thibaultDetour} alt="Team member" className="teampage__member--picture" />
+          <div className="flip-box">
+            <div className="flip-box-inner">
+              <div className="flip-box-front">
+                <img src={thibaultDetour} alt="Team member" />
+              </div>
+              <div className="flip-box-back">
+                <img src={ohisDetour} alt="Ohis" />
+              </div>
+            </div>
+          </div>
           <h4 className="teampage__member--name">Thibault PERRONO</h4>
           <div className="teampage__member--socials">
             <a
@@ -111,7 +148,16 @@ function TeamPage() {
           <p className="teampage__member--description">Maitre à penser de notre technique, représentant de la grimpe de Montreuil</p>
         </div>
         <div className="teampage__member">
-          <img src={fredericDetour} alt="Team member" className="teampage__member--picture" />
+          <div className="flip-box">
+            <div className="flip-box-inner">
+              <div className="flip-box-front">
+                <img src={fredericDetour} alt="Team member" />
+              </div>
+              <div className="flip-box-back">
+                <img src={ohisDetour} alt="Ohis" />
+              </div>
+            </div>
+          </div>
           <h4 className="teampage__member--name">Frédéric HAVAS</h4>
           <div className="teampage__member--socials">
             <a

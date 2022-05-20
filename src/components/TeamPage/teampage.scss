@@ -2,7 +2,7 @@
 @import 'src/styles/theme-colors.scss';
 
 .teampage {
-  margin: 1em auto;
+  margin: 1em auto 0;
   color: vars.$color-blue;
   @include themed() {
     background-color: ask($bg);
@@ -45,8 +45,50 @@
       margin: 0.5rem 0;
     }
 
-    &--picture:hover {
-      background-image: url(../../assets/img/team/ohis.png);
+    .flip-box {
+      width: 10rem;
+      height: 10rem;
+      margin: 0.5rem 0;
+      perspective: 1000px;
+    }
+    
+    .flip-box-inner {
+      position: relative;
+      width: 10rem;
+      height: 10rem;
+      text-align: center;
+      transition: transform 0.8s;
+      transform-style: preserve-3d;
+    }
+    
+    .flip-box:hover .flip-box-inner {
+      transform: rotateY(180deg);
+    }
+    
+    .flip-box-front, .flip-box-back {
+      position: absolute;
+      width: 10rem;
+      height: 10rem;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+
+      img {
+        border-radius: 50%;
+        width: 10rem;
+        height: 10rem;
+        border: 5px solid #fca311;
+        padding: .3em;
+        object-fit: cover;
+      }
+    }
+    
+    .flip-box-front {
+      color: black;
+    }
+    
+    .flip-box-back {
+      color: white;
+      transform: rotateY(180deg);
     }
 
     &--socials {
@@ -96,7 +138,7 @@
     flex-direction: column;
     justify-content: space-evenly;
     // overflow: auto;
-    margin: 1em auto;
+    margin: 1em auto 0;
     
     &__members {
       display: flex;
