@@ -2,7 +2,7 @@ export default [
   {
     id: 1,
     name: 'ARKOSE',
-    number: 33,
+    number: '33',
     street: 'Rue du Progrès',
     zipcode: '93100',
     city: 'Montreuil',
@@ -20,7 +20,7 @@ export default [
   },
   {
     id: 2,
-    name: 'Art Bloc.',
+    name: 'Art Bloc',
     number: 23,
     street: 'Avenue Auguste Verola',
     zipcode: '06200',
