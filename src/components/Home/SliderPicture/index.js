@@ -26,8 +26,8 @@ function SliderPicture() {
         showStatus={false}
         showThumbs={false}
         stopOnHover={false}
-        interval={6000}
-        transitionTime={0}
+        interval={4000}
+        transitionTime={500}
       >
         {
           picture.map((item) => (
