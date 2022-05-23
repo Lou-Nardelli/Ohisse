@@ -23,9 +23,9 @@ function SliderCards() {
       >
         {
           datas.map((item) => (
-            <Link key={item.id} to={`fiche-spot/${item.name}`}>
+            <Link key={item.name} to={`fiche-spot/${item.name}`}>
               <Card
-                key={item.id}
+                key={item.name}
                 name={item.name}
                 city={item.city}
                 picture={item.picture}

@@ -1,42 +1,40 @@
 // == Import : npm
-import { useSelector, useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
-
-// == Import : local
-import { nextIndex, previousIndex } from '../../../actions/spots';
+import { Carousel } from 'react-responsive-carousel';
+import climbing1 from 'src/assets/img/slider/climbing1.jpg';
+import climbing2 from 'src/assets/img/slider/climbing2.jpg';
+import climbing3 from 'src/assets/img/slider/climbing3.jpg';
+import climbing4 from 'src/assets/img/slider/climbing4.jpg';
 
 // styles
 import './sliderPicture.scss';
 
 const picture = [
-  'https://www.grimper.com/media/guide_salles/img_salles/arkose_montreuil_5_arkose.jpg',
-  'https://www.montagnes-magazine.com/media/actu/2020/05/jef-willemyns-mluUYXoTotY-unsplash.jpg',
-  'https://www.blockout.fr/images/articles/Nantes.jpg',
-  'https://www.grimper.com/media/guide_salles/img_salles/the_roof_pays_basque2.jpg',
+  climbing1,
+  climbing2,
+  climbing3,
+  climbing4,
 ];
 
 function SliderPicture() {
-  const dispatch = useDispatch();
-  const currentIndex = useSelector((state) => state.spots.currentIndexSliderPicture);
-  const currentPicture = picture[currentIndex];
-
-  const handleNext = () => {
-    console.log('i want to see the next picture');
-    dispatch(nextIndex());
-  };
-
-  const handlePrevious = () => {
-    console.log('i want to see the previous picture');
-    dispatch(previousIndex());
-  };
-
   return (
     <div className="sliderPicture">
-      <button type="button" className="sliderPicture__button--previous" aria-label="previous" onClick={handlePrevious}> &lt; </button>
-      <Link to="">
-        <img className="sliderPicture__picture" src={currentPicture} alt="" />
-      </Link>
-      <button type="button" className="sliderPicture__button--next" aria-label="next" onClick={handleNext}> &gt; </button>
+      <Carousel
+        autoPlay
+        infiniteLoop
+        showArrows={false}
+        showIndicators={false}
+        showStatus={false}
+        showThumbs={false}
+        stopOnHover={false}
+        interval={6000}
+        transitionTime={0}
+      >
+        {
+          picture.map((item) => (
+            <img key={item.indexOf} className="sliderPicture__picture" src={item} alt="" />
+          ))
+        }
+      </Carousel>
     </div>
   );
 }

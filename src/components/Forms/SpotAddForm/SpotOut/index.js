@@ -73,7 +73,7 @@ function SpotOut() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log('i submit');
+    // console.log('i submit');
     dispatch(registerSpot());
   };
 

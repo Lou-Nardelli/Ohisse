@@ -47,14 +47,14 @@ function Ohisse() {
     // load all spots from API
     dispatch(fetchSpots());
 
-    console.log(localStorage.getItem('token'));
+    // console.log(localStorage.getItem('token'));
     const token = localStorage.getItem('token');
     // if token exist
     if (token !== null) {
       // isLogged = true
       dispatch(isLogged());
       // we find id's user
-      console.log(parseJwt(token).sub);
+      // console.log(parseJwt(token).sub);
       // we fetch information about user
       dispatch(fetchUserById(parseJwt(token).sub));
       // we retrieve the expiration date of the token
@@ -63,7 +63,7 @@ function Ohisse() {
       // console.log(Date.now());
       // if the current date has passed the expiration date
       if (Date.now() > time) {
-        console.log('deconnexion');
+        // console.log('deconnexion');
         // user is logged out
         dispatch(logout());
       }
@@ -73,7 +73,7 @@ function Ohisse() {
         // console.log(timeBeforeTokenExpires);
         // when the time is up
         setTimeout(() => {
-          console.log('deconnexion');
+          // console.log('deconnexion');
           // user is logged out
           dispatch(logout());
         }, timeBeforeTokenExpires);
