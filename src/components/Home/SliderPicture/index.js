@@ -31,7 +31,7 @@ function SliderPicture() {
       >
         {
           picture.map((item) => (
-            <img className="sliderPicture__picture" src={item} alt="" />
+            <img key={item.indexOf} className="sliderPicture__picture" src={item} alt="" />
           ))
         }
       </Carousel>
