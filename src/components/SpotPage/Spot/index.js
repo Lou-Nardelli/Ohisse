@@ -123,7 +123,7 @@ function Spot({
 
 Spot.propTypes = {
   name: PropTypes.string.isRequired,
-  number: PropTypes.number,
+  number: PropTypes.string,
   street: PropTypes.string,
   zipcode: PropTypes.string,
   city: PropTypes.string.isRequired,
