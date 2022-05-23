@@ -47,6 +47,33 @@ header {
   margin-left:1em;
 }
 
+.header-bar__links {
+  .gutter-links {
+    margin: 0 0.5rem;
+    position: relative;
+  }
+
+  .gutter-links:after {
+    content: '';
+    position: absolute;
+    width: 75%;
+    transform: scaleX(1);
+    height: 3px;
+    bottom: 0;
+    left: 0;
+    @include themed() {
+      background-color: ask($title-brown);
+    }
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+  }
+
+  .gutter-links:hover:after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+}
+
 .burger {
 
   &__links {
