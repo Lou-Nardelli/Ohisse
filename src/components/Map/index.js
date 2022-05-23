@@ -26,7 +26,7 @@ function Map() {
         />
         {spots.map((item) => (
           <Marker key={item.id} position={[item.longitude, item.latitude]} icon={ohisseIcon}>
-            <Popup minWidth={170} maxWidth={170} maxHeight={170}>
+            <Popup minWidth={170} maxWidth={170}>
               <div className="map-popup" style={popupContent}>
                 <Link to={`/fiche-spot/${item.name}`}>
                   <img src={item.picture ? item.picture : 'https://www.montagnes-magazine.com/media/actu/2020/05/jef-willemyns-mluUYXoTotY-unsplash.jpg'} alt={`${item.name}`} />
