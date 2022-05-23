@@ -65,6 +65,18 @@ function Spot({
     }
   };
 
+  // Translation of the reputaion stocked in DB to display it on spotin page
+  let reputationTrans = reputation;
+  if (reputationTrans === 'easy') {
+    reputationTrans = 'Plutôt accessible';
+  }
+  else if (reputationTrans === 'medium') {
+    reputationTrans = 'Niveau moyen';
+  }
+  else if (reputationTrans === 'hard') {
+    reputationTrans = 'Plutôt costaud';
+  }
+
   return (
     <div className="spot">
       <div className="spot__header">
@@ -93,7 +105,7 @@ function Spot({
           <p className="features__p"><strong className="spot__strong">Type:</strong>  {type}</p>
           <p className="features__p"><strong className="spot__strong"> Discipline:</strong> {discipline}</p>
           { // if type 'interieur' we display reputation
-            (type === 'Salle' && reputation !== null) && (<p className="features__p"><strong className="spot__strong">La réputation:</strong> {reputation}</p>)
+            (type === 'Salle' && reputation !== null) && (<p className="features__p"><strong className="spot__strong">La réputation:</strong> {reputationTrans}</p>)
           }
           { // if type 'exterieur' we display min difficulty and max difficulty
             (type === 'Spot' && minDifficulty !== null) && (<p className="features__p"><strong className="spot__strong">Difficulté minimun:</strong> {minDifficulty}</p>)
