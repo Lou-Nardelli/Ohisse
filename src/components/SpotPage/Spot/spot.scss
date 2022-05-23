@@ -1,0 +1,149 @@
+@use 'src/styles/vars';
+@import 'src/styles/theme-colors.scss';
+
+.spot {
+  overflow: hidden;
+  padding-bottom: 1em;
+
+  &__header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1em;
+
+    .header__name {
+      font-family: Oleo Script,cursive;
+      font-weight: bold;
+      font-size: 2rem;
+      @include themed() {
+        color: ask($title-brown);
+      }
+
+      &--fav {
+        border: none;
+        background-color: white;
+        font-size: 1.5em;
+        color: vars.$color-orange;
+      }
+    }
+  }
+
+  &__picture {
+    margin: 0 auto;
+    max-width: 700px;
+    position: relative;
+    width: 100%;
+    max-height: 500px;
+    overflow: hidden;
+    border-radius: 10px 10px 0 0;
+
+    &--button {
+      height: 4em;
+      position: absolute;
+      right: 1em;
+      top: 1em;
+      width: 4em;
+      border: 2px solid #fca311;
+      border-radius: 5px;
+      background-color: rgb(255 255 255 / 70%);
+      color: #fca311;
+      font-weight: 700;
+    }
+
+    &--icon {
+      width:2em;
+    }
+
+    &--image {
+      max-width: 700px;
+      display: block;
+      margin: auto;
+      width:100%;
+    }
+
+    &--islogged {
+      position: absolute;
+      top: 5em;
+      right: 1em;
+      background-color: rgb(255 255 255 / 70%);
+      padding: .3em;
+      border-radius: 1px;
+      color: #14213d;
+    }
+  }
+
+  &__description {
+    @include themed() {
+      background-color: ask($bg);
+    }
+    align-items: center;
+    border: 2px solid #fca311;
+    border-top: none;
+    border-bottom: none;
+    display: flex;
+    margin: 0 auto;
+    max-width: 700px;
+    padding: 1em 0;
+    @include themed() {
+      color: ask($text);
+    }
+
+    .description__address {
+      line-height: 1.3em;
+      padding: 1em;
+      margin-right: 1em;
+      text-align: left;
+      font-weight: 700;
+      @include themed() {
+        color: ask($text);
+      }
+      @include themed() {
+        border-right: 5px solid ask($border);
+      }
+    }
+
+    .description__features {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+
+      .features__p {
+        margin: 0.5em;
+      }
+  }
+
+  }
+
+  &__various {
+    @include themed() {
+      background-color: ask($bg);
+    }
+    @include themed() {
+      color: ask($text);
+    }
+    border: 2px solid #fca311;
+    border-radius: 0 0 5px 5px;
+    margin: 0 auto 1em;
+    max-width: 700px;
+    padding: 1em;
+  }
+
+  &__strong {
+    font-weight: bold;
+    @include themed() {
+      color: ask($title-brown);
+    }
+  }
+}
+
+@media only screen and (min-width : 600px) {
+
+  .spot {
+  
+    &__description {
+      display: flex;  
+    }
+  }
+
+  }
+

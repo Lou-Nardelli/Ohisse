@@ -1,0 +1,76 @@
+@import 'src/styles/theme-colors.scss';
+
+.error {
+  align-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  width: 50%;
+
+  a {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__title {
+    @include themed() {
+      color: ask($text);
+    }
+    font-size: 1.3em;
+    font-weight: 300;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1em;
+
+    &--title {
+      color: #fca311;
+      font-family: Oleo Script;
+      font-size: 15em;
+      font-weight: 300;
+      z-index: 1;
+    }
+
+    &--gif {
+      border-radius: 10px;
+      margin-top: -5em;
+      position: static;
+      width: 50%;
+    }
+  }
+
+  &__button {
+    max-width: 100%;
+    width: 30em;
+    height: 3em;
+    border: none;
+    @include themed() {
+      background-color: ask($button);
+    }
+    color: #fff;
+    border-radius: 4px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .error {
+
+    &__content {
+
+      &--title {
+        font-size:10em;
+      }
+    }
+
+    &__button {
+      width:15em;
+    }
+  }
+}

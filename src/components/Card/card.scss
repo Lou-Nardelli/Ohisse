@@ -1,0 +1,50 @@
+@use 'src/styles/vars';
+
+.card {
+  margin: 20px 20px;
+  max-width: 20em;
+  height: 10em;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  position: relative;
+  color: #fff;
+  border-radius:5px;
+
+  &__image {
+    object-fit: cover;
+    width:100%;
+  }
+
+  &__title {
+    font-family: Oleo Script,cursive;
+    bottom: 1.5em;
+    left: .5em;
+    font-size: 2em;
+    position: absolute;
+    color: #f2f4f3;
+    text-align: left;
+  }
+
+  &__location {
+    bottom: 1em;
+    left: .5em;
+    position: absolute;
+    font-size: 1.5em;
+    color: #f2f4f3;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .card {
+    max-width: 60em;
+    height: 20em;
+  }
+}
+
+.cardLittle {
+  max-width: 13em;
+  height: 13em;
+  margin: 5px;
+}

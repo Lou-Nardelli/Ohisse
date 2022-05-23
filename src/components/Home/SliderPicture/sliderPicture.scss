@@ -1,0 +1,43 @@
+@use 'src/styles/vars';
+@import 'src/styles/theme-colors.scss';
+
+.sliderPicture {
+    max-height: 400px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+
+    &__picture {
+        width: 100vw;
+    }
+
+    &__button--previous,
+    &__button--next {
+      @include themed() {
+        background-color: ask($bg);
+      }
+      opacity: .7;
+      border: 2px solid vars.$color-orange;
+      border-radius: 50%;
+      width: 3em;
+      height: 3em;
+      color: vars.$color-orange;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+
+    &__button--previous {
+      position: absolute;
+      left: 1em;
+    }
+
+    &__button--next {
+      position: absolute;
+      right: 1em;
+    }
+}

@@ -1,0 +1,27 @@
+@use 'src/styles/_vars';
+@import 'src/styles/theme-colors.scss';
+
+.selectSpotType {
+  height: 100%;
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  
+  &__question {
+    font-family: Oleo Script,cursive;
+    font-weight: bold;
+    font-size: 2rem;
+    padding: 1rem;
+    text-align: center;
+    @include themed() {
+      color: ask($title-brown);
+    }
+  }
+
+  &__choice {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+}

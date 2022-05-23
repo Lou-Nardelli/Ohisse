@@ -1,0 +1,191 @@
+@use '/src/styles/vars';
+@import 'src/styles/theme-colors.scss';
+
+
+.spotout {
+  margin: auto;
+  width: 100%;
+  @include themed() {
+    background-color: ask($bg);
+  }
+
+  &__title {
+    font-family: Oleo Script,cursive;
+    @include themed() {
+      color: ask($title-brown);
+    }
+    font-size: 2rem;
+    text-align: center;
+    font-weight: bold;
+    margin: 1rem 0;
+    letter-spacing: 1px;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 0 1rem;
+    max-width: 700px;
+    margin: 0 auto;
+
+    input,
+    select,
+    textarea {
+      text-align: center;
+      margin-top: 0.2rem;
+      width: 75%;
+      align-self: center;
+      border: 1px solid vars.$color-orange;
+      border-radius: 5px;
+      @include themed() {
+        background-color: ask($bg);
+      }
+      @include themed() {
+        color: ask($text);
+      }
+
+      &::placeholder {
+        @include themed() {
+          color: ask($text);
+        }
+      }
+    }
+
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    textarea {
+      height: 100px;
+      font-family: 'Catamaran', sans-serif;
+
+    }
+
+    textarea::selection {
+      @include themed() {
+        color: ask($text);
+      }
+      @include themed() {
+        background-color: ask($bg);
+      }
+    }
+
+    textarea:focus {
+      border: 2px solid vars.$color-orange;
+    }
+
+    textarea:focus-visible {
+      outline: 0;
+    }
+
+    select {
+      background-color: transparent;
+    }
+
+    label {
+      margin-bottom: 0.5rem;
+      display: flex;
+      flex-direction: column;
+      font-weight: bold;
+      @include themed() {
+        color: ask($text);
+      }
+      letter-spacing: 1px;
+      cursor: default;
+    }
+
+    &--label-name {
+      display: flex;
+      flex-direction: column;
+    }
+
+    &--label-address {
+      display: flex;
+      flex-direction: column;
+      label {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+
+    &--label-spot {
+      display: flex;
+      flex-direction: column;
+
+      img {
+        margin: 0.5rem 0;
+        width: 10%;
+        align-self: center;
+      }
+    }
+
+    &--mapsubmit {
+      display: flex;
+      flex-direction: column;
+      height: fit-content;
+    }
+
+    &-button {
+      margin: 1rem 0;
+      border: solid 1px vars.$color-blue;
+      background-color: vars.$color-orange;
+      border: solid 1px vars.$color-blue;
+      @include themed() {
+        color: ask($text);
+      }
+      margin-bottom: 1rem;
+      padding: 0.5rem;
+      width: 50%;
+      align-self: center;
+    }
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .spotout {
+    &__form {
+      &--label-name {
+        width: 50%;
+        align-self: center;
+      }
+
+      &--label-address {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+      }
+
+      &--label-spot {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        label {
+          width: auto;
+        }
+
+        #spotout__form-input-picture {
+          width: 50%;
+        }
+
+        textarea {
+          width: 670px;
+        }
+      }
+
+      &--mapsubmit {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+
+        input {
+          width: 100%;
+        }
+      }
+    }
+  }
+}

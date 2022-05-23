@@ -1,0 +1,65 @@
+@use 'vars';
+
+$bg: 'bg';
+$nav-bg: 'nav-bg';
+$text: 'text';
+$nav-text: 'nav-text';
+$nav-switch: 'nav-switch';
+$nav-icon: 'nav-icon';
+$title-orange: 'title-orange';
+$title-brown: 'title-brown';
+$title-blue: 'title-blue';
+$button: 'button';
+$border: 'border';
+$map-filter: 'map-filter';
+
+$themes: (
+        light: (
+                logo: url("src/assets/img/logo-complet-bicolor.png"),
+                bg: vars.$color-white,
+                nav-bg: vars.$color-grey,
+                text: vars.$color-dark,
+                nav-text: vars.$color-blue,
+                nav-switch:vars.$color-blue,
+                nav-icon:vars.$color-grey,
+                title-orange: vars.$color-orange,
+                title-brown: vars.$color-brown,
+                title-blue: vars.$color-blue,
+                button: vars.$color-blue,
+                border: vars.$color-blue,
+                map-filter: none,
+        ),
+        dark: (
+                logo: url("src/assets/img/logo-complet-jaune.png"),
+                bg: vars.$color-blue,
+                nav-bg: vars.$color-blue,
+                text: vars.$color-grey,
+                nav-text: vars.$color-orange,
+                nav-switch:vars.$color-orange,
+                nav-icon:vars.$color-orange,
+                title-orange: vars.$color-brown,
+                title-brown: vars.$color-orange,
+                title-blue: vars.$color-white,
+                button: vars.$color-orange,
+                border: vars.$color-white,
+                map-filter: brightness(0.6) invert(1) contrast(3) hue-rotate(200deg) saturate(0.3) brightness(0.7),
+        ),
+);
+
+@mixin themed() {
+  @each $theme, $map in $themes {
+    .theme--#{$theme} & {
+      $theme-map: () !global;
+      @each $key, $submap in $map {
+        $value: map-get(map-get($themes, $theme), '#{$key}');
+        $theme-map: map-merge($theme-map, ($key: $value)) !global;
+      }
+      @content;
+      $theme-map: null !global;
+    }
+  }
+}
+
+@function ask($key) {
+  @return map-get($theme-map, $key);
+}

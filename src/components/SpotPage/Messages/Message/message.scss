@@ -1,0 +1,61 @@
+@use 'src/styles/vars';
+@import 'src/styles/theme-colors.scss';
+
+.message {
+  @include themed() {
+    border-left: 5px solid ask($border);
+  }
+  padding: 0 .5em;
+  margin-bottom: 1em;
+
+  &__author {
+    font-size: .9em;
+    color: #a3a3a3;
+    @include themed() {
+      border-bottom: 1px solid ask($border);
+    }
+    padding-bottom: .2em;
+    margin-bottom: 1em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .trash {
+      border: none;
+      background-color: transparent;
+      color: red;
+      font-size: .9em;
+      padding: none;
+
+      &__icon {
+        width:.8em;
+      }
+    }
+  }
+
+  &__content {
+    @include themed() {
+      color: ask($text);
+    }
+    font-size: 1.3em;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .message {
+
+    &__author {
+
+      .trash {
+    
+        &__content {
+          display: none;
+        }
+    
+        &__icon {
+          width:1.1em;
+        }
+      }
+    }
+  }
+}
