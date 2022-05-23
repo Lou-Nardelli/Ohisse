@@ -151,6 +151,12 @@
       max-width:100%;
       height:100%;
     }
+
+      h3 {
+        @include themed() {
+          color: ask($title-brown);
+        }
+      }
   }
 }
 
