@@ -19,7 +19,7 @@ import {
 } from '../actions/spots';
 
 export const initialState = {
-  isLoading: false,
+  isLoading: true,
   isLoggedFavorite: false,
   listSpots: [{
     id: 1,
@@ -209,7 +209,6 @@ const reducer = (state = initialState, action = {}) => {
     case FETCH_SPOTS: {
       return {
         ...state,
-        isLoading: true,
       };
     }
 

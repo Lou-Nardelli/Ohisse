@@ -27,30 +27,28 @@ function SpotPage() {
   // use state of currentSpot
   const currentSpot = useSelector((state) => state.spots.currentSpot);
   const { isLogged } = useSelector((state) => state.user);
-  // console.log(currentSpot);
-  // console.log(slug);
+
   // we fetch all the spots to the state
   const spots = useSelector((state) => state.spots.listSpots);
-  // console.log(spots);
+
   // we find amoung all the spots, the current spot
   const spot = spots.find((element) => element.name === slug);
-  // console.log(spots);
-  // console.log(spot);
 
-  if (!spot) {
-    return <Navigate to="/" replace />;
-  }
-
-  // when mounting the component
-  useEffect(
-    () => {
+  // when mounting the component and when listSpots change
+  useEffect(() => {
+    // if spot exist
+    if (spot !== undefined) {
+      // console.log(' Use effect ok');
       // i want fetch one spot
       dispatch(fetchSpotById(spot.id));
       // i want all comments of this place
       dispatch(fetchAllCommentsBySpot(spot.id));
-    },
-    [],
-  );
+    }
+    // if spot does not exist the useEffect does nothing
+    else {
+      console.log('useEffect error');
+    }
+  }, [spots]);
 
   // destructuring
   const {
