@@ -24,7 +24,7 @@ function LogginForm() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log('i call api to connect');
+    // console.log('i call api to connect');
     // user login
     dispatch(loggin());
     // console.log(Date.now());
@@ -36,7 +36,7 @@ function LogginForm() {
     localStorage.setItem('expired_token', JSON.stringify(expirationTime));
     // i put a timer that will disconnect the user after an hour
     setTimeout(() => {
-      console.log('deconnexion');
+      // console.log('deconnexion');
       dispatch(logout());
     }, 3600000);
   };

@@ -179,7 +179,7 @@ const reducer = (state = initialState, action = {}) => {
         isLoading: true,
       };
     case SAVE_SPOT_BY_ID: {
-      console.log(action.data);
+      // console.log(action.data);
       return {
         ...state,
         currentSpot: [action.data],
