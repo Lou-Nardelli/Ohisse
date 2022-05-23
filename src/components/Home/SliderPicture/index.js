@@ -1,6 +1,10 @@
 // == Import : npm
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import climbing1 from 'src/assets/img/slider/climbing1.jpg';
+import climbing2 from 'src/assets/img/slider/climbing2.jpg';
+import climbing3 from 'src/assets/img/slider/climbing3.jpg';
+import climbing4 from 'src/assets/img/slider/climbing4.jpg';
 
 // == Import : local
 import { nextIndex, previousIndex } from '../../../actions/spots';
@@ -9,10 +13,10 @@ import { nextIndex, previousIndex } from '../../../actions/spots';
 import './sliderPicture.scss';
 
 const picture = [
-  'https://www.grimper.com/media/guide_salles/img_salles/arkose_montreuil_5_arkose.jpg',
-  'https://www.montagnes-magazine.com/media/actu/2020/05/jef-willemyns-mluUYXoTotY-unsplash.jpg',
-  'https://www.blockout.fr/images/articles/Nantes.jpg',
-  'https://www.grimper.com/media/guide_salles/img_salles/the_roof_pays_basque2.jpg',
+  climbing1,
+  climbing2,
+  climbing3,
+  climbing4,
 ];
 
 function SliderPicture() {
