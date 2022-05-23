@@ -96,7 +96,7 @@ const apiMiddleWare = (store) => (next) => (action) => {
           },
         )
         .then((response) => {
-          console.log(response.data);
+          // console.log(response.data);
           store.dispatch(isRegister());
         })
         .catch(() => {
@@ -122,9 +122,9 @@ const apiMiddleWare = (store) => (next) => (action) => {
         )
         // we recive information about user and token
         .then((response) => {
-          console.log('connexion OK');
-          console.log(response.data);
-          console.log(response.data.token.original.access_token);
+          // console.log('connexion OK');
+          // console.log(response.data);
+          // console.log(response.data.token.original.access_token);
 
           const tokenAPI = response.data.token.original.access_token;
           const { user } = response.data;
@@ -220,7 +220,7 @@ const apiMiddleWare = (store) => (next) => (action) => {
 
         )
         .then((response) => {
-          console.log(response.data);
+          // console.log(response.data);
           store.dispatch(fetchSpots());
           store.dispatch(redirect());
         })
@@ -244,7 +244,7 @@ const apiMiddleWare = (store) => (next) => (action) => {
           },
         )
         .then((response) => {
-          console.log(response.data);
+          // console.log(response.data);
           store.dispatch(saveUser(response.data));
           store.dispatch(fetchFavoritesById());
         })
@@ -299,7 +299,7 @@ const apiMiddleWare = (store) => (next) => (action) => {
           // },
         )
         .then((response) => {
-          console.log(response.data);
+          // console.log(response.data);
           store.dispatch(fetchFavoritesById());
         })
         .catch((error) => {
@@ -378,7 +378,7 @@ const apiMiddleWare = (store) => (next) => (action) => {
           // },
         )
         .then((response) => {
-          console.log(response.data);
+          // console.log(response.data);
           store.dispatch(fetchFavoritesById());
         })
         .catch((error) => {
@@ -417,7 +417,7 @@ const apiMiddleWare = (store) => (next) => (action) => {
         )
         .then(
           (response) => {
-            console.log(response.data);
+            // console.log(response.data);
             // save the new message into the state
             store.dispatch(saveNewMessage(response.data));
           },
@@ -434,7 +434,7 @@ const apiMiddleWare = (store) => (next) => (action) => {
           `api/comment/${action.id}`,
         )
         .then((response) => {
-          console.log(response.data);
+          // console.log(response.data);
           // we put these comments in the state
           store.dispatch(saveCurrentComments(response.data));
         })

@@ -34,8 +34,8 @@ function SpotPage() {
   // console.log(spots);
   // we find amoung all the spots, the current spot
   const spot = spots.find((element) => element.name === slug);
-  console.log(spots);
-  console.log(spot);
+  // console.log(spots);
+  // console.log(spot);
 
   if (!spot) {
     return <Navigate to="/" replace />;

@@ -21,12 +21,12 @@ function SliderPicture() {
   const currentPicture = picture[currentIndex];
 
   const handleNext = () => {
-    console.log('i want to see the next picture');
+    // console.log('i want to see the next picture');
     dispatch(nextIndex());
   };
 
   const handlePrevious = () => {
-    console.log('i want to see the previous picture');
+    // console.log('i want to see the previous picture');
     dispatch(previousIndex());
   };
 

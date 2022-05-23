@@ -17,7 +17,7 @@ function AddMessage() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log('i submit');
+    // console.log('i submit');
 
     dispatch(sendMessageToServer());
   };
