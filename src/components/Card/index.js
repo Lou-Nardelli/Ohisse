@@ -26,8 +26,12 @@ function Card({
 Card.propTypes = {
   name: PropTypes.string.isRequired,
   city: PropTypes.string.isRequired,
-  picture: PropTypes.string.isRequired,
+  picture: PropTypes.string,
   className: PropTypes.string.isRequired,
+};
+
+Card.defaultProps = {
+  picture: 'https://www.grimper.com/media/guide_salles/img_salles/arkose_montreuil_5_arkose.jpg',
 };
 
 // == Export

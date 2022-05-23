@@ -11,6 +11,8 @@ import {
   SET_LOADING,
   CHANGE_EDIT_STATUS,
   CHANGE_CURRENTUSER_FIELD,
+  CLEAR_FIELDS,
+  CLEAR_FIELDS_INSCRIPTION,
 } from '../actions/user';
 
 export const initialState = {
@@ -128,12 +130,24 @@ const reducer = (state = initialState, action = {}) => {
       };
     }
 
-    // case SET_LOADING: {
-    //   return {
-    //     ...state,
-    //     isLoading: true,
-    //   };
-    // }
+    case CLEAR_FIELDS:
+      return {
+        ...state,
+        inputPassword: '',
+        inputEmail: '',
+      };
+
+    case CLEAR_FIELDS_INSCRIPTION:
+      return {
+        ...state,
+        inputPassword: '',
+        inputPseudo: '',
+        inputFirstname: '',
+        inputLastname: '',
+        inputConfirmPassword: '',
+        inputCity: '',
+        inputCountry: '',
+      };
 
     default:
       return state;
