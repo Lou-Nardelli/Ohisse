@@ -24,8 +24,16 @@ function Map() {
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
+        <Marker position={[46.7, 2]} icon={ohisseIcon}>
+          <Popup />
+        </Marker>
         {spots.map((item) => (
-          <Marker key={item.id} position={[item.longitude, item.latitude]} icon={ohisseIcon}>
+          <Marker
+            key={item.id}
+            position={[item.longitude,
+              item.latitude]}
+            icon={ohisseIcon}
+          >
             <Popup minWidth={170} maxWidth={170}>
               <div className="map-popup" style={popupContent}>
                 <Link to={`/fiche-spot/${item.name}`}>
