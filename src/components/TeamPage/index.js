@@ -127,7 +127,7 @@ function TeamPage() {
               </div>
             </div>
           </div>
-          <h4 className="teampage__member--name">Thibault PERRONO</h4>
+          <h4 className="teampage__member--name">Thibault PERONNO</h4>
           <div className="teampage__member--socials">
             <a
               href="https://www.linkedin.com/in/thibault-peronno/"
